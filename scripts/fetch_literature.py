@@ -25,8 +25,16 @@ def get_raw_literature():
     return df
 
 
-def save_literature(destination):
+def get_clean_literature():
     df = get_raw_literature()
+    print('Cleaning literature annotation.')
+    # get inchikeys
+    # aggregate references
+    return df
+
+
+def save_literature(destination):
+    df = get_clean_literature()
     print('Saving table to: %s' % destination)
     df.to_csv(destination, index=False)
 
