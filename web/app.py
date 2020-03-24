@@ -41,7 +41,7 @@ class BaseDataTables:
         for row in self.result_data:
             aaData_row = []
             for i in range(len(self.columns)):
-                print row, self.columns, self.columns[i]
+                #print(row, self.columns, self.columns[i])
                 aaData_row.append(
                     str(row[self.columns[i]]).replace('"', '\\"'))
             aaData_rows.append(aaData_row)
