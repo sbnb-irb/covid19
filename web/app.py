@@ -13,6 +13,10 @@ def get_literature_table():
     return pd.read_csv(os.path.join(app_path, 'data', 'literature.csv'))
 
 
+def make_href(val):
+    return '<a href="{}">link</a>'.format(val, val)
+
+
 class BaseDataTables:
 
     def __init__(self, request, columns, collection):
@@ -59,13 +63,8 @@ def index():
 
 @app.route('/_server_data')
 def get_server_data():
-
     df = get_literature_table()
     df['Score'].fillna(-1, inplace=True)
-
-    def make_href(val):
-        return '<a href="{}">link</a>'.format(val, val)
-
     df['Reference'] = df['Reference'].apply(make_href)
     columns = df.columns
     collection = [r.to_dict() for _, r in df.iterrows()]
