@@ -2,6 +2,13 @@
 
 ChemicalChecker based candidates for COVID19.
 
+## Running the debug webapp
+
+```shell
+export FLASK_APP=web/app.py
+flask run 
+```
+
 Tables provided:
 
 ## Literature table
