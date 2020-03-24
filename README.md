@@ -2,23 +2,24 @@
 
 ChemicalChecker based candidates for COVID19.
 
-## Running the debug webapp
+## Quickstart
 
 ```shell
+python scripts/fetch_literature.py
 export FLASK_APP=web/app.py
 flask run 
 ```
 
-Tables provided:
+## Tables provided:
 
-## Literature table
+### Literature table
 1. mol inchikey (link to CC)
 2. mol name
 3. evidence score
 4. description (wrapped)
 5. aggregated reference link
 
-## Candidates table
+### Candidates table
 1. mol inchikey
 2. mol name
 3. mol categories (multiple choice)
