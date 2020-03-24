@@ -11,6 +11,9 @@ from chemicalchecker import ChemicalChecker
 from chemicalchecker.core.signature_data import DataSignature
 from chemicalchecker.util.parser import Converter
 
+if not os.path.exists("outputs"):
+    os.mkdir("outputs")
+
 # Read downloaded data from literature
 df = pd.read_csv("data/Literature_Candidates.tsv", delimiter="\t")
 
