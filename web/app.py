@@ -1,3 +1,4 @@
+import os
 import json
 import pandas as pd
 from flask import Flask, request, render_template
@@ -5,9 +6,11 @@ from flask import Flask, request, render_template
 app = Flask(__name__)
 app.debug = True
 
+app_path = os.path.dirname(os.path.realpath(__file__))
+
 
 def get_literature_table():
-    return pd.read_csv('data/literature.csv')
+    return pd.read_csv(os.path.join(app_path, 'data', 'literature.csv'))
 
 
 class BaseDataTables:
