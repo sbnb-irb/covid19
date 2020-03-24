@@ -2,23 +2,12 @@ import json
 import pandas as pd
 from flask import Flask, request, render_template
 
-import gspread
-from oauth2client.service_account import ServiceAccountCredentials
-
 app = Flask(__name__)
 app.debug = True
 
-def _get_google_table():
-    scope = ['https://spreadsheets.google.com/feeds',
-             'https://www.googleapis.com/auth/drive']
-    creds = ServiceAccountCredentials.from_json_keyfile_name(
-        'covid19_repo.json', scope)
-    client = gspread.authorize(creds)
-    sheet = client.open('Drugs against SARS-CoV-2').get_worksheet(1)
-    records = sheet.get_all_records()
 
-    df = pd.DataFrame(records)
-    return df
+def get_literature_table():
+    return pd.read_csv('data/literature.csv')
 
 
 class BaseDataTables:
@@ -60,7 +49,7 @@ class BaseDataTables:
 
 @app.route('/')
 def index():
-    df = _get_google_table()
+    df = get_literature_table()
     return render_template('index.html', columns=df.columns)
     return 'Hello World!'
 
@@ -68,7 +57,7 @@ def index():
 @app.route('/_server_data')
 def get_server_data():
 
-    df = _get_google_table()
+    df = get_literature_table()
     df['Score'].fillna(-1, inplace=True)
 
     def make_href(val):
