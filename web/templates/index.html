@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Covid19 ChemicalChecker Candidates</title>
+  <meta name="description" content="This is a list of possible candidates.">
+  <meta name="author" content="SBNB">
+
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css"></link>
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css"></link>
+  <!--<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">-->
+
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+  <script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+  <script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
+</head>
+
+<script>
+$(document).ready(function() {
+  $('#drugs').dataTable( {
+    "scrollX": true,
+    "sAjaxSource": "{{ url_for('get_server_data') }}",
+  });
+} );
+</script>
+
+
+<body>
+
+    <nav class="navbar navbar-expand-md navbar-light fixed-top bg-light">
+      <a class="navbar-brand" href="#">
+        <img alt="ChemicalChecker" height="30px" id="logo" 
+          onmouseover="this.src='https://chemicalchecker.com/images/CC_logo_blue.svg';" 
+          onmouseout="this.src='https://chemicalchecker.com/images/CC_logo_black.svg';" 
+          src="https://chemicalchecker.com/images/CC_logo_black.svg">
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Contact</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">About</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <main role="main">
+
+      <div class="jumbotron">
+        <!-- Grid row -->
+        <div class="row">
+          <!-- Grid column -->
+          <div class="col-md-4 offset-md-1 mx-3 my-3">
+            <!-- Featured image -->
+            <div class="view overlay">
+
+              <img alt="Covid19" class="img-fluid" id="covid19_img" width="300px"
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/SARS-CoV-2_without_background.png/1024px-SARS-CoV-2_without_background.png">
+              <a>
+                <div class="mask rgba-white-slight"></div>
+              </a>
+            </div>
+          </div>
+          <!-- Grid column -->
+          <!-- Grid column -->
+          <div class="col-md-7 text-md-left ml-3 mt-3">
+            <h4 class="h4 mb-4"><i>Severe acute respiratory syndrome coronavirus 2 (SARS-CoV-2)</i></h4>
+            <p class="font-weight-normal">Severe acute respiratory syndrome coronavirus 2 (SARS-CoV-2), is a positive-sense, single-stranded RNA coronavirus. The virus is the causative agent of coronavirus disease 2019 (COVID-19) and is contagious through human-to-human transmission.</p>
+            <p>Here we present a list of plausible drug candidates...</p>
+          </div>
+          <!-- Grid column -->
+        </div>
+        <!-- Grid row -->
+      </div>
+
+      <div class="container">
+        <table class='table table-striped table-bordered dataTable' id='drugs'>
+          <thead>
+            <tr>
+              {% for col in columns %}
+              <th>{{ col }}</th>
+              {% endfor %}
+            </tr>
+          </thead>
+        </table>
+      </div>
+
+    </main>
+
+</body>
+</html>

@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "omega-oxide-272012",
+  "private_key_id": "9c1323770a9db2e9623bc751e26bf6cdf01e34a7",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCwScsDy+n0RwHe\nFqcPTEyoNbx4aBgyBuCVytVvx1Ithvult5mM684OX6v26OTSOuFhtv3MwvMcFfIb\nSBxN7pDojZ3WiB/iitXOUBsmI8XqijJUf5+srrMjWUTFT9sAYXQem+feKIjSc+ms\nfjfYrlDPbmq7ux1WlGda7kqdnbjGUsxCo6dwzv2Pk8gv1KAU5Q5xt584lxMw/7yB\n/P2Ha4Njt2i30KSCskieDGomsjCVWh4jMlmKNsurvdSpYDcu7EOTRmQWDHYFcodE\nmjTH161kSo1ZB21Ynwu6IlIELgDsRg2C2zLIChI6HLOpCyatQdvQ0cb6kJhO/cLB\njbFb/UxZAgMBAAECggEAOkV6LNwXjl52WJIGUME4yZVRoj9OWCL706fDW3p4SIJI\n5mNFB1beutOXBTvAf1llLKaPSELcl1kNuUThzkTgc250UPiYCYs410SVZMsIXdmm\nf1XcUvlAT5vvZoVZ78tG1eNVBpNBfsc/43upPB+KqLZn43wbW4Ycj+sakPUUocEp\nbEJS3WEU/FHJf5OQw5AQN6d9+utVib2UMzfrBmp/du5C+BthuuBbuug4HdECYPFa\n3fk2/3TAPPkLeb+9nhCtV3Ui9iRtu4REpCavevcCvM6K0zXQr+KSFQ8licopKeOD\n2AxiOevUtSueXKEIA+TaPYgO9IowkKGfVo0urNwJ3QKBgQDsyX0gpXbT7ADOlfdU\n/OaJpHbB/eygr2kiiEq/cHUjhUSpaFONZZKk8KnBSZwhbc3WjirSwMqbzv35ccnh\nZpOBamKcNgPwNwXDsnWW8JhjfHtoNNHmExC48re7uK01yRb005OxOGLQ5LLreF60\nWOwM/KnTwos6aTadLMF49YFDiwKBgQC+l6Fp/7U1W2h1TRYMV4bJoSqInKDSkZ+D\nMaBlOZTGr9sDZd3aW4e4P4scOXkWKaqa8y1y5uv40ff4xlzBp2uFBtyjWypzrdss\nAgm5fF2gn6YelfGgfljluIAHUTDZdaM9p5VhIXGYy0mq+YFjZKUNwHP0KDsxmKfL\nrzEOLSNcKwKBgBsB5E678LC9Q15Mxpgf/F+Ira70um+dcj1pFDV/qyyw/6Le7mC7\nTB2aAZK1RaSedJLbRlEhgjqBQoCYFPGrlHl3W+X7Vzmn3PV0PmtH5+m5Ag5hr+sx\nE4A01vYHW2I+HGsyUq8tAkBXRX0MDqk9Vzcn/mrTzrOL2pnUyAB26BZ/AoGAQuV/\n72+kT+0clgePlJdoJP9fqYGoZSBd57OUg9MZKD/zVJb9rrXvxjjvf+GgYaoQSsDO\nFAV/j99K9VPSnNpBv/hvmxrVpLLCOgkhFqzTRBylNxkULWwLkd4XefoCdmF3AZ3/\nrY8Ki0HXQp6+zn81+8SwLmOsmzTkuHZudnZbce8CgYEAnAFBy4bwZVamOhNA0T1r\nPXpWzyP5G2EsZJ3QxfB1UGFxk9Mvr86EL3TvJWAIJPZZnLeseyrFlhz5pwBlt3oL\nNFxMlEC+O1EcHl67FUXVx2ePRSN/tfm48d5q9+BqLxJ1/8rIXIV+lfQeB7yBNowR\ndb2V6fi9OCN/J+7ANUbn+4M=\n-----END PRIVATE KEY-----\n",
+  "client_email": "covid19-repo@omega-oxide-272012.iam.gserviceaccount.com",
+  "client_id": "116908477781684335448",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/covid19-repo%40omega-oxide-272012.iam.gserviceaccount.com"
+}
