@@ -28,7 +28,7 @@ def get_raw_literature():
 def save_literature(destination):
     df = get_raw_literature()
     print('Saving table to: %s' % destination)
-    df.to_csv(destination)
+    df.to_csv(destination, index=False)
 
 
 def main():
