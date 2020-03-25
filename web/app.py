@@ -1,7 +1,10 @@
 import os
 import json
 import pandas as pd
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, jsonify
+
+from clientside_table import BaseDataTables
+from serverside_table import ServerSideTable
 
 app = Flask(__name__)
 app.debug = True
@@ -9,69 +12,76 @@ app.debug = True
 app_path = os.path.dirname(os.path.realpath(__file__))
 
 
-def get_literature_table():
-    return pd.read_csv(os.path.join(app_path, 'data', 'literature.csv'))
+def get_literature_data():
+    file_path = os.path.join(app_path, 'data', 'literature.csv')
+    data = pd.read_csv(file_path)
+    print('LOADED %s' % file_path)
+    print('LENGTH %s' % len(data))
+    #df['Score'].fillna(-1, inplace=True)
+    #df['Reference'] = df['Reference'].apply(make_href)
+    return data
+
+
+df_literature = get_literature_data()
+df_literature_collection = df_literature.to_dict(orient='records')
+
+
+def get_candidate_data():
+    file_path = os.path.join(app_path, 'data', 'df_cand_test.pkl')
+    data = pd.read_pickle(file_path)
+    print('LOADED %s' % file_path)
+    print('LENGTH %s' % len(data))
+    #df['Score'].fillna(-1, inplace=True)
+    #df['Reference'] = df['Reference'].apply(make_href)
+    return data
+
+
+df_candidates = get_candidate_data()
+df_candidates_collection = df_candidates.to_dict(orient='records')
 
 
 def make_href(val):
     return '<a href="{}">link</a>'.format(val, val)
 
 
-class BaseDataTables:
-
-    def __init__(self, request, columns, collection):
-        self.columns = columns
-        self.collection = collection
-        # values specified by the datatable for filtering, sorting, paging
-        self.request_values = request.values
-        # results from the db
-        self.result_data = None
-        # total in the table after filtering
-        self.cardinality_filtered = 0
-        # total in the table unfiltered
-        self.cadinality = 0
-        self.run_queries()
-
-    def output_result(self):
-        output = {}
-        # output['sEcho'] = str(int(self.request_values['sEcho']))
-        # output['iTotalRecords'] = str(self.cardinality)
-        # output['iTotalDisplayRecords'] = str(self.cardinality_filtered)
-        aaData_rows = []
-        for row in self.result_data:
-            aaData_row = []
-            for i in range(len(self.columns)):
-                #print(row, self.columns, self.columns[i])
-                aaData_row.append(
-                    str(row[self.columns[i]]).replace('"', '\\"'))
-            aaData_rows.append(aaData_row)
-        output['aaData'] = aaData_rows
-        return output
-
-    def run_queries(self):
-        self.result_data = self.collection
-        self.cardinality_filtered = len(self.result_data)
-        self.cardinality = len(self.result_data)
-
-
 @app.route('/')
 def index():
-    df = get_literature_table()
-    return render_template('index.html', columns=df.columns)
-    return 'Hello World!'
+    return render_template('index.html', columns=df_literature.columns)
 
 
-@app.route('/_server_data')
-def get_server_data():
-    df = get_literature_table()
-    #df['Score'].fillna(-1, inplace=True)
-    #df['Reference'] = df['Reference'].apply(make_href)
-    columns = df.columns
-    collection = [r.to_dict() for _, r in df.iterrows()]
+@app.route('/literature')
+def literature():
+    return render_template('literature.html', columns=df_literature.columns)
 
+
+@app.route('/candidates')
+def candidates():
+    return render_template('candidates.html', columns=df_candidates.columns)
+
+
+@app.route('/_literature_table')
+def get_literature_table():
+    columns = df_literature.columns
+    collection = df_literature_collection
     results = BaseDataTables(request, columns, collection).output_result()
-    # return the results as a string for the datatable
-    return json.dumps(results)
+    return jsonify(results)
+
+
+@app.route('/_candidate_table')
+def get_candidate_table():
+    columns = list()
+    for order, col in enumerate(df_candidates.columns, 1):
+        col_dict = {
+            "data_name": col,
+            "column_name": col,
+            "default": "",
+            "order": order,
+            "searchable": True
+        }
+        columns.append(col_dict)
+    collection = df_candidates_collection
+    results = ServerSideTable(request, columns, collection).output_result()
+    return jsonify(results)
 
 
 if __name__ == '__main__':
