@@ -2,8 +2,7 @@ import os
 import pandas as pd
 from flask import Flask, request, render_template, jsonify
 
-from clientside_table import BaseDataTables
-from serverside_table import ServerSideTable
+from .tables import BaseDataTables, ServerSideTable
 
 app = Flask(__name__)
 app.debug = True
