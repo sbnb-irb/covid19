@@ -1,5 +1,4 @@
 import os
-import json
 import pandas as pd
 from flask import Flask, request, render_template, jsonify
 
@@ -17,8 +16,6 @@ def get_literature_data():
     data = pd.read_csv(file_path)
     print('LOADED %s' % file_path)
     print('LENGTH %s' % len(data))
-    #df['Score'].fillna(-1, inplace=True)
-    #df['Reference'] = df['Reference'].apply(make_href)
     return data
 
 
@@ -31,17 +28,11 @@ def get_candidate_data():
     data = pd.read_pickle(file_path)
     print('LOADED %s' % file_path)
     print('LENGTH %s' % len(data))
-    #df['Score'].fillna(-1, inplace=True)
-    #df['Reference'] = df['Reference'].apply(make_href)
     return data
 
 
 df_candidates = get_candidate_data()
 df_candidates_collection = df_candidates.to_dict(orient='records')
-
-
-def make_href(val):
-    return '<a href="{}">link</a>'.format(val, val)
 
 
 @app.route('/')
