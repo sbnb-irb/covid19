@@ -1,0 +1,27 @@
+<!-- Footer -->
+<div id="container-fluid" class="fixed-bottom bg-light">
+    <div class="row mt-2">
+        <div class="col-sm text-right">
+            <a href="http://sbnb.irbbarcelona.org" target="_blank">
+                <img id="sbnb_logo" src="{{ url_for('static', filename='images/sbnb_gray.png') }}" alt="SBNB logo"
+                onmouseover="this.src='{{ url_for('static', filename='images/sbnb_yellow.png') }}';"
+                onmouseout="this.src='{{ url_for('static', filename='images/sbnb_gray.png') }}';"
+                width="208" height="33">
+            </a>
+        </div>
+        <div class="col-sm text-center">
+            <p class="text-muted small">
+                Provided by the <a class="gray_link" href="http://sbnb.irbbarcelona.org" target="_blank">Structural Bioinformatics and
+                Network Biology Group</a> at the <a class="gray_link" href="http://www.irbbarcelona.org" target="_blank">Institute for Research in
+                Biomedicine</a>.
+            </p>
+        </div>
+        <div class="col-sm text-left">
+            <a href="http://www.irbbarcelona.org/"  target="_blank">
+                <img id="irb_logo" src="{{ url_for('static', filename='images/irb_gray.png') }}" alt="SBNB logo"
+                onmouseover="this.src='{{ url_for('static', filename='images/irb_yellow.png') }}';"
+                onmouseout="this.src='{{ url_for('static', filename='images/irb_gray.png') }}';" height="40">
+            </a>
+        </div>
+    </div>
+</div>
