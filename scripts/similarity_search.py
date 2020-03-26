@@ -90,7 +90,7 @@ def main(simtype):
     df_lit = pd.DataFrame(
         R, columns=["inchikey", "name", "evidence",
                     "moa", "descriptions", "links"])
-    dest_file = os.path.join(output_path, "df_lit_%s.pkl" % simtype)
+    dest_file = os.path.join(output_path, "df_lit_%s.csv" % simtype)
     df_lit.to_csv(dest_file, index=False)
 
     print("Getting precomputed similarities")
@@ -179,7 +179,7 @@ def main(simtype):
         ranks[nn[j, :], j] = vals
 
     # Compute similarities
-    dest_file = os.path.join(output_path, "dist_%s.pkl" % simtype)
+    dest_file = os.path.join(output_path, "dist_%s.csv" % simtype)
     with h5py.File(dest_file, "w") as hf:
         hf.create_dataset("ranks", data=ranks)
         hf.create_dataset("rows", data=np.array(
@@ -254,7 +254,7 @@ def main(simtype):
             moa_suf = "moaall"
         else:
             moa_suf = "moa%d" % moa
-        fn = "df_cand_%s_%s_%s.pkl" % (simtype, evi_suf, moa_suf)
+        fn = "df_cand_%s_%s_%s.csv" % (simtype, evi_suf, moa_suf)
         df = df.sort_values(sort_by, ascending=False)
         df.to_csv(os.path.join(output_path, fn), index=False)
         return fn
@@ -270,7 +270,7 @@ def main(simtype):
             legend.append(
                 {'evidence': min_evidence, 'moa': moa, 'filename': fn})
     legend = pd.DataFrame(legend)
-    dest_file = os.path.join(output_path, "legend_%s.pkl" % simtype)
+    dest_file = os.path.join(output_path, "legend_%s.csv" % simtype)
     legend.to_csv(dest_file, index=False)
 
 
