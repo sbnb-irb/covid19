@@ -71,20 +71,12 @@
               var link = "https://chemicalchecker.com/explore/" + data;
               return "<a href='" + link + "'>" + data + "</a>";
                },
-          targets: [0, 1, -1 , -2] },
+          targets: [0, -2] },
       ] ,
       "columns": [
-            {"data": "inchikey"},
-            {"data": "name"},
-            {"data": "is_drug"},
-            {"data": "lit_score"},
-            {"data": "sim_avg"},
-            {"data": "sim_q66"},
-            {"data": "count_95"},
-            {"data": "count_99"},
-            {"data": "count_999"},
-            {"data": "best_inchikey"},
-            {"data": "best_name"}
+        {% for col in columns %}
+        {"data": "{{ col }}"},
+        {% endfor %}
       ]
     });
   } );
