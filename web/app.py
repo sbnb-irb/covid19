@@ -36,17 +36,12 @@ df_candidates_collection = df_candidates.to_dict(orient='records')
 
 @app.route('/')
 def index():
-    return render_template('index.html', columns=df_literature.columns)
+    return render_template('index.html', columns=df_candidates.columns)
 
 
 @app.route('/literature')
 def literature():
     return render_template('literature.html', columns=df_literature.columns)
-
-
-@app.route('/candidates')
-def candidates():
-    return render_template('candidates.html', columns=df_candidates.columns)
 
 
 @app.route('/_literature_table')

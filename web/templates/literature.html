@@ -6,13 +6,12 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>Covid19 ChemicalChecker Candidates</title>
-  <meta name="description" content="This is a list of possible candidates.">
+  <title>COVID19</title>
+  <meta name="description" content="COVID19 ChemicalChecker Drug-candidates.">
   <meta name="author" content="SBNB">
 
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
-  <!--<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">-->
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.6.1/css/buttons.dataTables.min.css">
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
@@ -31,8 +30,7 @@
 
   <script>
   $(document).ready(function() {
-    $('#literature').dataTable( {
-      "scrollX": true,
+    $('#table').dataTable( {
       "sAjaxSource": "{{ url_for('get_literature_table') }}",
       "dom": 'rilBpt',
       "buttons": [
@@ -60,101 +58,26 @@
     });
   } );
   </script>
-
 </head>
-
 <body>
 
-<!-- Navbar -->
-<nav class="navbar navbar-expand-md navbar-light fixed-top bg-light">
-  <a class="navbar-brand" href="https://chemicalchecker.com/">
-    <img alt="ChemicalChecker" height="30" id="logo" 
-      onmouseover="this.src='https://chemicalchecker.com/images/CC_logo_blue.svg';" 
-      onmouseout="this.src='https://chemicalchecker.com/images/CC_logo_black.svg';" 
-      src="https://chemicalchecker.com/images/CC_logo_black.svg">
-  </a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+{% include 'header.html' %}
 
-  <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Candidates<span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="https://sbnb.irbbarcelona.org/contact">Contact</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="https://sbnb.irbbarcelona.org/">About</a>
-      </li>
-    </ul>
-  </div>
-</nav>
-
-<!-- Main -->
-<div class="container mb-5">
-  <!-- Intro -->
-  <div class="jumbotron">
-    <div class="row">
-      <div class="col-md-4 offset-md-1 mx-3 my-3">
-        <div class="view overlay">
-
-          <img alt="Covid19" class="img-fluid" id="covid19_img" width="300"
-            src="/static/images/covid19_logo_small.png">
-          <a>
-            <div class="mask rgba-white-slight"></div>
-          </a>
-        </div>
-      </div>
-      <div class="col-md-7 text-md-left ml-3 mt-3">
-        <h4 class="h4 mb-4"><i>Severe acute respiratory syndrome coronavirus 2 (SARS-CoV-2)</i></h4>
-        <p class="font-weight-normal">Severe acute respiratory syndrome coronavirus 2 (SARS-CoV-2), is a positive-sense, single-stranded RNA coronavirus. The virus is the causative agent of coronavirus disease 2019 (<a href="https://en.wikipedia.org/wiki/2019-nCoV_acute_respiratory_disease" target="_blank">COVID-19</a>) and is contagious through human-to-human transmission.</p>
-        <p>Here we present a list of plausible drug candidates obtained using the <a href="https://chemicalchecker.com/" target="_blank">Chemical Checker</a> resource.</p>
-      </div>
-    </div>
-  </div>
-  <!-- Table -->
-  <table class='table table-striped table-bordered dataTable' id='literature'>
-    <thead>
-      <tr>
-        {% for col in columns %}
-        <th>{{ col }}</th>
-        {% endfor %}
-      </tr>
-    </thead>
-  </table>
+<div id="container">
+<!-- Table -->
+<table class='table table-striped table-hover table-bordered wrap dataTable' id='table'>
+  <thead>
+    <tr>
+      {% for col in columns %}
+      <th>{{ col }}</th>
+      {% endfor %}
+    </tr>
+  </thead>
+</table>
 </div>
 <br><br><br>
 
-
-<!-- Footer -->
-<div id="container-fluid" class="fixed-bottom bg-light">
-    <div class="row mt-2">
-        <div class="col-sm text-right">
-            <a href="http://sbnb.irbbarcelona.org">
-                <img id="sbnb_logo" src="/static/images/sbnb_gray.png" alt="SBNB logo"
-                onmouseover="this.src='/static/images/sbnb_yellow.png';"
-                onmouseout="this.src='/static/images/sbnb_gray.png';"
-                width="208" height="33">
-            </a>
-        </div>
-        <div class="col-sm text-center">
-            <p class="text-muted small">
-                Provided by the <a class="gray_link" href="http://sbnb.irbbarcelona.org">Structural Bioinformatics and
-                Network Biology Group</a> at the <a class="gray_link" href="http://www.irbbarcelona.org">Institute for Research in
-                Biomedicine</a>.
-            </p>
-        </div>
-        <div class="col-sm text-left">
-            <a href="http://www.irbbarcelona.org/">
-                <img id="irb_logo" src="/static/images/irb_gray.png" alt="SBNB logo"
-                onmouseover="this.src='/static/images/irb_yellow.png';"
-                onmouseout="this.src='/static/images/irb_gray.png';" height="40">
-            </a>
-        </div>
-    </div>
-</div>
+{% include 'footer.html' %}
 
 </body>
 </html>
