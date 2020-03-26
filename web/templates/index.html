@@ -58,7 +58,7 @@
       "bProcessing": true,
       "bServerSide": true,
       "sPaginationType": "full_numbers",
-      "lengthMenu": [[10, 25, 50, 100], [10, 25, 50, 100]],
+      "lengthMenu": [[25, 50, 100], [25, 50, 100]],
       "bjQueryUI": true,
       "sAjaxSource": "{{ url_for('get_candidate_table') }}",
       "columnDefs": [
@@ -80,6 +80,15 @@
     });
   } );
   </script>
+  <style>
+    table.dataTable td {
+      padding: 3px 10px;
+      width: 1px;
+      white-space: nowrap;
+      font-family: monospace;
+      font-size: 10pt;
+    }
+  </style>
 </head>
 <body>
 
