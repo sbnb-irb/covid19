@@ -1,7 +1,6 @@
 # Imports
 import os
 import h5py
-import pickle
 import gspread
 import collections
 import numpy as np
@@ -48,6 +47,8 @@ def main(simtype):
     df = get_raw_literature()
     literature_file = os.path.join(input_path, 'literature.csv')
     df.to_csv(literature_file, index=False)
+    literature_file = os.path.join(output_path, 'literature.csv')
+    df.to_csv(literature_file, index=False)
 
     print("Converting inchikeys")
     # Convert to inchikeys
@@ -90,8 +91,7 @@ def main(simtype):
         R, columns=["inchikey", "name", "evidence",
                     "moa", "descriptions", "links"])
     dest_file = os.path.join(output_path, "df_lit_%s.pkl" % simtype)
-    with open(dest_file, "wb") as f:
-        pickle.dump(df_lit, f)
+    df_lit.to_csv(dest_file, index=False)
 
     print("Getting precomputed similarities")
     # Get precomputed similarities
@@ -256,7 +256,7 @@ def main(simtype):
             moa_suf = "moa%d" % moa
         fn = "df_cand_%s_%s_%s.pkl" % (simtype, evi_suf, moa_suf)
         df = df.sort_values(sort_by, ascending=False)
-        df.to_pickle(os.path.join(output_path, fn))
+        df.to_csv(os.path.join(output_path, fn), index=False)
         return fn
 
     print("Saving legend")
@@ -268,8 +268,7 @@ def main(simtype):
             legend[(min_evidence, moa)] = similarities(
                 simtype=simtype, min_evidence=min_evidence, moa=moa)
     dest_file = os.path.join(output_path, "legend_%s.pkl" % simtype)
-    with open(dest_file, "wb") as f:
-        pickle.dump(legend, f)
+    legend.to_csv(dest_file, index=False)
 
 
 if __name__ == "__main__":
