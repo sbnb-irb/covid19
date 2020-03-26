@@ -23,8 +23,8 @@ df_literature_collection = df_literature.to_dict(orient='records')
 
 
 def get_candidate_data():
-    file_path = os.path.join(app_path, 'data', 'df_cand_cc_eviall_moaall.pkl')
-    data = pd.read_pickle(file_path)
+    file_path = os.path.join(app_path, 'data', 'df_cand_cc_eviall_moaall.csv')
+    data = pd.read_csv(file_path)
     print('LOADED %s' % file_path)
     print('LENGTH %s' % len(data))
     return data
