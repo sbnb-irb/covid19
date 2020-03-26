@@ -163,14 +163,12 @@ def main(simtype):
             nam_can += [ik_name[k]]
         else:
             nam_can += [k]
-    #nam_can = np.array(nam_can)
     nam_lit = []
     for k in iks_lit:
         if k in ik_name:
             nam_lit += [ik_name[k]]
         else:
             nam_lit += [k]
-    #nam_lit = np.array(nam_lit)
 
     print("Reorganizing ranks")
     ranks = np.full((len(iks_can), len(iks_lit)), -1).astype(np.int)
@@ -218,13 +216,13 @@ def main(simtype):
         M = np.vstack([cou_tp5, cou_pv5, cou_pv4, cou_pv3,
                        cou_pv2, best_idx]).astype(np.int)
         M = M.T
-        return M
+        return M, ranks.shape[0], ranks.shape[1]
 
     def similarities(simtype, min_evidence, moa, sort_by="lpv_4"):
         if min_evidence is not None:
             if min_evidence < 0 or min_evidence > 3:
                 raise Exception("min_evidence must be None, 0, 1, 2 or 3")
-        M = similarities_as_matrix(ranks, min_evidence, moa)
+        M, n_rows, n_cols = similarities_as_matrix(ranks, min_evidence, moa)
         results = {
             "inchikey": iks_can,
             "name": nam_can,
@@ -246,6 +244,7 @@ def main(simtype):
             df = df.sort_values(col, ascending=False)
             iks.update(list(df[df[col] > 0]["inchikey"][:10000]))
         df = df[df["inchikey"].isin(iks)]
+        caption = "%s similarities" % simtype.upper()
         if min_evidence is None:
             evi_suf = "eviall"
         else:
@@ -254,10 +253,11 @@ def main(simtype):
             moa_suf = "moaall"
         else:
             moa_suf = "moa%d" % moa
+        caption += " (%d cand. x %d lit.)" % (n_rows, n_cols)
         fn = "df_cand_%s_%s_%s.csv" % (simtype, evi_suf, moa_suf)
         df = df.sort_values(sort_by, ascending=False)
         df.to_csv(os.path.join(output_path, fn), index=False)
-        return fn
+        return fn, caption
 
     print("Saving legend")
     legend = list()
@@ -265,10 +265,10 @@ def main(simtype):
         for moa in [None, 0, 1, 2, 3, 4, 5]:
             print("Sim type %s | Min evidence %s | MoA %s" %
                   (simtype, str(min_evidence), str(moa)))
-            fn = similarities(
+            fn, caption = similarities(
                 simtype=simtype, min_evidence=min_evidence, moa=moa)
             legend.append(
-                {'evidence': min_evidence, 'moa': moa, 'filename': fn})
+                {'evidence': min_evidence, 'moa': moa, 'filename': fn, 'caption': caption})
     legend = pd.DataFrame(legend)
     dest_file = os.path.join(output_path, "legend_%s.csv" % simtype)
     legend.to_csv(dest_file, index=False)
