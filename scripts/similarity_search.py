@@ -260,13 +260,16 @@ def main(simtype):
         return fn
 
     print("Saving legend")
-    legend = {}
+    legend = list()
     for min_evidence in [None, 0, 1, 2, 3]:
         for moa in [None, 0, 1, 2, 3, 4, 5]:
             print("Sim type %s | Min evidence %s | MoA %s" %
                   (simtype, str(min_evidence), str(moa)))
-            legend[(min_evidence, moa)] = similarities(
+            fn = similarities(
                 simtype=simtype, min_evidence=min_evidence, moa=moa)
+            legend.append(
+                {'evidence': min_evidence, 'moa': moa, 'filename': fn})
+    legend = pd.DataFrame(legend)
     dest_file = os.path.join(output_path, "legend_%s.pkl" % simtype)
     legend.to_csv(dest_file, index=False)
 
