@@ -8,6 +8,7 @@ __pycache__/
 
 # Outputs
 outputs/*
+pubchem/pubchem_bioassays.tsv
 
 # Distribution / packaging
 .Python

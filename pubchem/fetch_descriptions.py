@@ -58,6 +58,22 @@ def parse():
         print(fn)
         parse_one(fn)
 
+
+def aggregate():
+    with open("pubchem/pubchem_bioassays.tsv", "w") as f:
+        f.write("assay_id\tdescription\n")
+        for fn in os.listdir(path):
+            if fn[-4:] != ".tsv":
+                continue
+            print(fn)
+            with open(os.path.join(path, fn), "r") as f2:
+                for l in f2:
+                    l = l.rstrip("\n").split("\t")
+                    f.write("%s\t%s\n" % (l[0], l[1]))
+
+
+
 if __name__ == "__main__":
     #download()
-    parse()
+    #parse()
+    aggregate()
