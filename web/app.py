@@ -11,7 +11,7 @@ app_path = os.path.dirname(os.path.realpath(__file__))
 
 
 def get_literature_data():
-    file_path = os.path.join(app_path, 'data', 'literature.csv')
+    file_path = os.path.join(app_path, 'data', 'df_lit_cc.csv')
     data = pd.read_csv(file_path)
     print('LOADED %s' % file_path)
     print('LENGTH %s' % len(data))
