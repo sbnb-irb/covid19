@@ -17,6 +17,8 @@ output_path = os.path.join(script_path, '..', 'web', 'data')
 input_path = os.path.join(script_path, '..', 'data')
 
 
+MAX_ROWS=100000
+
 def get_raw_literature():
     scope = ['https://spreadsheets.google.com/feeds',
              'https://www.googleapis.com/auth/drive']
@@ -137,11 +139,14 @@ def main(simtype):
         druglist = []
         druglist_conn = []
         favconn_names = {}
+        favconn_iks = {}
         for l in f:
             l = l.rstrip("\n").split("\t")
             druglist += [l[-1]]
-            druglist_conn += [l[-1].split("-")[0]]
-            favconn_names[l[-1].split("-")[0]] = l[1]
+            c = l[-1].split("-")[0]
+            druglist_conn += [c]
+            favconn_names[c] = l[1]
+            favconn_iks[c] = l[-1]
         druglist = set(druglist)
         druglist_conn = set(druglist_conn)
     isdrug_can = []
@@ -181,15 +186,100 @@ def main(simtype):
                 nam_lit += [k]
 
     print("Reorganizing ranks")
-    ranks = np.full((len(iks_can), len(iks_lit)), -1).astype(np.int)
+    ranks_raw = np.full((len(iks_can), len(iks_lit)), -1, dtype=np.int32)
     vals = [i for i in range(0, nn.shape[1])]
-    for j in range(0, ranks.shape[1]):
-        ranks[nn[j, :], j] = vals
+    for j in range(0, ranks_raw.shape[1]):
+        ranks_raw[nn[j, :], j] = vals
+    
+    # clean
+    del nn
 
-    # Compute similarities
+    print("...applying p-value cutoffs (1e-5=3, 1e-4=2, 1e-3=1)")
+    ranks = np.array(ranks_raw, dtype=np.int32)
+    cutoffs = {
+        "lpv_5": int(np.round(ranks.shape[0] * 1e-5, 0)),
+        "lpv_4": int(np.round(ranks.shape[0] * 1e-4, 0)), 
+        "lpv_3": int(np.round(ranks.shape[0] * 1e-3, 0))
+    }
+    print(cutoffs)
+    ranks[ranks == -1] = 100000
+    ranks[np.logical_and(ranks < cutoffs["lpv_5"], ranks > 0)] = -3
+    ranks[np.logical_and(ranks < cutoffs["lpv_4"], ranks > 0)] = -2
+    ranks[np.logical_and(ranks < cutoffs["lpv_3"], ranks > 0)] = -1
+    ranks[ranks >= 0] = 0
+    ranks = ranks*(-1)
+    print(ranks.shape)
+    print("...weighting ranks by evidence (<=0=1, 1=2, 2=3, 3=4)")
+    evis = np.array(evi_lit, dtype=np.int8)
+    evis[evis < 0] = 0
+    evis = evis+1
+    ranks_w = ranks*evis
+    support = np.sum(ranks_w, axis=1)
+    print("...aggregate by inchikey connectivity")
+    iks_can_conn_idx = collections.defaultdict(list)
+    for i,ik in enumerate(iks_can):
+        iks_can_conn_idx[ik.split("-")[0]] += [i]
+    keep_idx_ = []
+    iks_can_ = []
+    evi_can_ = []
+    moa_can_ = []
+    nam_can_ = []
+    isdrug_can_ = []
+    for conn, idxs in iks_can_conn_idx.items():
+        if len(idxs) == 1:
+            idx = idxs[0]
+            keep_idx_   += [idx]
+            iks_can_    += [iks_can[idx]]
+            evi_can_    += [evi_can[idx]]
+            moa_can_    += [moa_can[idx]]
+            nam_can_    += [nam_can[idx]]
+            isdrug_can_ += [isdrug_can[idx]] 
+        else:
+            supps = [support[idx] for idx in idxs]
+            idx = idxs[np.argmax(supps)]
+            # keep inchikey
+            keep_idx_ += [idx]
+            # inchikey
+            if conn in favconn_iks:
+                iks_can_ += [favconn_iks[conn]]
+            else:
+                iks_can_ += [iks_can[idx]]
+            # highest evidence
+            evi_can_ += [np.max([evi_can[idx] for idx in idxs])]
+            # highest moa (arbitrary)
+            moa_can_ += [np.max([moa_can[idx] for idx in idxs])]
+            # name
+            if conn in favconn_names:
+                nam_can_ += [favconn_names[conn]]
+            else:
+                nam_can_ += [nam_can[idx]]
+            # conservative is drug
+            isdrug_can_ += [np.max([isdrug_can[idx] for idx in idxs])]    
+    sort_idxs  = np.argsort(iks_can_)
+    iks_can    = np.array(iks_can_)[sort_idxs]
+    keep_idx   = np.array(keep_idx_, dtype=np.int32)[sort_idxs]
+    evi_can    = np.array(evi_can_ , dtype=np.int8)[sort_idxs]
+    moa_can    = np.array(moa_can_ , dtype=np.int8)[sort_idxs]
+    nam_can    = [nam_can_[idx] for idx in sort_idxs]
+    isdrug_can = np.array(isdrug_can_, dtype=np.int8)[sort_idxs]
+    ranks      = ranks[keep_idx]
+    ranks_raw  = ranks_raw[keep_idx]
+    ranks_w    = ranks_w[keep_idx]
+    assert (ranks_w.shape[0] == ranks_raw.shape[0] == ranks.shape[0] == len(isdrug_can) == len(evi_can) == len(iks_can) == len(nam_can) == len(moa_can))
+    del iks_can_
+    del keep_idx
+    del keep_idx_
+    del evi_can_
+    del moa_can_
+    del nam_can_
+    del isdrug_can_
+
+    print("...saving")
     dest_file = os.path.join(output_path, "dist_%s.h5" % simtype)
     with h5py.File(dest_file, "w") as hf:
+        hf.create_dataset("ranks_raw", data=ranks_raw)
         hf.create_dataset("ranks", data=ranks)
+        hf.create_dataset("ranks_w", data=ranks_w)
         hf.create_dataset("rows", data=np.array(
             iks_can, DataSignature.string_dtype()))
         hf.create_dataset("cols", data=np.array(
@@ -198,31 +288,8 @@ def main(simtype):
         hf.create_dataset("evi_cols", data=evi_lit)
         hf.create_dataset("isdrug_rows", data=isdrug_can)
 
-    # Trimmed version of ranks
-    cutoffs = {
-        "lpv_5": ranks.shape[0] * 1e-5,
-        "lpv_4": ranks.shape[0] * 1e-4, 
-        "lpv_3": ranks.shape[0] * 1e-3
-    }
-    dest_file = os.path.join(output_path, "dist_trim_%s.h5" % simtype)
-    def cutoffed_ranks(ranks):
-        ranks = np.array(ranks)
-        ranks[ranks == -1] = 100000
-        ranks[np.logical_and(ranks < cutoffs["lpv_5"], ranks > 0)] = -3
-        ranks[np.logical_and(ranks < cutoffs["lpv_4"], ranks > 0)] = -2
-        ranks[np.logical_and(ranks < cutoffs["lpv_3"], ranks > 0)] = -1
-        ranks[ranks >= 0] = 0
-        ranks = ranks*(-1)
-        return ranks
-    with h5py.File(dest_file, "w") as hf:
-        rr = cutoffed_ranks(ranks)
-        mask = np.sum(rr, axis=1) > 0
-        hf.create_dataset("ranks", data=rr[mask])
-        hf.create_dataset("rows",  data=np.array(iks_can[mask], DataSignature.string_dtype()))
-        hf.create_dataset("cols",  data=np.array(iks_lit, DataSignature.string_dtype()))
-
     # Get matching scores for the candidate molecules
-    def similarities_as_matrix(ranks, min_evidence, moa):
+    def scoring(ranks, min_evidence, moa):
         if min_evidence is None:
             if moa is None:
                 mask = None
@@ -237,60 +304,70 @@ def main(simtype):
                 mask = np.logical_and(mask1, mask2)
         if not np.any(mask):
             mask = None
-        if mask is not None:
-            ranks = ranks[:, mask]
-            evis  = evi_lit[mask]
-        else:
-            evis  = evi_lit
-        ranks[ranks == -1] = 99999
-        cou_pv5 = np.sum(ranks <= ranks.shape[0] * 1e-5, axis=1).astype(np.int)
-        cou_pv4 = np.sum(ranks <= ranks.shape[0] * 1e-4, axis=1).astype(np.int)
-        cou_pv3 = np.sum(ranks <= ranks.shape[0] * 1e-3, axis=1).astype(np.int)
-        cou_pv2 = np.sum(ranks <= ranks.shape[0] * 1e-2, axis=1).astype(np.int)
-        
-        """
-        evis[evis < 0] = 0
-        evis += 1
-        wcou_pv5 = np.sum(evis[ranks <= ranks.shape[0] * 1e-5], axis=1).astype(np.int)
-        wcou_pv4 = np.sum(evis[ranks <= ranks.shape[0] * 1e-4], axis=1).astype(np.int)
-        wcou_pv3 = np.sum(evis[ranks <= ranks.shape[0] * 1e-3], axis=1).astype(np.int)
-        
-        M = np.array([3,2,1])*np.vstack([wcou_pv5, cou_pv4, cou_pv3])
-        """
-        support = cou_pv5
-
-        best_idx = np.argmin(ranks, axis=1).astype(np.int)
+        if mask is None:
+            mask = np.array([True for _ in range(0, ranks.shape[1])])
+        support = np.sum(ranks_w[:,mask], axis=1, dtype=np.int32)
+        keep    = np.argsort(-support)[:MAX_ROWS]
+        keep    = keep[support[keep] > 0]
+        support = support[keep]
+        cou_pv5 = np.sum(ranks[keep][:,mask] >= 3, axis=1, dtype=np.int16)
+        cou_pv4 = np.sum(ranks[keep][:,mask] >= 2, axis=1, dtype=np.int16)
+        cou_pv3 = np.sum(ranks[keep][:,mask] >= 1, axis=1, dtype=np.int16)
+        from tqdm import tqdm
+        top1_idx = []
+        top2_idx = []
+        top3_idx = []
+        for idx in tqdm(keep):
+            worth_idxs = np.argwhere(ranks[idx,:] > 0).ravel()
+            vals = ranks[idx, worth_idxs]
+            top_idxs = worth_idxs[np.argsort(-vals)[:3]]
+            n = len(top_idxs)
+            if   n == 1:
+                top1_idx += [top_idxs[0]]
+                top2_idx += [-1]
+                top3_idx += [-1]
+            elif n == 2:
+                top1_idx += [top_idxs[0]]
+                top2_idx += [top_idxs[1]]
+                top3_idx += [-1]
+            else:
+                top1_idx += [top_idxs[0]]
+                top2_idx += [top_idxs[1]]
+                top3_idx += [top_idxs[2]]
+        top1_idx = np.array(top1_idx, dtype=np.int8)
+        top2_idx = np.array(top2_idx, dtype=np.int8)
+        top3_idx = np.array(top3_idx, dtype=np.int8)
         M = np.vstack([support, cou_pv5, cou_pv4, cou_pv3,
-                       cou_pv2, best_idx]).astype(np.int)
+                       top1_idx, top2_idx, top3_idx]).astype(np.int32)
         M = M.T
-        return M, ranks.shape[0], ranks.shape[1]
+        return M, keep, ranks.shape[0], ranks.shape[1]
 
-    def similarities(simtype, min_evidence, moa, sort_by="lpv_4"):
+    def similarities(simtype, min_evidence, moa):
         if min_evidence is not None:
             if min_evidence < 0 or min_evidence > 3:
                 raise Exception("min_evidence must be None, 0, 1, 2 or 3")
-        M, n_rows, n_cols = similarities_as_matrix(ranks, min_evidence, moa)
+        M, keep, n_rows, n_cols = scoring(ranks, min_evidence, moa)
+        iks_lit_ = list(iks_lit) + [""]
+        nam_lit_ = list(nam_lit) + [""]
         results = {
-            "inchikey": iks_can,
-            "name": nam_can,
-            "is_drug": isdrug_can,
-            "evidence": evi_can,
-            "moa": moa_can,
-            "suppo": M[:, 0],
-            "lpv_5": M[:, 1],
-            "lpv_4": M[:, 2],
-            "lpv_3": M[:, 3],
-            "lpv_2": M[:, 4],
-            "best_inchikey": [iks_lit[int(idx)] for idx in M[:, 5]],
-            "best_name": [nam_lit[int(idx)] for idx in M[:, 5]]
+            "inchikey": iks_can[keep],
+            "name"    : [nam_can[i] for i in keep],
+            "is drug" : isdrug_can[keep],
+            "evidence": evi_can[keep],
+            "moa"     : moa_can[keep],
+            "support" : M[:,0],
+            "p 1e-5"  : M[:,1],
+            "p 1e-4"  : M[:,2],
+            "p 1e-3"  : M[:,3],
+            "top1_inchikey": [iks_lit_[int(idx)] for idx in M[:,4]],
+            "top2_inchikey": [iks_lit_[int(idx)] for idx in M[:,5]],
+            "top3_inchikey": [iks_lit_[int(idx)] for idx in M[:,6]],
+            "top1_name"    : [nam_lit_[int(idx)] for idx in M[:,4]],
+            "top2_name"    : [nam_lit_[int(idx)] for idx in M[:,5]],
+            "top3_name"    : [nam_lit_[int(idx)] for idx in M[:,6]]
         }
         df = pd.DataFrame(results)
         print("...filtering")
-        iks = set()
-        for col in ["suppo", "lpv_5", "lpv_4", "lpv_3", "lpv_2"]:
-            df = df.sort_values(col, ascending=False)
-            iks.update(list(df[df[col] > 0]["inchikey"][:10000]))
-        df = df[df["inchikey"].isin(iks)]
         caption = "%s similarities" % simtype.upper()
         if min_evidence is None:
             evi_suf = "eviall"
@@ -302,7 +379,6 @@ def main(simtype):
             moa_suf = "moa%d" % moa
         caption += " (%d cand. x %d lit.)" % (n_rows, n_cols)
         fn = "df_cand_%s_%s_%s.csv" % (simtype, evi_suf, moa_suf)
-        df = df.sort_values(sort_by, ascending=False)
         df.to_csv(os.path.join(output_path, fn), index=False)
         return fn, caption
 
