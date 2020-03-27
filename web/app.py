@@ -63,12 +63,10 @@ def get_literature_table():
 
 @app.route('/_candidate_table')
 def get_candidate_table():
+    print('get_candidate_table', request.args)
     signature = request.args.get('signature')
     evidence = request.args.get('evidence')
     moa = request.args.get('moa')
-    print('signature', signature)
-    print('evidence', evidence)
-    print('moa', moa)
     df_candidates = get_candidate_data(signature, evidence, moa)
     df_candidates_collection = df_candidates.to_dict(orient='records')
     columns = list()
@@ -84,6 +82,30 @@ def get_candidate_table():
     collection = df_candidates_collection
     results = ServerSideTable(request, columns, collection).output_result()
     return jsonify(results)
+
+
+@app.route('/_table_title')
+def get_table_title(signature='cc', evidence='', moa=''):
+    print('get_table_title', request.args)
+    signature = request.args.get('signature')
+    evidence = request.args.get('evidence')
+    moa = request.args.get('moa')
+    filen_name = 'legend_%s.csv' % signature
+    file_path = os.path.join(app_path, 'data', filen_name)
+    df = pd.read_csv(file_path)
+    if evidence == '':
+        df = df[(df['evidence'].isnull())]
+    else:
+        evidence = float(evidence)
+        df = df[(df['evidence'] == evidence)]
+    if moa == '':
+        df = df[(df['moa'].isnull())]
+    else:
+        moa = float(moa)
+        df = df[(df['moa'] == moa)]
+    print('get_table_title RESULT', df)
+    assert(len(df) == 1)
+    return jsonify(df.iloc[0]['caption'])
 
 
 if __name__ == '__main__':

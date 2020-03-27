@@ -91,11 +91,16 @@
 
       var allActive = thisBtn.parent().parent().parent().parent().find('.active');
       console.log()
-      var signature = allActive[0].value;
-      var evidence = allActive[1].value;
-      var moa = allActive[2].value;
-      var newurl = "{{ url_for('get_candidate_table') }}" + "?signature="+signature+"&evidence="+evidence+"&moa="+moa;
-      cc_table.ajax.url(newurl).load();
+      var evidence = allActive[0].value;
+      var moa = allActive[1].value;
+      var signature = allActive[2].value;
+      var newUrl = "{{ url_for('get_candidate_table') }}" + "?signature="+signature+"&evidence="+evidence+"&moa="+moa;
+      cc_table.ajax.url(newUrl).load();
+      var newTitleUrl = "{{ url_for('get_table_title') }}" + "?signature="+signature+"&evidence="+evidence+"&moa="+moa;
+      console.log(newTitleUrl);
+      $.getJSON(newTitleUrl, {}, function(data) {
+        $("#table_title").text(data);
+      });
     });
 
   } );
@@ -108,6 +113,7 @@
 {% include 'header.html' %}
 <div id="main" class="container-fluid justify-content-center">
 <!-- Table -->
+<h1 id="table_title" class="text-center">CC similarities (778531 cand. x 152 lit.)</h1>
 <table id='cc_table' class='table table-striped table-hover table-bordered wrap dataTable' style="width:100%">
   <thead>
     <tr>
