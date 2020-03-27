@@ -107,3 +107,5 @@ ENV/
 # mypy
 .mypy_cache/
 
+#large data files
+web/data/*.h5
