@@ -13,9 +13,6 @@
   <div class="collapse navbar-collapse" id="navbarsExampleDefault">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Home<span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item active">
         <a class="nav-link" href="https://docs.google.com/spreadsheets/d/1BesqNdhHoVyldk372JOyNbhKAl0ncVZwloTpWb6YWZw/edit#gid=424137782" target="_blank">Literature Candidates</a>
       </li>
       <li class="nav-item active">
@@ -31,47 +28,51 @@
   </div>
 </nav>
 
-<!-- Intro -->
-<div class="jumbotron">
+<br><br><br>
 
+<!-- Intro -->
+<div class="container">
   <div class="row">
     <div class="col-md-5 title">
-        <h3>Severe acute respiratory syndrome coronavirus 2 (SARS-CoV-2).</h3>
+        <h2>Severe acute respiratory syndrome coronavirus 2 (SARS-CoV-2).</h2>
         <img alt="Covid19" class="img-fluid" id="covid19_img" width="250"
           src="{{ url_for('static', filename='images/covid19_logo_small.png') }}"/>
     </div>
     <div class="col-md-7 options-sets">
-        <p class="font-weight-normal">Severe acute respiratory syndrome coronavirus 2 (SARS-CoV-2), is a positive-sense, single-stranded RNA coronavirus. The virus is the causative agent of coronavirus disease 2019 (<a href="https://en.wikipedia.org/wiki/2019-nCoV_acute_respiratory_disease" target="_blank">COVID-19</a>) and is contagious through human-to-human transmission.</p>
-        <p>Here we present a list of plausible drug candidates obtained using the <a href="https://chemicalchecker.com/" target="_blank">Chemical Checker</a> resource.</p>
-        <div class="option-row os" data-key="os">
-            <div class="option-label">OS</div>
-            <div class="option-set">
-                <div class="btn selected">Linux</div>
-                <div class="btn">OSX</div>
-            </div>
+      <p class="text-center">
+        <h4>This is a positive-sense, single-stranded RNA coronavirus. The virus is the causative agent of coronavirus disease 2019 (<a href="https://en.wikipedia.org/wiki/2019-nCoV_acute_respiratory_disease" target="_blank">COVID-19</a>) and is contagious through human-to-human transmission.</h4>
+        <h4>Here we present a list of plausible drug candidates obtained using the <a href="https://chemicalchecker.com/" target="_blank">Chemical Checker</a> resource.</h4>
+      </p>
+      <p class="text-center">
+        <div class="btn-group" role="group" aria-label="Signature">
+          <button type="button" class="btn btn-secondary disabled">Signature:</button>
+          <button type="button" class="btn btn-secondary">ChemicalChecker</button>
+          <button type="button" class="btn btn-secondary">Morgan Fingerprint</button>
         </div>
-        <div class="option-row os" data-key="python">
-            <div class="option-label">Python</div>
-            <div class="option-set">
-                <div class="btn">3.6</div>
-                <div class="btn selected">3.7</div>
-            </div>
+      </p>
+      <p class="text-center">
+        <div class="btn-group" role="group" aria-label="Evidence Level">
+          <button type="button" class="btn btn-secondary disabled">Evidence Level:</button>
+          <button type="button" class="btn btn-secondary">All</button>
+          <button type="button" class="btn btn-secondary">0</button>
+          <button type="button" class="btn btn-secondary">1</button>
+          <button type="button" class="btn btn-secondary">2</button>
+          <button type="button" class="btn btn-secondary">3</button>
         </div>
-        <div class="option-row os" data-key="gpu">
-            <div class="option-label">GPU Enabled</div>
-            <div class="option-set">
-                <div class="btn">YES</div>
-                <div class="btn selected">NO</div>
-            </div>
+      </p>
+      <p class="text-center">
+        <div class="btn-group" role="group" aria-label="Mode of Action">
+          <button type="button" class="btn btn-secondary disabled">Mode of Action:</button>
+          <button type="button" class="btn btn-secondary">All</button>
+          <button type="button" class="btn btn-secondary">0</button>
+          <button type="button" class="btn btn-secondary">1</button>
+          <button type="button" class="btn btn-secondary">2</button>
+          <button type="button" class="btn btn-secondary">3</button>
+          <button type="button" class="btn btn-secondary">4</button>
+          <button type="button" class="btn btn-secondary">5</button>
         </div>
-        <div class="option-row pm" data-key="pm">
-            <div class="option-label">Package Manager</div>
-            <div class="option-set">
-                <div class="btn selected">conda</div>
-                <div class="btn">docker</div>
-                <div class="btn">source</div>
-            </div>
-        </div>
+      </p>
+
     </div>
   </div>
 </div>
