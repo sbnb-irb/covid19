@@ -177,7 +177,7 @@ def main(simtype):
         ranks[nn[j, :], j] = vals
 
     # Compute similarities
-    dest_file = os.path.join(output_path, "dist_%s.csv" % simtype)
+    dest_file = os.path.join(output_path, "dist_%s.h5" % simtype)
     with h5py.File(dest_file, "w") as hf:
         hf.create_dataset("ranks", data=ranks)
         hf.create_dataset("rows", data=np.array(
