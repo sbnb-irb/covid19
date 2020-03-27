@@ -83,7 +83,7 @@
         },
         {
           visible: false,
-          targets: [3, 4 ],
+          targets: [3, 4, 5 ],
         },
         { 
           width: 10, 
@@ -103,13 +103,9 @@
     });
   } );
 
-
-  $('a[data-toggle="tooltip"]').tooltip({
-    animated: 'fade',
-    placement: 'bottom',
-    html: true
+  $(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip({container:'body'});
   });
-
 
   </script>
   <style>
@@ -120,8 +116,9 @@
       font-family: monospace;
       font-size: 10pt;
     }
-    .dataTables_wrapper {
-      margin: 10 auto;
+    button {
+      font-family: monospace;
+      font-size: 10pt;
     }
     body {
       font-family: 'Open Sans', sans-serif !important;
