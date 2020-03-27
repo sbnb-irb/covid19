@@ -47,8 +47,9 @@ LIRYPHYGHXZJBZ-UHFFFAOYSA-N,Trametinib,1,1,Inhibits MERS replication in vitro,ht
 OUKYUETWWIPKQR-UHFFFAOYSA-N,Saracatinib,1,1,Inhibits MERS replication in vitro,https://www.ncbi.nlm.nih.gov/pubmed/29795047;;
 XASIMHXSUQUHLV-UHFFFAOYSA-N,Camostat mesylate;Camostat,1,2,Reduce SARS-Cov2 infection in Calu2 cells.;Drugs from Sars-Cov-2-Human PPI map,https://www.cell.com/cell/fulltext/S0092-8674(20)30229-4;https://www.biorxiv.org/content/10.1101/2020.03.22.002386v1.full.pdf;;;;
 SRVFFFJZQVENJC-IHRRRGAJSA-N,E-64d,1,2,Reduce SARS-2-S infection in caco2 and 293T. No data for SARS-Cov2,https://www.cell.com/cell/fulltext/S0092-8674(20)30229-4;;
+LUKZNWIVRBCLON-GXOBDPJESA-N,Ciclesonide;Ciclesonide,3,5,very small clinical trial with positive outcome;Preclinical evidence that diminishes SARS-Cov-2 viral load in Vero cells *BioArx,https://www3.nhk.or.jp/nhkworld/en/news/20200303_20/;https://www.biorxiv.org/content/10.1101/2020.03.20.999730v2.full.pdf+html;;;;
 RJMUSRYZPJIFPJ-UHFFFAOYSA-N,Niclosamide,1,1,"MoA: inhibits SKP2 enzyme, tested in Vero cells *BioArx / Effect validated for Sars-CoV in 2003",https://www.biorxiv.org/content/10.1101/2020.03.20.999730v2.full.pdf+html;;
-LUKZNWIVRBCLON-GXOBDPJESA-N,Ciclesonide;Ciclesonide,3,5,Preclinical evidence that diminishes SARS-Cov-2 viral load in Vero cells *BioArx;very small clinical trial with positive outcome,https://www.biorxiv.org/content/10.1101/2020.03.20.999730v2.full.pdf+html;https://www3.nhk.or.jp/nhkworld/en/news/20200303_20/;;;;
+UUSZLLQJYRSZIS-LXNNNBEUSA-N,Aplidin,1,1,"Pharmamar. Preclinical results on HCoV-229E, at nM range. Unpublished",http://www.pmfarma.es/noticias/28280-pharmamar-anuncia-resultados-positivos-de-aplidin-contra-el-coronavirus-hcov-229e.html;;
 MPMFCABZENCRHV-UHFFFAOYSA-N,Tilorone,0,5,Preclinical evidence that diminishes SARS-Cov-2 viral load in Vero cells *BioArx,https://www.biorxiv.org/content/10.1101/2020.03.20.999730v2.full.pdf+html;;
 MYEJFUXQJGHEQK-ALRJYLEOSA-N,Proscillaridin,0,0,Preclinical evidence that diminishes SARS-Cov-2 viral load in Vero cells *BioArx,https://www.biorxiv.org/content/10.1101/2020.03.20.999730v2.full.pdf+html;;
 WDJUZGPOPHTGOT-XUDUSOBPSA-N,Digitoxin,0,0,Preclinical evidence that diminishes SARS-Cov-2 viral load in Vero cells *BioArx,https://www.biorxiv.org/content/10.1101/2020.03.20.999730v2.full.pdf+html;;
@@ -150,4 +151,3 @@ RLAWWYSOJDYHDC-BZSNNMDCSA-N,Lisinopril,0,2,Drugs from Sars-Cov-2-Human PPI map,h
 WIIZWVCIJKGZOK-RKDXNWHRSA-N,Chloramphenicol,0,0,Drugs from Sars-Cov-2-Human PPI map,https://www.biorxiv.org/content/10.1101/2020.03.22.002386v1.full.pdf;;
 CGZOGNUFXMNYEI-UDUHKTKDSA-N,Tigecycline,0,0,Drugs from Sars-Cov-2-Human PPI map,https://www.biorxiv.org/content/10.1101/2020.03.22.002386v1.full.pdf;;
 TYZROVQLWOKYKF-ZDUSSCGKSA-N,Linezolid,0,0,Drugs from Sars-Cov-2-Human PPI map,https://www.biorxiv.org/content/10.1101/2020.03.22.002386v1.full.pdf;;
-UUSZLLQJYRSZIS-LXNNNBEUSA-N,Aplidin,1,1,"Pharmamar. Preclinical results on HCoV-229E, at nM range. Unpublished",http://www.pmfarma.es/noticias/28280-pharmamar-anuncia-resultados-positivos-de-aplidin-contra-el-coronavirus-hcov-229e.html;;
