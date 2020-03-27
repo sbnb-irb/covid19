@@ -206,6 +206,7 @@ def main(simtype):
     }
     dest_file = os.path.join(output_path, "dist_trim_%s.h5" % simtype)
     def cutoffed_ranks(ranks):
+        ranks = np.array(ranks)
         ranks[ranks == -1] = 100000
         ranks[np.logical_and(ranks < cutoffs["lpv_5"], ranks > 0)] = -3
         ranks[np.logical_and(ranks < cutoffs["lpv_4"], ranks > 0)] = -2
@@ -238,14 +239,28 @@ def main(simtype):
             mask = None
         if mask is not None:
             ranks = ranks[:, mask]
+            evis  = evi_lit[mask]
+        else:
+            evis  = evi_lit
         ranks[ranks == -1] = 99999
-        cou_tp5 = np.sum(ranks <= 4, axis=1).astype(np.int)
         cou_pv5 = np.sum(ranks <= ranks.shape[0] * 1e-5, axis=1).astype(np.int)
         cou_pv4 = np.sum(ranks <= ranks.shape[0] * 1e-4, axis=1).astype(np.int)
         cou_pv3 = np.sum(ranks <= ranks.shape[0] * 1e-3, axis=1).astype(np.int)
         cou_pv2 = np.sum(ranks <= ranks.shape[0] * 1e-2, axis=1).astype(np.int)
+        
+        """
+        evis[evis < 0] = 0
+        evis += 1
+        wcou_pv5 = np.sum(evis[ranks <= ranks.shape[0] * 1e-5], axis=1).astype(np.int)
+        wcou_pv4 = np.sum(evis[ranks <= ranks.shape[0] * 1e-4], axis=1).astype(np.int)
+        wcou_pv3 = np.sum(evis[ranks <= ranks.shape[0] * 1e-3], axis=1).astype(np.int)
+        
+        M = np.array([3,2,1])*np.vstack([wcou_pv5, cou_pv4, cou_pv3])
+        """
+        support = cou_pv5
+
         best_idx = np.argmin(ranks, axis=1).astype(np.int)
-        M = np.vstack([cou_tp5, cou_pv5, cou_pv4, cou_pv3,
+        M = np.vstack([support, cou_pv5, cou_pv4, cou_pv3,
                        cou_pv2, best_idx]).astype(np.int)
         M = M.T
         return M, ranks.shape[0], ranks.shape[1]
@@ -261,7 +276,7 @@ def main(simtype):
             "is_drug": isdrug_can,
             "evidence": evi_can,
             "moa": moa_can,
-            "top_5": M[:, 0],
+            "suppo": M[:, 0],
             "lpv_5": M[:, 1],
             "lpv_4": M[:, 2],
             "lpv_3": M[:, 3],
@@ -272,7 +287,7 @@ def main(simtype):
         df = pd.DataFrame(results)
         print("...filtering")
         iks = set()
-        for col in ["top_5", "lpv_5", "lpv_4", "lpv_3", "lpv_2"]:
+        for col in ["suppo", "lpv_5", "lpv_4", "lpv_3", "lpv_2"]:
             df = df.sort_values(col, ascending=False)
             iks.update(list(df[df[col] > 0]["inchikey"][:10000]))
         df = df[df["inchikey"].isin(iks)]
