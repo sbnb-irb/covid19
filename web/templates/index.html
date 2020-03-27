@@ -15,7 +15,8 @@
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.6.1/css/buttons.dataTables.min.css">
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-  <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   <script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
   <script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
 
@@ -26,12 +27,13 @@
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
   <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.html5.min.js"></script>
   <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.print.min.js"></script>
+  <script type="text/javascript" src="https://cdn.datatables.net/plug-ins/1.10.20/dataRender/ellipsis.js"></script>
 
 
   <script>
   $(document).ready(function() {
-    $('#table').dataTable( {
-      "scrollX": true,
+    $('#cc_table').dataTable( {
+      //"scrollX": true,
       "dom": 'rilBpt',
       "buttons": [
             {
@@ -62,16 +64,37 @@
       "bjQueryUI": true,
       "sAjaxSource": "{{ url_for('get_candidate_table') }}",
       "columnDefs": [
-      { render: function ( data, type, row ) {
-              return data.toFixed(2);
-               },
-          targets: [4, 5] },
-      { render: function ( data, type, row ) {
-              var link = "https://chemicalchecker.com/explore/" + data;
-              return "<a href='" + link + "'>" + data + "</a>";
-               },
-          targets: [0, -2] },
-      ] ,
+        { 
+          render: function ( data, type, row ) {
+            return data.toFixed(2);
+            },
+          targets: [4, 5]
+        },
+        {
+          render: function ( data, type, row ) {
+            var cc = "https://chemicalchecker.com/explore/" + data;
+            var cc_tag = "<a href=\"" + cc + "\">" + data + "</a>";
+            var mol = "https://chemicalchecker.com/images/molecules/" + data.slice(0,2) + "/" + data.slice(2,4) + "/" + data + "/2d.svg";
+            var mol_img = "<img src=\'" + mol + "\'/>";
+            var mol_tag = "<a data-toggle=\"tooltip\" title=\"" + mol_img + "\">" + cc_tag + "</a>";
+            return cc_tag;
+            },
+          targets: [0, -2]
+        },
+        {
+          visible: false,
+          targets: [3, 4 ],
+        },
+        { 
+          width: 10, 
+          targets: 0,
+        },
+        {
+          render: $.fn.dataTable.render.ellipsis( 17, true ),
+          targets: [1, -1],
+        },
+    
+      ],
       "columns": [
         {% for col in columns %}
         {"data": "{{ col }}"},
@@ -79,6 +102,13 @@
       ]
     });
   } );
+
+
+  $('a[data-toggle="tooltip"]').tooltip({
+    animated: 'fade',
+    placement: 'bottom',
+    html: true
+  });
   </script>
   <style>
     table.dataTable td {
@@ -88,15 +118,17 @@
       font-family: monospace;
       font-size: 10pt;
     }
+    .dataTables_wrapper {
+      margin: 10 auto;
+    }
   </style>
 </head>
 <body>
 
 {% include 'header.html' %}
-
-<div id="container">
+<div id="main" class="container-fluid justify-content-center">
 <!-- Table -->
-<table class='table table-striped table-hover table-bordered wrap dataTable' id='table'>
+<table id='cc_table' class='table table-striped table-hover table-bordered wrap dataTable' style="width:100%">
   <thead>
     <tr>
       {% for col in columns %}
