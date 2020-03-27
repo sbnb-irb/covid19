@@ -43,35 +43,42 @@
         <h4>This is a positive-sense, single-stranded RNA coronavirus. The virus is the causative agent of coronavirus disease 2019 (<a href="https://en.wikipedia.org/wiki/2019-nCoV_acute_respiratory_disease" target="_blank">COVID-19</a>) and is contagious through human-to-human transmission.</h4>
         <h4>Here we present a list of plausible drug candidates obtained using the <a href="https://chemicalchecker.com/" target="_blank">Chemical Checker</a> resource.</h4>
       </p>
-      <p class="text-center">
-        <div class="btn-group" role="group" aria-label="Signature">
-          <button type="button" class="btn btn-secondary disabled">Signature:</button>
-          <button type="button" class="btn btn-secondary">ChemicalChecker</button>
-          <button type="button" class="btn btn-secondary">Morgan Fingerprint</button>
-        </div>
-      </p>
-      <p class="text-center">
-        <div class="btn-group" role="group" aria-label="Evidence Level">
-          <button type="button" class="btn btn-secondary disabled">Evidence Level:</button>
-          <button type="button" class="btn btn-secondary">All</button>
-          <button type="button" class="btn btn-secondary" data-toggle="tooltip" title="Computational">Comp</button>
-          <button type="button" class="btn btn-secondary" data-toggle="tooltip" title="Preclinical">Pre</button>
-          <button type="button" class="btn btn-secondary" data-toggle="tooltip" title="Clinics">Clin</button>
-          <button type="button" class="btn btn-secondary" data-toggle="tooltip" title="Clinics COVID19">COV19</button>
-        </div>
-      </p>
-      <p class="text-center">
-        <div class="btn-group" role="group" aria-label="Mode of Action">
-          <button type="button" class="btn btn-secondary disabled">Mode of Action:</button>
-          <button type="button" class="btn btn-secondary">All</button>
-          <button type="button" class="btn btn-secondary" data-toggle="tooltip" title="Unkown">UNK</button>
-          <button type="button" class="btn btn-secondary" data-toggle="tooltip" title="Host Factor">HF</button>
-          <button type="button" class="btn btn-secondary" data-toggle="tooltip" title="Virus Entry">VE</button>
-          <button type="button" class="btn btn-secondary" data-toggle="tooltip" title="Protease Inhibitor">PI</button>
-          <button type="button" class="btn btn-secondary" data-toggle="tooltip" title="RNA trans./rep.">RNA</button>
-          <button type="button" class="btn btn-secondary" data-toggle="tooltip" title="Immunomodulator">IM</button>
-        </div>
-      </p>
+
+      <form id="covid19Form" method="POST">
+        <div class="form-group row">
+            <label class="col-sm-3 col-form-label align-middle">Signature:</label>
+            <div class="col-sm-9 my-2">
+              <div id="signature" class="btn-group" role="group" aria-label="Signature">
+                <button type="button" value="cc" class="btn btn-secondary active">ChemicalChecker</button>
+                <button type="button" value="fp" class="btn btn-secondary">Morgan Fingerprint</button>
+              </div>
+            </div>
+
+            <label class="col-sm-3 col-form-label align-middle">Evidence Level:</label>
+            <div class="col-sm-9 my-2">
+              <div id="evidence" class="btn-group" role="group" aria-label="Evidence Level">
+                <button type="button" value="" class="btn btn-secondary active">All</button>
+                <button type="button" value="0" class="btn btn-secondary" data-toggle="tooltip" title="Computational">Comp</button>
+                <button type="button" value="1" class="btn btn-secondary" data-toggle="tooltip" title="Preclinical">Pre</button>
+                <button type="button" value="2" class="btn btn-secondary" data-toggle="tooltip" title="Clinics">Clin</button>
+                <button type="button" value="3" class="btn btn-secondary" data-toggle="tooltip" title="Clinics COVID19">COV19</button>
+              </div>
+            </div>
+
+            <label class="col-sm-3 col-form-label align-middle">Mode of Action:</label>
+            <div class="col-sm-9 my-2">
+              <div id="moa" class="btn-group" role="group" aria-label="Mode of Action">
+                <button type="button" value="" class="btn btn-secondary active">All</button>
+                <button type="button" value="0" class="btn btn-secondary" data-toggle="tooltip" title="Unkown">UNK</button>
+                <button type="button" value="1" class="btn btn-secondary" data-toggle="tooltip" title="Host Factor">HF</button>
+                <button type="button" value="2" class="btn btn-secondary" data-toggle="tooltip" title="Virus Entry">VE</button>
+                <button type="button" value="3" class="btn btn-secondary" data-toggle="tooltip" title="Protease Inhibitor">PI</button>
+                <button type="button" value="4" class="btn btn-secondary" data-toggle="tooltip" title="RNA trans./rep.">RNA</button>
+                <button type="button" value="5" class="btn btn-secondary" data-toggle="tooltip" title="Immunomodulator">IM</button>
+              </div>
+            </div>
+          </div>
+        </form>
 
     </div>
   </div>

@@ -32,7 +32,7 @@
 
   <script>
   $(document).ready(function() {
-    $('#cc_table').dataTable( {
+    var cc_table = $('#cc_table').DataTable( {
       //"scrollX": true,
       "dom": 'rilBpt',
       "buttons": [
@@ -62,7 +62,7 @@
       "sPaginationType": "full_numbers",
       "lengthMenu": [[25, 50, 100], [25, 50, 100]],
       "bjQueryUI": true,
-      "sAjaxSource": "{{ url_for('get_candidate_table') }}",
+      "sAjaxSource": "{{ url_for('get_candidate_table') }}" + "?signature=cc&evidence=&moa=",
       "columnDefs": [
         { 
           render: function ( data, type, row ) {
@@ -101,11 +101,25 @@
         {% endfor %}
       ]
     });
-  } );
 
-  $(document).ready(function(){
     $('[data-toggle="tooltip"]').tooltip({container:'body'});
-  });
+
+    // Get click event, assign active state, get values from all btn-groups
+    $('.btn-group button').on('click', function() {
+      var thisBtn = $(this);
+      thisBtn.addClass('active').siblings().removeClass('active');
+      var btnText = thisBtn.text();
+      var btnValue = thisBtn.val();
+
+      var allActive = thisBtn.parent().parent().parent().find('.active');
+      var signature = allActive[0].value;
+      var evidence = allActive[1].value;
+      var moa = allActive[2].value;
+      var newurl = "{{ url_for('get_candidate_table') }}" + "?signature="+signature+"&evidence="+evidence+"&moa="+moa;
+      cc_table.ajax.url(newurl).load();
+    });
+
+  } );
 
   </script>
   <style>
