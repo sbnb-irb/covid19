@@ -102,7 +102,7 @@
       ]
     });
 
-    $('[data-toggle="tooltip"]').tooltip({container:'body'});
+    $('[data-toggle="tooltip"]').tooltip();
 
     // Get click event, assign active state, get values from all btn-groups
     $('.btn-group button').on('click', function() {
@@ -111,7 +111,8 @@
       var btnText = thisBtn.text();
       var btnValue = thisBtn.val();
 
-      var allActive = thisBtn.parent().parent().parent().find('.active');
+      var allActive = thisBtn.parent().parent().parent().parent().find('.active');
+      console.log()
       var signature = allActive[0].value;
       var evidence = allActive[1].value;
       var moa = allActive[2].value;
