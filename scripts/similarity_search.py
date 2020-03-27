@@ -133,11 +133,15 @@ def main(simtype):
     # Metadata
     print("Metadata: is drug")
     # Drugs
-    with open("data/druglist.tsv", "r") as f:
+    with open("data/db2ikey.tsv", "r") as f:
         druglist = []
+        druglist_conn = []
+        favconn_names = {}
         for l in f:
-            druglist += [l.rstrip("\n")]
-        druglist_conn = [d.split("-")[0] for d in druglist]
+            l = l.rstrip("\n").split("\t")
+            druglist += [l[-1]]
+            druglist_conn += [l[-1].split("-")[0]]
+            favconn_names[l[-1].split("-")[0]] = l[1]
         druglist = set(druglist)
         druglist_conn = set(druglist_conn)
     isdrug_can = []
@@ -159,16 +163,22 @@ def main(simtype):
             ik_name[ik] = name
     nam_can = []
     for k in iks_can:
-        if k in ik_name:
-            nam_can += [ik_name[k]]
+        if k.split("-")[0] in favconn_names:
+            nam_can += [favconn_names[k.split("-")[0]]]
         else:
-            nam_can += [k]
+            if k in ik_name:
+                nam_can += [ik_name[k]]
+            else:
+                nam_can += [k]
     nam_lit = []
     for k in iks_lit:
-        if k in ik_name:
-            nam_lit += [ik_name[k]]
+        if k.split("-")[0] in favconn_names:
+            nam_lit += [favconn_names[k.split("-")[0]]]
         else:
-            nam_lit += [k]
+            if k in ik_name:
+                nam_lit += [ik_name[k]]
+            else:
+                nam_lit += [k]
 
     print("Reorganizing ranks")
     ranks = np.full((len(iks_can), len(iks_lit)), -1).astype(np.int)
@@ -187,6 +197,28 @@ def main(simtype):
         hf.create_dataset("evi_rows", data=evi_can)
         hf.create_dataset("evi_cols", data=evi_lit)
         hf.create_dataset("isdrug_rows", data=isdrug_can)
+
+    # Trimmed version of ranks
+    cutoffs = {
+        "lpv_5": ranks.shape[0] * 1e-5,
+        "lpv_4": ranks.shape[0] * 1e-4, 
+        "lpv_3": ranks.shape[0] * 1e-3
+    }
+    dest_file = os.path.join(output_path, "dist_trim_%s.h5" % simtype)
+    def cutoffed_ranks(ranks):
+        ranks[ranks == -1] = 100000
+        ranks[np.logical_and(ranks < cutoffs["lpv_5"], ranks > 0)] = -3
+        ranks[np.logical_and(ranks < cutoffs["lpv_4"], ranks > 0)] = -2
+        ranks[np.logical_and(ranks < cutoffs["lpv_3"], ranks > 0)] = -1
+        ranks[ranks >= 0] = 0
+        ranks = ranks*(-1)
+        return ranks
+    with h5py.File(dest_file, "w") as hf:
+        rr = cutoffed_ranks(ranks)
+        mask = np.sum(rr, axis=1) > 0
+        hf.create_dataset("ranks", data=rr[mask])
+        hf.create_dataset("rows",  data=np.array(iks_can[mask], DataSignature.string_dtype()))
+        hf.create_dataset("cols",  data=np.array(iks_lit, DataSignature.string_dtype()))
 
     # Get matching scores for the candidate molecules
     def similarities_as_matrix(ranks, min_evidence, moa):
