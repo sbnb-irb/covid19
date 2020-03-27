@@ -33,21 +33,45 @@
 
 <!-- Intro -->
 <div class="jumbotron">
-  <div class="row">
-    <div class="col-md-4 offset-md-1 mx-3 my-3">
-      <div class="view overlay">
 
+  <div class="row">
+    <div class="col-md-5 title">
+        <h3>Severe acute respiratory syndrome coronavirus 2 (SARS-CoV-2).</h3>
         <img alt="Covid19" class="img-fluid" id="covid19_img" width="250"
-          src="{{ url_for('static', filename='images/covid19_logo_small.png') }}">
-        <a>
-          <div class="mask rgba-white-slight"></div>
-        </a>
-      </div>
+          src="{{ url_for('static', filename='images/covid19_logo_small.png') }}"/>
     </div>
-    <div class="col-md-7 text-md-left ml-3 mt-3">
-      <h4 class="h4 mb-4"><i>Severe acute respiratory syndrome coronavirus 2 (SARS-CoV-2)</i></h4>
-      <p class="font-weight-normal">Severe acute respiratory syndrome coronavirus 2 (SARS-CoV-2), is a positive-sense, single-stranded RNA coronavirus. The virus is the causative agent of coronavirus disease 2019 (<a href="https://en.wikipedia.org/wiki/2019-nCoV_acute_respiratory_disease" target="_blank">COVID-19</a>) and is contagious through human-to-human transmission.</p>
-      <p>Here we present a list of plausible drug candidates obtained using the <a href="https://chemicalchecker.com/" target="_blank">Chemical Checker</a> resource.</p>
+    <div class="col-md-7 options-sets">
+        <p class="font-weight-normal">Severe acute respiratory syndrome coronavirus 2 (SARS-CoV-2), is a positive-sense, single-stranded RNA coronavirus. The virus is the causative agent of coronavirus disease 2019 (<a href="https://en.wikipedia.org/wiki/2019-nCoV_acute_respiratory_disease" target="_blank">COVID-19</a>) and is contagious through human-to-human transmission.</p>
+        <p>Here we present a list of plausible drug candidates obtained using the <a href="https://chemicalchecker.com/" target="_blank">Chemical Checker</a> resource.</p>
+        <div class="option-row os" data-key="os">
+            <div class="option-label">OS</div>
+            <div class="option-set">
+                <div class="btn selected">Linux</div>
+                <div class="btn">OSX</div>
+            </div>
+        </div>
+        <div class="option-row os" data-key="python">
+            <div class="option-label">Python</div>
+            <div class="option-set">
+                <div class="btn">3.6</div>
+                <div class="btn selected">3.7</div>
+            </div>
+        </div>
+        <div class="option-row os" data-key="gpu">
+            <div class="option-label">GPU Enabled</div>
+            <div class="option-set">
+                <div class="btn">YES</div>
+                <div class="btn selected">NO</div>
+            </div>
+        </div>
+        <div class="option-row pm" data-key="pm">
+            <div class="option-label">Package Manager</div>
+            <div class="option-set">
+                <div class="btn selected">conda</div>
+                <div class="btn">docker</div>
+                <div class="btn">source</div>
+            </div>
+        </div>
     </div>
   </div>
 </div>
