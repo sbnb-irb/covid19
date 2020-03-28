@@ -43,8 +43,13 @@
       "columnDefs": [
         {
           visible: false,
-          targets: [ 4, 5 ],
-        },    
+          targets: [ 5 ],
+        },
+        // Ellipsis on too long text
+        {
+          render: $.fn.dataTable.render.ellipsis( 17, true ),
+          targets: [ 1 ],
+        },            
       ],
     });
   } );
