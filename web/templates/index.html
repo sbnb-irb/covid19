@@ -14,6 +14,7 @@
 
   <script>
   $(document).ready(function() {
+
     var cc_table = $('#cc_table').DataTable( {
       //"scrollX": true,
       "dom": 'rilBpt',
@@ -46,33 +47,37 @@
       "bjQueryUI": true,
       "sAjaxSource": "{{ url_for('get_candidate_table') }}" + "?signature=cc&evidence=&moa=",
       "columnDefs": [
+        // approximate to second decimal
         { 
           render: function ( data, type, row ) {
             return data.toFixed(2);
             },
           targets: [4, 5]
         },
+        // Add link to CC and image on tooltip
         {
           render: function ( data, type, row ) {
             var cc = "https://chemicalchecker.com/explore/" + data;
-            var cc_tag = "<a href=\"" + cc + "\">" + data + "</a>";
+            var cc_tag = "<a target=\"_blank\" href=\"" + cc + "\">" + data + "</a>";
             var mol = "https://chemicalchecker.com/images/molecules/" + data.slice(0,2) + "/" + data.slice(2,4) + "/" + data + "/2d.svg";
-            var mol_img = "<img src=\'" + mol + "\'/>";
-            var mol_tag = "<a data-toggle=\"tooltip\" title=\"" + mol_img + "\">" + cc_tag + "</a>";
+            var mol_img = "title=\"<img src='" + mol + "'>\"";
+            var mol_tag = "<span data-toggle=\"tooltip\"" + mol_img + "\">" + cc_tag + "</span>";
             return mol_tag;
             },
           targets: [0]
         },
+        // Add link to CC for best literature match DISABLE
+        /*
         {
           render: function ( data, type, row ) {
-            console.log(data);
-            console.log(row);
-            var cc = "https://chemicalchecker.com/explore/" + row['best_inchikey'];
+            var cc = "https://chemicalchecker.com/explore/" + row['top1_inchikey'];
             var cc_tag = "<a href=\"" + cc + "\">" + data + "</a>";
             return cc_tag;
             },
-          targets: 11
+          targets: 12
         },
+        */
+        // Convert 1/0 to Yes/No
         {
           render: function ( data, type, row ) {
             if (data == '0'){return 'No';}
@@ -80,27 +85,27 @@
             },
           targets: 2
         },
+        // Hide some columns
         {
           visible: false,
           targets: [3, 4, 5, 9, 10, 11 ],
         },
+        // Ellipsis on too long text
         {
           render: $.fn.dataTable.render.ellipsis( 17, true ),
           targets: [1, 12, 13, 14],
-        },
-        { 
-          width: 20,
-         targets: 0 
-       },
+        }
     
       ],
+      // columns need to be defined here as well
       "columns": [
         {% for col in columns %}
         {"data": "{{ col }}"},
         {% endfor %}
-      ]
+      ],
     });
 
+    // Rename columns 
     $( cc_table.column( 0 ).header() ).text( 'InChIKey' );
     $( cc_table.column( 1 ).header() ).text( 'Name' );
     $( cc_table.column( 2 ).header() ).text( 'Drug?' );
@@ -117,8 +122,6 @@
     $( cc_table.column( 13 ).header() ).text( '2nd Literature Match' );
     $( cc_table.column( 14 ).header() ).text( '3rd Literature Match' );
 
-    $('[data-toggle="tooltip"]').tooltip();
-
     // Get click event, assign active state, get values from all btn-groups
     $('.btn-group button').on('click', function() {
       var thisBtn = $(this);
@@ -127,20 +130,18 @@
       var btnValue = thisBtn.val();
 
       var allActive = thisBtn.parent().parent().parent().parent().find('.active');
-      console.log()
       var evidence = allActive[0].value;
       var moa = allActive[1].value;
       var signature = allActive[2].value;
       var newUrl = "{{ url_for('get_candidate_table') }}" + "?signature="+signature+"&evidence="+evidence+"&moa="+moa;
       cc_table.ajax.url(newUrl).load();
       var newTitleUrl = "{{ url_for('get_table_title') }}" + "?signature="+signature+"&evidence="+evidence+"&moa="+moa;
-      console.log(newTitleUrl);
       $.getJSON(newTitleUrl, {}, function(data) {
         $("#table_title").text(data);
       });
     });
 
-  } );
+  });
 
   </script>
 </head>
