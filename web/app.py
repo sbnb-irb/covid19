@@ -34,6 +34,7 @@ def get_candidate_data(signature='cc', evidence='', moa=''):
     filen_name = 'df_cand_%s_evi%s_moa%s.csv' % (signature, evidence, moa)
     file_path = os.path.join(app_path, 'data', filen_name)
     data = pd.read_csv(file_path, sep="\t")
+    data['name'] = data['name'].fillna('')
     print('LOADED %s' % file_path)
     print('LENGTH %s' % len(data))
     return data
