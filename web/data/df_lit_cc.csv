@@ -1,150 +1,152 @@
-inchikey	name	evidence	moa
-KBOPZPXVLCULAV-UHFFFAOYSA-N	Mesalazine	Computational	Immunomodulator
-XFCLJVABOIYOMF-QPLCGJKRSA-N	Toremifene	Preclinical	Virus entry
-JUKPWJGBANNWMW-VWBFHTRKSA-N	Eplerenone	Preclinical	Immunomodulator
-AHOUBRCZNHFOSL-YOEHRIQHSA-N	Paroxetine	Computational	Unknown
-QFJCIRLUMZQUOT-HPLJOQBZSA-N	Sirolimus	Clinics	Immunomodulator
-RJURFGZVJUQBHK-IIXSONLDSA-N	Dactinomycin	Computational	Unknown
-YOSHYTLCDANDAN-UHFFFAOYSA-N	Irbesartan	Preclinical	Virus entry
-GLVAUDGFNGKCSF-UHFFFAOYSA-N	Mercaptopurine	Computational	Immunomodulator
-DRLFMBDRBRZALE-UHFFFAOYSA-N	Melatonin	Preclinical	Immunomodulator
-GPKJTRJOBQGKQK-UHFFFAOYSA-N	Quinacrine	Computational	Virus entry
-OGHNVEJMJSYVRP-UHFFFAOYSA-N	Carvedilol	Computational	Immunomodulator
-IAKHMKGGTNLKSZ-INIZCTEOSA-N	Colchicine	Computational	Unknown
-DSSYKIVIOFKYAU-UHFFFAOYSA-N	Synthetic camphor	Computational	Virus entry
-WKRLQDKEXYKHJB-HFTRVMKXSA-N	Equilin	Preclinical	Virus entry
-DLZUBMGMHUNDLF-UHFFFAOYSA-N	Chebi:125460	Computational	Unknown
-RHMXXJGYXNZAPX-UHFFFAOYSA-N	Emodin	Computational	Unknown
-ZCGNOVWYSGBHAU-UHFFFAOYSA-N	Favipiravir	Clinics COVID19	RNA trans./rep.
-WHTVZRBIWZFKQO-UHFFFAOYSA-N	Chloroquine	Clinics COVID19	Protease inh.
-RDOIQAHITMMDAJ-UHFFFAOYSA-N	Loperamide	Preclinical	Unknown
-KJHKTHWMRKYKJE-SUGCFTRWSA-N	Lopinavir	Clinics COVID19	Protease inh.
-ZPEIMTDSQAKGNT-UHFFFAOYSA-N	Chlorpromazine	Preclinical	Virus entry
-XSCGXQMFQXDFCW-UHFFFAOYSA-N	Triflupromazine	Preclinical	Virus entry
-KTUFNOKKBVMGRW-UHFFFAOYSA-N	Imatinib	Preclinical	Host factor
-ZBNZXTGUTAYRHI-UHFFFAOYSA-N	Dasatinib	Preclinical	Host factor
-SDUQYLNIPVEERB-QPPQHZFASA-N	Gemcitabine	Preclinical	Host factor
-BJNLLBUOHPVGFT-UHFFFAOYSA-N	Teicoplanin	Preclinical	Virus entry
-IWUCXVSUMQZMFG-AFCXAGJDSA-N	Levovirin	Clinics COVID19	RNA trans./rep.
-JNTOCHDNEULJHD-UHFFFAOYSA-N	Penciclovir	Clinics	RNA trans./rep.
-AMFDITJFBUXZQN-KUBHLMPHSA-N	Galidesivir	Preclinical	RNA trans./rep.
-AUZONCFQVSMFAP-UHFFFAOYSA-N	Disulfiram	Preclinical	Protease inh.
-NCDNCNXCDXHOMX-XGKFQTDJSA-N	Ritonavir	Failed in clinics	Protease inh.
-CJBJHOAVZSMMDJ-UHFFFAOYSA-N	Darunavir	Preclinical	Protease inh.
-VSZGPKBBMSAYNT-RRFJBIMHSA-N	Oseltamivir	Clinics COVID19	Unknown
-MQQNFDZXWVTQEH-UHFFFAOYSA-N	Nafamostat	Preclinical	Protease inh.
-LUKBXSAWLPMMSZ-OWOJBTEDSA-N	Resveratrol	Preclinical	Unknown
-KCFYEAOKVJSACF-UHFFFAOYSA-N	Umifenovir	Clinics COVID19	Virus entry
-XEEQGYMUWCZPDN-DOMZBBRYSA-N	Mefloquine	Preclinical	Virus entry
-OVCDSSHSILBFBN-UHFFFAOYSA-N	Amodiaquine	Clinics	Virus entry
-UYNVMODNBIQBMV-UHFFFAOYSA-N	Ifenprodil	Clinics COVID19	Immunomodulator
-BSPZFJDYQHDZNR-BOSXTWCSSA-N	BSPZFJDYQHDZNR-BOSXTWCSSA-N	Preclinical	Protease inh.
-YQNQNVDNTFHQSW-UHFFFAOYSA-N	Nitazoxanide	Clinics COVID19	Host factor
-PMATZTZNYRCHOR-CGLBZJNRSA-N	Ciclosporin	Clinics	Immunomodulator
-OLROWHGDTNFZBH-XEMWPYQTSA-N	Alisporivir	Preclinical	Unknown
-CYOHGALHFOKKQC-UHFFFAOYSA-N	Selumetinib	Preclinical	Host factor
-LIRYPHYGHXZJBZ-UHFFFAOYSA-N	Trametinib	Preclinical	Host factor
-OUKYUETWWIPKQR-UHFFFAOYSA-N	Saracatinib	Preclinical	Host factor
-XASIMHXSUQUHLV-UHFFFAOYSA-N	Camostat	Preclinical	Virus entry
-SRVFFFJZQVENJC-IHRRRGAJSA-N	Aloxistatin	Preclinical	Virus entry
-LUKZNWIVRBCLON-GXOBDPJESA-N	Ciclesonide	Clinics COVID19	Immunomodulator
-RJMUSRYZPJIFPJ-UHFFFAOYSA-N	Niclosamide	Preclinical	Host factor
-UUSZLLQJYRSZIS-LXNNNBEUSA-N	Plitidepsin	Preclinical	Host factor
-MPMFCABZENCRHV-UHFFFAOYSA-N	Tilorone	Computational	Immunomodulator
-MYEJFUXQJGHEQK-ALRJYLEOSA-N	Proscillaridin	Computational	Unknown
-WDJUZGPOPHTGOT-XUDUSOBPSA-N	Digitoxin	Computational	Unknown
-LTMHDMANZUZIPE-PUGKRICDSA-N	Digoxin	Computational	Unknown
-ACGUYXCXAPNIKK-UHFFFAOYSA-N	Hexachlorophene	Computational	Protease inh.
-DOMWKUIIPQCAJU-LJHIYBGHSA-N	Hydroxyprogesterone caproate	Computational	Unknown
-KQXDHUJYNAXLNZ-XQSDOZFQSA-N	Salinomycin	Computational	Unknown
-LPMXVESGRSUGHW-HBYQJFLCSA-N	Ouabain	Computational	Unknown
-YVPXVXANRNDGTA-WDYNHAJCSA-N	Cepharanthine	Computational	Unknown
-JYWIYHUXVMAGLG-UHFFFAOYSA-N	Oxyclozanide	Computational	Unknown
-JHVAMHSQVVQIOT-MFAJLEFUSA-N	Anidulafungin	Computational	Unknown
-GYQYAJJFPNQOOW-UHFFFAOYSA-N	Gilteritinib	Computational	Host factor
-DFOCUWZXJBAUSQ-URLMMPGGSA-N	Berbamine	Computational	Unknown
-WVTKBKWTSCPRNU-KYJUHHDHSA-N	Tetrandrine	Computational	Unknown
-UZWDCWONPYILKI-UHFFFAOYSA-N	Abemaciclib	Computational	Host factor
-PURKAOJPTOLRMP-UHFFFAOYSA-N	Deutivacaftor	Computational	Host factor
-UCJGJABZCDBEDK-UHFFFAOYSA-N	Bazedoxifene	Computational	Unknown
-SVOQIEJWJCQGDQ-UHFFFAOYSA-N	SVOQIEJWJCQGDQ-UHFFFAOYSA-N	Computational	Unknown
-IACQCQDWSIQSRP-ZCFIWIBFSA-N	Tenofovir Diphosphate	Computational	RNA trans./rep.
-TTZHDVOVKQGIBA-IAAJYNJHSA-N	Sofosbuvir	Computational	RNA trans./rep.
-UNKRRBWXJZNMAN-XLPZGREQSA-N	3'-Fluorothymidine-5'-Triphosphate	Computational	RNA trans./rep.
-GLWHPRRGGYLLRV-XLPZGREQSA-N	Zidovudine Triphosphate	Computational	RNA trans./rep.
-AXRYRYVKAWYZBR-GASGPIRDSA-N	Atazanavir	Computational	Protease inh.
-XPOQHMRABVBWPR-ZDUSSCGKSA-N	Efavirenz	Computational	RNA trans./rep.
-XUZMWHLSFXCVMG-UHFFFAOYSA-N	Baricitinib	Computational	Immunomodulator
-FHCUMDQMBHQXKK-UHFFFAOYSA-N	Velpatasvir	Computational	RNA trans./rep.
-VRTWBAAJJOHBQU-UHFFFAOYSA-N	Ledipasvir	Computational	RNA trans./rep.
-FSVJFNAIGNNGKK-UHFFFAOYSA-N	(R)-Praziquantel	Computational	Protease inh.
-VDHAWDNDOKGFTD-UHFFFAOYSA-N	Cinacalcet	Computational	Protease inh.
-REQCZEXYDRLIBE-UHFFFAOYSA-N	Procainamide	Computational	Protease inh.
-DOMXUEMWDBAQBQ-UHFFFAOYSA-N	Terbinafine	Computational	Protease inh.
-XADCESSVHJOZHK-UHFFFAOYSA-N	Meperidine	Computational	Protease inh.
-SGUAFYQXFOLMHL-UHFFFAOYSA-N	Labetalol	Computational	Protease inh.
-BYJAVTDNIXVSPW-UHFFFAOYSA-N	Tetryzoline	Computational	Protease inh.
-PHWBOXQYWZNQIN-UHFFFAOYSA-N	Ticlopidine	Computational	Protease inh.
-HLFSDGLLUJUHTE-SNVBAGLBSA-N	Levamisole	Computational	Protease inh.
-KRMDCWKBEZIMAB-UHFFFAOYSA-N	Amitriptyline	Computational	Protease inh.
-CNIIGCLFLJGOGP-UHFFFAOYSA-N	Naphazoline	Computational	Protease inh.
-BPZSYCZIITTYBL-UHFFFAOYSA-N	Arformoterol	Computational	Protease inh.
-JGSARLDLIJGVTE-MBNYWOFBSA-N	Benzylpenicillin	Computational	Protease inh.
-JBMKAUGHUNFTOL-UHFFFAOYSA-N	Chlorothiazide	Computational	Protease inh.
-CBVCZFGXHXORBI-UHFFFAOYSA-N	Indinavir	Computational	Protease inh.
-QWAXKHKRTORLEM-UHFFFAOYSA-N	Saquinavir	Computational	Protease inh.
-BLMPQMFVWMYDKT-UHFFFAOYSA-N	Carfilzomib	Computational	Host factor
-MYXACKZCYFKMTE-JETRDCLMSA-N	3Spk	Computational	Protease inh.
-MLBVMOWEQCZNCC-UHFFFAOYSA-N	Fosamprenavir	Computational	Protease inh.
-MCGSCOLBFJQGHM-UHFFFAOYSA-N	Abacavir	Computational	RNA trans./rep.
-JUZYLCPPVHEVSV-UHFFFAOYSA-N	Elvitegravir	Computational	Unknown
-KJFBVJALEQWJBS-XUXIUFHCSA-N	Maribavir	Computational	Unknown
-CZFFBEXEKNGXKS-UHFFFAOYSA-N	Raltegravir	Computational	Unknown
-UCHDWCPVSPXUMX-UHFFFAOYSA-N	Montelukast	Computational	Immunomodulator
-MFMQRDLLSRLUJY-YMQHIKHWSA-N	Spectrum_001131	Computational	Unknown
-HSTZMXCBWJGKHG-UHFFFAOYSA-N	Polydatin	Computational	Unknown
-DQFBYFPFKXHELB-UHFFFAOYSA-N	Dqfbyfpfkxhelb-Uhfffaoysa-N	Computational	Unknown
-AOCCBINRVIKJHY-UHFFFAOYSA-N	Carmofur	Computational	RNA trans./rep.
-NEZONWMXZKDMKF-UHFFFAOYSA-N	Shikonin	Computational	Unknown
-PMJIHLSCWIDGMD-UHFFFAOYSA-N	Tideglusib	Computational	Unknown
-BPBPYQWMFCTCNG-UHFFFAOYSA-N	PX-12	Computational	Unknown
-JDSJDASOXWCHPN-UHFFFAOYSA-N	Tdzd-8	Computational	Host factor
-RSUVYMGADVXGOU-BUHFOSPRSA-N	Cinanserin	Computational	Protease inh.
-DNVXATUJJDPFDM-KRWDZBQOSA-N	1268524-70-4	Computational	Host factor
-NETXMUIMUZJUTB-UHFFFAOYSA-N	Apabetalone	Computational	Host factor
-MUOKSQABCJCOPU-UHFFFAOYSA-N	Silmitasertib	Computational	Host factor
-PHAOTASRLQMKBE-UHFFFAOYSA-N	Tmcb	Computational	Host factor
-JWOGUUIOCYMBPV-LQJYRIKDSA-N	Apicidin	Computational	Unknown
-NIJJYAXOARWZEE-UHFFFAOYSA-N	Valproic Acid	Computational	Unknown
-XDHNQDDQEHDUTM-UHFFFAOYSA-N	Bafilomycin A1	Computational	Virus entry
-DGPGXHRHNRYVDH-UHFFFAOYSA-N	S1Ra	Computational	Host factor
-FOQRKFCLRMMKAT-UHFFFAOYSA-N	Pd144418	Computational	Host factor
-BDSYECBSUUOPCT-UHFFFAOYSA-N	Chembl222301	Computational	Unknown
-PHRCDWVPTULQMT-UHFFFAOYSA-N	Pb-28	Computational	Unknown
-LNEPOXFFQSENCJ-UHFFFAOYSA-N	Haloperidol	Computational	Unknown
-JRURYQJSLYLRLN-BJMVGYQFSA-N	Entacapone	Computational	Unknown
-CGIGDMFJXJATDK-UHFFFAOYSA-N	Indometacin	Computational	Immunomodulator
-XZWYZXLIPXDOLR-UHFFFAOYSA-N	Metformin	Computational	Unknown
-PHXJVRSECIGDHY-UHFFFAOYSA-N	Ponatinib	Computational	Host factor
-ZKZXNDJNWUTGDK-NSCUHMNNSA-N	N-[2-(4-BROMOCINNAMYLAMINO)ETHYL]-5-ISOQUINOLINE SULFONAMIDE	Computational	Host factor
-JBPUGFODGPKTDW-SFHVURJKSA-N	Merimepodib	Computational	Host factor
-LXBIFEVIBLOUGU-DPYQTVNSSA-N	Migalastat	Computational	Host factor
-HPNSFSBZBAHARI-RUDMXATFSA-N	Mycophenolic acid	Computational	Immunomodulator
-JJWLXRKVUJDJKG-VIFPVBQESA-N	BMS-863233	Computational	Host factor
-BMGQWWVMWDBQGC-IIFHNQTCSA-N	Midostaurin	Computational	Host factor
-HFNKQEVNSGCOJV-OAHLLOKOSA-N	Ruxolitinib	Computational	Host factor
-UCUHFWIFSHROPY-RWPZCVJISA-N	Ac-55541	Computational	Host factor
-STQGQHZAVUOBTE-VGBVRHCVSA-N	Daunorubicin	Computational	Unknown
-SGTNSNPWRIOYBX-UHFFFAOYSA-N	Dexverapamil	Computational	Unknown
-GCWIQUVXWZWCLE-INIZCTEOSA-N	Cpi-0610	Computational	Host factor
-GYLDXIAOMVERTK-UHFFFAOYSA-N	Sapanisertib	Computational	Host factor
-BFSMGDJOXZAERB-UHFFFAOYSA-N	Dabrafenib	Computational	Host factor
-ONJZYZYZIKTIEG-CFBQITSMSA-N	(3s6s9r10r11s12s13e15e18s21s)-18-{(1e3e7s8s)-9-[(2s3r4s5s6r9s11s)-9-Ethyl-4-Hydroxy-3511-Trimethyl-8-Oxo-1-Oxa-7-Azaspiro[5.5]Undec-2-Yl]-8-Hydroxy-17-Dimethylnona-13-Dienyl}-1012-Dihydroxy-3-(3-Hydroxybenzyl)-6-Isopropyl-11-Methyl-	Computational	Immunomodulator
-QJJXYPPXXYFBGM-LFZNUXCKSA-N	Tacrolimus	Computational	Immunomodulator
-MPUQHZXIXSTTDU-QXGSTGNESA-N	Pevonedistat	Computational	Host factor
-WOBPZFKXPCYOLU-YBFXNURJSA-N	Mls000690029	Computational	RNA trans./rep.
-FAKRSMQSSFJEIM-RQJHMYQMSA-N	1-(3-Mercapto-2-Methyl-Propionyl)-Pyrrolidine-2-Carboxylic Acid	Computational	Virus entry
-RLAWWYSOJDYHDC-BZSNNMDCSA-N	Lisinopril	Computational	Virus entry
-WIIZWVCIJKGZOK-RKDXNWHRSA-N	Chloramphenicol	Computational	Unknown
-CGZOGNUFXMNYEI-UDUHKTKDSA-N	Chebi:125390	Computational	Unknown
-TYZROVQLWOKYKF-ZDUSSCGKSA-N	Linezolid	Computational	Unknown
+InChIKey	Name	Level	Evidence	MoA
+IWUCXVSUMQZMFG-AFCXAGJDSA-N	Levovirin	3	Clinics COVID19	RNA trans./rep.
+KCFYEAOKVJSACF-UHFFFAOYSA-N	Umifenovir	3	Clinics COVID19	Virus entry
+KJHKTHWMRKYKJE-SUGCFTRWSA-N	Lopinavir	3	Clinics COVID19	Protease inh.
+LUKZNWIVRBCLON-GXOBDPJESA-N	Ciclesonide	3	Clinics COVID19	Immunomodulator
+UYNVMODNBIQBMV-UHFFFAOYSA-N	Ifenprodil	3	Clinics COVID19	Immunomodulator
+VSZGPKBBMSAYNT-RRFJBIMHSA-N	Oseltamivir	3	Clinics COVID19	Unknown
+WHTVZRBIWZFKQO-UHFFFAOYSA-N	Chloroquine	3	Clinics COVID19	Protease inh.
+YQNQNVDNTFHQSW-UHFFFAOYSA-N	Nitazoxanide	3	Clinics COVID19	Host factor
+ZCGNOVWYSGBHAU-UHFFFAOYSA-N	Favipiravir	3	Clinics COVID19	RNA trans./rep.
+JNTOCHDNEULJHD-UHFFFAOYSA-N	Penciclovir	2	Clinics	RNA trans./rep.
+OVCDSSHSILBFBN-UHFFFAOYSA-N	Amodiaquine	2	Clinics	Virus entry
+PMATZTZNYRCHOR-CGLBZJNRSA-N	Ciclosporin	2	Clinics	Immunomodulator
+QFJCIRLUMZQUOT-HPLJOQBZSA-N	Sirolimus	2	Clinics	Immunomodulator
+AMFDITJFBUXZQN-KUBHLMPHSA-N	Galidesivir	1	Preclinical	RNA trans./rep.
+AUZONCFQVSMFAP-UHFFFAOYSA-N	Disulfiram	1	Preclinical	Protease inh.
+BJNLLBUOHPVGFT-UHFFFAOYSA-N	Teicoplanin	1	Preclinical	Virus entry
+BSPZFJDYQHDZNR-BOSXTWCSSA-N	BSPZFJDYQHDZNR-BOSXTWCSSA-N	1	Preclinical	Protease inh.
+CJBJHOAVZSMMDJ-UHFFFAOYSA-N	Darunavir	1	Preclinical	Protease inh.
+CYOHGALHFOKKQC-UHFFFAOYSA-N	Selumetinib	1	Preclinical	Host factor
+DRLFMBDRBRZALE-UHFFFAOYSA-N	Melatonin	1	Preclinical	Immunomodulator
+JUKPWJGBANNWMW-VWBFHTRKSA-N	Eplerenone	1	Preclinical	Immunomodulator
+KTUFNOKKBVMGRW-UHFFFAOYSA-N	Imatinib	1	Preclinical	Host factor
+LIRYPHYGHXZJBZ-UHFFFAOYSA-N	Trametinib	1	Preclinical	Host factor
+LUKBXSAWLPMMSZ-OWOJBTEDSA-N	Resveratrol	1	Preclinical	Unknown
+MQQNFDZXWVTQEH-UHFFFAOYSA-N	Nafamostat	1	Preclinical	Protease inh.
+OLROWHGDTNFZBH-XEMWPYQTSA-N	Alisporivir	1	Preclinical	Unknown
+OUKYUETWWIPKQR-UHFFFAOYSA-N	Saracatinib	1	Preclinical	Host factor
+RDOIQAHITMMDAJ-UHFFFAOYSA-N	Loperamide	1	Preclinical	Unknown
+RJMUSRYZPJIFPJ-UHFFFAOYSA-N	Niclosamide	1	Preclinical	Host factor
+SDUQYLNIPVEERB-QPPQHZFASA-N	Gemcitabine	1	Preclinical	Host factor
+SRVFFFJZQVENJC-IHRRRGAJSA-N	Aloxistatin	1	Preclinical	Virus entry
+UUSZLLQJYRSZIS-LXNNNBEUSA-N	Plitidepsin	1	Preclinical	Host factor
+WKRLQDKEXYKHJB-HFTRVMKXSA-N	Equilin	1	Preclinical	Virus entry
+XASIMHXSUQUHLV-UHFFFAOYSA-N	Camostat	1	Preclinical	Virus entry
+XEEQGYMUWCZPDN-DOMZBBRYSA-N	Mefloquine	1	Preclinical	Virus entry
+XFCLJVABOIYOMF-QPLCGJKRSA-N	Toremifene	1	Preclinical	Virus entry
+XSCGXQMFQXDFCW-UHFFFAOYSA-N	Triflupromazine	1	Preclinical	Virus entry
+YOSHYTLCDANDAN-UHFFFAOYSA-N	Irbesartan	1	Preclinical	Virus entry
+ZBNZXTGUTAYRHI-UHFFFAOYSA-N	Dasatinib	1	Preclinical	Host factor
+ZPEIMTDSQAKGNT-UHFFFAOYSA-N	Chlorpromazine	1	Preclinical	Virus entry
+ACGUYXCXAPNIKK-UHFFFAOYSA-N	Hexachlorophene	0	Computational	Protease inh.
+AHOUBRCZNHFOSL-YOEHRIQHSA-N	Paroxetine	0	Computational	Unknown
+AOCCBINRVIKJHY-UHFFFAOYSA-N	Carmofur	0	Computational	RNA trans./rep.
+AXRYRYVKAWYZBR-GASGPIRDSA-N	Atazanavir	0	Computational	Protease inh.
+BDSYECBSUUOPCT-UHFFFAOYSA-N	Chembl222301	0	Computational	Unknown
+BFSMGDJOXZAERB-UHFFFAOYSA-N	Dabrafenib	0	Computational	Host factor
+BLMPQMFVWMYDKT-UHFFFAOYSA-N	Carfilzomib	0	Computational	Host factor
+BMGQWWVMWDBQGC-IIFHNQTCSA-N	Midostaurin	0	Computational	Host factor
+BPBPYQWMFCTCNG-UHFFFAOYSA-N	PX-12	0	Computational	Unknown
+BPZSYCZIITTYBL-UHFFFAOYSA-N	Arformoterol	0	Computational	Protease inh.
+BYJAVTDNIXVSPW-UHFFFAOYSA-N	Tetryzoline	0	Computational	Protease inh.
+CBVCZFGXHXORBI-UHFFFAOYSA-N	Indinavir	0	Computational	Protease inh.
+CGIGDMFJXJATDK-UHFFFAOYSA-N	Indometacin	0	Computational	Immunomodulator
+CGZOGNUFXMNYEI-UDUHKTKDSA-N	Chebi:125390	0	Computational	Unknown
+CNIIGCLFLJGOGP-UHFFFAOYSA-N	Naphazoline	0	Computational	Protease inh.
+CZFFBEXEKNGXKS-UHFFFAOYSA-N	Raltegravir	0	Computational	Unknown
+DFOCUWZXJBAUSQ-URLMMPGGSA-N	Berbamine	0	Computational	Unknown
+DGPGXHRHNRYVDH-UHFFFAOYSA-N	S1Ra	0	Computational	Host factor
+DLZUBMGMHUNDLF-UHFFFAOYSA-N	Chebi:125460	0	Computational	Unknown
+DNVXATUJJDPFDM-KRWDZBQOSA-N	1268524-70-4	0	Computational	Host factor
+DOMWKUIIPQCAJU-LJHIYBGHSA-N	Hydroxyprogesterone caproate	0	Computational	Unknown
+DOMXUEMWDBAQBQ-UHFFFAOYSA-N	Terbinafine	0	Computational	Protease inh.
+DQFBYFPFKXHELB-UHFFFAOYSA-N	Dqfbyfpfkxhelb-Uhfffaoysa-N	0	Computational	Unknown
+DSSYKIVIOFKYAU-UHFFFAOYSA-N	Synthetic camphor	0	Computational	Virus entry
+FAKRSMQSSFJEIM-RQJHMYQMSA-N	1-(3-Mercapto-2-Methyl-Propionyl)-Pyrrolidine-2-Carboxylic Acid	0	Computational	Virus entry
+FHCUMDQMBHQXKK-UHFFFAOYSA-N	Velpatasvir	0	Computational	RNA trans./rep.
+FOQRKFCLRMMKAT-UHFFFAOYSA-N	Pd144418	0	Computational	Host factor
+FSVJFNAIGNNGKK-UHFFFAOYSA-N	(R)-Praziquantel	0	Computational	Protease inh.
+GCWIQUVXWZWCLE-INIZCTEOSA-N	Cpi-0610	0	Computational	Host factor
+GLVAUDGFNGKCSF-UHFFFAOYSA-N	Mercaptopurine	0	Computational	Immunomodulator
+GLWHPRRGGYLLRV-XLPZGREQSA-N	Zidovudine Triphosphate	0	Computational	RNA trans./rep.
+GPKJTRJOBQGKQK-UHFFFAOYSA-N	Quinacrine	0	Computational	Virus entry
+GYLDXIAOMVERTK-UHFFFAOYSA-N	Sapanisertib	0	Computational	Host factor
+GYQYAJJFPNQOOW-UHFFFAOYSA-N	Gilteritinib	0	Computational	Host factor
+HFNKQEVNSGCOJV-OAHLLOKOSA-N	Ruxolitinib	0	Computational	Host factor
+HLFSDGLLUJUHTE-SNVBAGLBSA-N	Levamisole	0	Computational	Protease inh.
+HPNSFSBZBAHARI-RUDMXATFSA-N	Mycophenolic acid	0	Computational	Immunomodulator
+HSTZMXCBWJGKHG-UHFFFAOYSA-N	Polydatin	0	Computational	Unknown
+IACQCQDWSIQSRP-ZCFIWIBFSA-N	Tenofovir Diphosphate	0	Computational	RNA trans./rep.
+IAKHMKGGTNLKSZ-INIZCTEOSA-N	Colchicine	0	Computational	Unknown
+IPMYMEWFZKHGAX-ZKSIBHASSA-N	Theaflavin	0	Computational	Virus entry
+JBMKAUGHUNFTOL-UHFFFAOYSA-N	Chlorothiazide	0	Computational	Protease inh.
+JBPUGFODGPKTDW-SFHVURJKSA-N	Merimepodib	0	Computational	Host factor
+JDSJDASOXWCHPN-UHFFFAOYSA-N	Tdzd-8	0	Computational	Host factor
+JGSARLDLIJGVTE-MBNYWOFBSA-N	Benzylpenicillin	0	Computational	Protease inh.
+JHVAMHSQVVQIOT-MFAJLEFUSA-N	Anidulafungin	0	Computational	Unknown
+JJWLXRKVUJDJKG-VIFPVBQESA-N	BMS-863233	0	Computational	Host factor
+JRURYQJSLYLRLN-BJMVGYQFSA-N	Entacapone	0	Computational	Unknown
+JUZYLCPPVHEVSV-UHFFFAOYSA-N	Elvitegravir	0	Computational	Unknown
+JWOGUUIOCYMBPV-LQJYRIKDSA-N	Apicidin	0	Computational	Unknown
+JYWIYHUXVMAGLG-UHFFFAOYSA-N	Oxyclozanide	0	Computational	Unknown
+KBOPZPXVLCULAV-UHFFFAOYSA-N	Mesalazine	0	Computational	Immunomodulator
+KJFBVJALEQWJBS-XUXIUFHCSA-N	Maribavir	0	Computational	Unknown
+KQXDHUJYNAXLNZ-XQSDOZFQSA-N	Salinomycin	0	Computational	Unknown
+KRMDCWKBEZIMAB-UHFFFAOYSA-N	Amitriptyline	0	Computational	Protease inh.
+LNEPOXFFQSENCJ-UHFFFAOYSA-N	Haloperidol	0	Computational	Unknown
+LPMXVESGRSUGHW-HBYQJFLCSA-N	Ouabain	0	Computational	Unknown
+LTMHDMANZUZIPE-PUGKRICDSA-N	Digoxin	0	Computational	Unknown
+LXBIFEVIBLOUGU-DPYQTVNSSA-N	Migalastat	0	Computational	Host factor
+MCGSCOLBFJQGHM-UHFFFAOYSA-N	Abacavir	0	Computational	RNA trans./rep.
+MFMQRDLLSRLUJY-YMQHIKHWSA-N	Spectrum_001131	0	Computational	Unknown
+MLBVMOWEQCZNCC-UHFFFAOYSA-N	Fosamprenavir	0	Computational	Protease inh.
+MPMFCABZENCRHV-UHFFFAOYSA-N	Tilorone	0	Computational	Immunomodulator
+MPUQHZXIXSTTDU-QXGSTGNESA-N	Pevonedistat	0	Computational	Host factor
+MUOKSQABCJCOPU-UHFFFAOYSA-N	Silmitasertib	0	Computational	Host factor
+MYEJFUXQJGHEQK-ALRJYLEOSA-N	Proscillaridin	0	Computational	Unknown
+MYXACKZCYFKMTE-JETRDCLMSA-N	3Spk	0	Computational	Protease inh.
+NETXMUIMUZJUTB-UHFFFAOYSA-N	Apabetalone	0	Computational	Host factor
+NEZONWMXZKDMKF-UHFFFAOYSA-N	Shikonin	0	Computational	Unknown
+NIJJYAXOARWZEE-UHFFFAOYSA-N	Valproic Acid	0	Computational	Unknown
+OGHNVEJMJSYVRP-UHFFFAOYSA-N	Carvedilol	0	Computational	Immunomodulator
+ONJZYZYZIKTIEG-CFBQITSMSA-N	(3s6s9r10r11s12s13e15e18s21s)-18-{(1e3e7s8s)-9-[(2s3r4s5s6r9s11s)-9-Ethyl-4-Hydroxy-3511-Trimethyl-8-Oxo-1-Oxa-7-Azaspiro[5.5]Undec-2-Yl]-8-Hydroxy-17-Dimethylnona-13-Dienyl}-1012-Dihydroxy-3-(3-Hydroxybenzyl)-6-Isopropyl-11-Methyl-	0	Computational	Immunomodulator
+PHAOTASRLQMKBE-UHFFFAOYSA-N	Tmcb	0	Computational	Host factor
+PHRCDWVPTULQMT-UHFFFAOYSA-N	Pb-28	0	Computational	Unknown
+PHWBOXQYWZNQIN-UHFFFAOYSA-N	Ticlopidine	0	Computational	Protease inh.
+PHXJVRSECIGDHY-UHFFFAOYSA-N	Ponatinib	0	Computational	Host factor
+PMJIHLSCWIDGMD-UHFFFAOYSA-N	Tideglusib	0	Computational	Unknown
+PURKAOJPTOLRMP-UHFFFAOYSA-N	Deutivacaftor	0	Computational	Host factor
+QJJXYPPXXYFBGM-LFZNUXCKSA-N	Tacrolimus	0	Computational	Immunomodulator
+QPDYBCZNGUJZDK-DNQXCXABSA-N	Brilacidin	0	Computational	Unknown
+QWAXKHKRTORLEM-UHFFFAOYSA-N	Saquinavir	0	Computational	Protease inh.
+REQCZEXYDRLIBE-UHFFFAOYSA-N	Procainamide	0	Computational	Protease inh.
+RHMXXJGYXNZAPX-UHFFFAOYSA-N	Emodin	0	Computational	Unknown
+RJURFGZVJUQBHK-IIXSONLDSA-N	Dactinomycin	0	Computational	Unknown
+RLAWWYSOJDYHDC-BZSNNMDCSA-N	Lisinopril	0	Computational	Virus entry
+RSUVYMGADVXGOU-BUHFOSPRSA-N	Cinanserin	0	Computational	Protease inh.
+SGTNSNPWRIOYBX-UHFFFAOYSA-N	Dexverapamil	0	Computational	Unknown
+SGUAFYQXFOLMHL-UHFFFAOYSA-N	Labetalol	0	Computational	Protease inh.
+STQGQHZAVUOBTE-VGBVRHCVSA-N	Daunorubicin	0	Computational	Unknown
+SVOQIEJWJCQGDQ-UHFFFAOYSA-N	SVOQIEJWJCQGDQ-UHFFFAOYSA-N	0	Computational	Unknown
+TTZHDVOVKQGIBA-IAAJYNJHSA-N	Sofosbuvir	0	Computational	RNA trans./rep.
+TYZROVQLWOKYKF-ZDUSSCGKSA-N	Linezolid	0	Computational	Unknown
+UCHDWCPVSPXUMX-UHFFFAOYSA-N	Montelukast	0	Computational	Immunomodulator
+UCJGJABZCDBEDK-UHFFFAOYSA-N	Bazedoxifene	0	Computational	Unknown
+UCUHFWIFSHROPY-RWPZCVJISA-N	Ac-55541	0	Computational	Host factor
+UNKRRBWXJZNMAN-XLPZGREQSA-N	3'-Fluorothymidine-5'-Triphosphate	0	Computational	RNA trans./rep.
+UZWDCWONPYILKI-UHFFFAOYSA-N	Abemaciclib	0	Computational	Host factor
+VDHAWDNDOKGFTD-UHFFFAOYSA-N	Cinacalcet	0	Computational	Protease inh.
+VRTWBAAJJOHBQU-UHFFFAOYSA-N	Ledipasvir	0	Computational	RNA trans./rep.
+WDJUZGPOPHTGOT-XUDUSOBPSA-N	Digitoxin	0	Computational	Unknown
+WIIZWVCIJKGZOK-RKDXNWHRSA-N	Chloramphenicol	0	Computational	Unknown
+WOBPZFKXPCYOLU-YBFXNURJSA-N	Mls000690029	0	Computational	RNA trans./rep.
+WVTKBKWTSCPRNU-KYJUHHDHSA-N	Tetrandrine	0	Computational	Unknown
+XADCESSVHJOZHK-UHFFFAOYSA-N	Meperidine	0	Computational	Protease inh.
+XDHNQDDQEHDUTM-UHFFFAOYSA-N	Bafilomycin A1	0	Computational	Virus entry
+XPOQHMRABVBWPR-ZDUSSCGKSA-N	Efavirenz	0	Computational	RNA trans./rep.
+XUZMWHLSFXCVMG-UHFFFAOYSA-N	Baricitinib	0	Computational	Immunomodulator
+XZWYZXLIPXDOLR-UHFFFAOYSA-N	Metformin	0	Computational	Unknown
+YVPXVXANRNDGTA-WDYNHAJCSA-N	Cepharanthine	0	Computational	Unknown
+ZKZXNDJNWUTGDK-NSCUHMNNSA-N	N-[2-(4-BROMOCINNAMYLAMINO)ETHYL]-5-ISOQUINOLINE SULFONAMIDE	0	Computational	Host factor
+NCDNCNXCDXHOMX-XGKFQTDJSA-N	Ritonavir	-1	Failed in clinics	Protease inh.

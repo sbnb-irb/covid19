@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <title>COVID19</title>
-  <meta name="description" content="COVID19 ChemicalChecker Drug-candidates.">
+  <meta name="description" content="COVID19 Chemical Checker Drug Candidates">
   <meta name="author" content="SBNB">
 
 {% include 'head.html' %}
@@ -88,7 +88,7 @@
         // Hide some columns
         {
           visible: false,
-          targets: [3, 4, 5, 9, 10, 11 ],
+          targets: [3, 4, 9, 10, 11 ],
         },
         // Ellipsis on too long text
         {
@@ -108,19 +108,19 @@
     // Rename columns 
     $( cc_table.column( 0 ).header() ).text( 'InChIKey' );
     $( cc_table.column( 1 ).header() ).text( 'Name' );
-    $( cc_table.column( 2 ).header() ).text( 'Drug?' );
+    $( cc_table.column( 2 ).header() ).text( 'Is drug' );
     $( cc_table.column( 3 ).header() ).text( 'Evidence' );
-    $( cc_table.column( 4 ).header() ).text( 'Mode of Action' );
-    $( cc_table.column( 5 ).header() ).text( 'Support' );
-    $( cc_table.column( 6 ).header() ).text( '10e-5' );
-    $( cc_table.column( 7 ).header() ).text( '10e-4' );
-    $( cc_table.column( 8 ).header() ).text( '10e-3' );
-    $( cc_table.column( 9 ).header() ).text( '1st Lit. Match InChIKey' );
-    $( cc_table.column( 10 ).header() ).text( '2nd Lit. Match InChIKey' );
-    $( cc_table.column( 11 ).header() ).text( '3rd Lit. Match InChIKey' );
-    $( cc_table.column( 12 ).header() ).text( '1st Literature Match' );
-    $( cc_table.column( 13 ).header() ).text( '2nd Literature Match' );
-    $( cc_table.column( 14 ).header() ).text( '3rd Literature Match' );
+    $( cc_table.column( 4 ).header() ).text( 'MoA' );
+    $( cc_table.column( 5 ).header() ).text( 'Supp' );
+    $( cc_table.column( 6 ).header() ).text( '# P5' );
+    $( cc_table.column( 7 ).header() ).text( '# P4' );
+    $( cc_table.column( 8 ).header() ).text( '# P3' );
+    $( cc_table.column( 9 ).header() ).text( '1st Lit. match InChIKey' );
+    $( cc_table.column( 10 ).header() ).text( '2nd Lit match InChIKey' );
+    $( cc_table.column( 11 ).header() ).text( '3rd Lit match InChIKey' );
+    $( cc_table.column( 12 ).header() ).text( 'Sim CoV (1)' );
+    $( cc_table.column( 13 ).header() ).text( 'Sim CoV (2)' );
+    $( cc_table.column( 14 ).header() ).text( 'Sim CoV (3)' );
 
     // Get click event, assign active state, get values from all btn-groups
     $('.btn-group button').on('click', function() {
@@ -152,7 +152,7 @@
 <div id="main" class="container-fluid justify-content-center">
 <!-- Table -->
 <br><br><br>
-<h1 id="table_title" class="text-center">CC similarities (778531 cand. x 152 lit.)</h1>
+<h3 id="table_title" class="text-center">Select a table</h1>
 <table id='cc_table' class='table table-striped table-hover table-bordered wrap dataTable' style="width:100%">
   <thead>
     <tr>

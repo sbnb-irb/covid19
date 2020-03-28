@@ -1,36 +1,36 @@
 evidence	moa	filename	caption
-		df_cand_cc_eviall_moaall.csv	CC similarities (726803 cand. x 149 lit.)
-	0.0	df_cand_cc_eviall_moa0.csv	CC similarities (726803 cand. x 149 lit.)
-	1.0	df_cand_cc_eviall_moa1.csv	CC similarities (726803 cand. x 149 lit.)
-	2.0	df_cand_cc_eviall_moa2.csv	CC similarities (726803 cand. x 149 lit.)
-	3.0	df_cand_cc_eviall_moa3.csv	CC similarities (726803 cand. x 149 lit.)
-	4.0	df_cand_cc_eviall_moa4.csv	CC similarities (726803 cand. x 149 lit.)
-	5.0	df_cand_cc_eviall_moa5.csv	CC similarities (726803 cand. x 149 lit.)
-0.0		df_cand_cc_evi0_moaall.csv	CC similarities (726803 cand. x 149 lit.)
-0.0	0.0	df_cand_cc_evi0_moa0.csv	CC similarities (726803 cand. x 149 lit.)
-0.0	1.0	df_cand_cc_evi0_moa1.csv	CC similarities (726803 cand. x 149 lit.)
-0.0	2.0	df_cand_cc_evi0_moa2.csv	CC similarities (726803 cand. x 149 lit.)
-0.0	3.0	df_cand_cc_evi0_moa3.csv	CC similarities (726803 cand. x 149 lit.)
-0.0	4.0	df_cand_cc_evi0_moa4.csv	CC similarities (726803 cand. x 149 lit.)
-0.0	5.0	df_cand_cc_evi0_moa5.csv	CC similarities (726803 cand. x 149 lit.)
-1.0		df_cand_cc_evi1_moaall.csv	CC similarities (726803 cand. x 149 lit.)
-1.0	0.0	df_cand_cc_evi1_moa0.csv	CC similarities (726803 cand. x 149 lit.)
-1.0	1.0	df_cand_cc_evi1_moa1.csv	CC similarities (726803 cand. x 149 lit.)
-1.0	2.0	df_cand_cc_evi1_moa2.csv	CC similarities (726803 cand. x 149 lit.)
-1.0	3.0	df_cand_cc_evi1_moa3.csv	CC similarities (726803 cand. x 149 lit.)
-1.0	4.0	df_cand_cc_evi1_moa4.csv	CC similarities (726803 cand. x 149 lit.)
-1.0	5.0	df_cand_cc_evi1_moa5.csv	CC similarities (726803 cand. x 149 lit.)
-2.0		df_cand_cc_evi2_moaall.csv	CC similarities (726803 cand. x 149 lit.)
-2.0	0.0	df_cand_cc_evi2_moa0.csv	CC similarities (726803 cand. x 149 lit.)
-2.0	1.0	df_cand_cc_evi2_moa1.csv	CC similarities (726803 cand. x 149 lit.)
-2.0	2.0	df_cand_cc_evi2_moa2.csv	CC similarities (726803 cand. x 149 lit.)
-2.0	3.0	df_cand_cc_evi2_moa3.csv	CC similarities (726803 cand. x 149 lit.)
-2.0	4.0	df_cand_cc_evi2_moa4.csv	CC similarities (726803 cand. x 149 lit.)
-2.0	5.0	df_cand_cc_evi2_moa5.csv	CC similarities (726803 cand. x 149 lit.)
-3.0		df_cand_cc_evi3_moaall.csv	CC similarities (726803 cand. x 149 lit.)
-3.0	0.0	df_cand_cc_evi3_moa0.csv	CC similarities (726803 cand. x 149 lit.)
-3.0	1.0	df_cand_cc_evi3_moa1.csv	CC similarities (726803 cand. x 149 lit.)
-3.0	2.0	df_cand_cc_evi3_moa2.csv	CC similarities (726803 cand. x 149 lit.)
-3.0	3.0	df_cand_cc_evi3_moa3.csv	CC similarities (726803 cand. x 149 lit.)
-3.0	4.0	df_cand_cc_evi3_moa4.csv	CC similarities (726803 cand. x 149 lit.)
-3.0	5.0	df_cand_cc_evi3_moa5.csv	CC similarities (726803 cand. x 149 lit.)
+		df_cand_cc_eviall_moaall.csv	CC similarities against 151 drugs from the COVID19 literature
+	0.0	df_cand_cc_eviall_moa0.csv	CC similarities against 44 drugs from the COVID19 literature
+	1.0	df_cand_cc_eviall_moa1.csv	CC similarities against 32 drugs from the COVID19 literature
+	2.0	df_cand_cc_eviall_moa2.csv	CC similarities against 17 drugs from the COVID19 literature
+	3.0	df_cand_cc_eviall_moa3.csv	CC similarities against 28 drugs from the COVID19 literature
+	4.0	df_cand_cc_eviall_moa4.csv	CC similarities against 14 drugs from the COVID19 literature
+	5.0	df_cand_cc_eviall_moa5.csv	CC similarities against 16 drugs from the COVID19 literature
+0.0		df_cand_cc_evi0_moaall.csv	CC similarities against 150 drugs from the COVID19 literature
+0.0	0.0	df_cand_cc_evi0_moa0.csv	CC similarities against 44 drugs from the COVID19 literature
+0.0	1.0	df_cand_cc_evi0_moa1.csv	CC similarities against 32 drugs from the COVID19 literature
+0.0	2.0	df_cand_cc_evi0_moa2.csv	CC similarities against 17 drugs from the COVID19 literature
+0.0	3.0	df_cand_cc_evi0_moa3.csv	CC similarities against 27 drugs from the COVID19 literature
+0.0	4.0	df_cand_cc_evi0_moa4.csv	CC similarities against 14 drugs from the COVID19 literature
+0.0	5.0	df_cand_cc_evi0_moa5.csv	CC similarities against 16 drugs from the COVID19 literature
+1.0		df_cand_cc_evi1_moaall.csv	CC similarities against 40 drugs from the COVID19 literature
+1.0	0.0	df_cand_cc_evi1_moa0.csv	CC similarities against 4 drugs from the COVID19 literature
+1.0	1.0	df_cand_cc_evi1_moa1.csv	CC similarities against 9 drugs from the COVID19 literature
+1.0	2.0	df_cand_cc_evi1_moa2.csv	CC similarities against 11 drugs from the COVID19 literature
+1.0	3.0	df_cand_cc_evi1_moa3.csv	CC similarities against 6 drugs from the COVID19 literature
+1.0	4.0	df_cand_cc_evi1_moa4.csv	CC similarities against 4 drugs from the COVID19 literature
+1.0	5.0	df_cand_cc_evi1_moa5.csv	CC similarities against 6 drugs from the COVID19 literature
+2.0		df_cand_cc_evi2_moaall.csv	CC similarities against 13 drugs from the COVID19 literature
+2.0	0.0	df_cand_cc_evi2_moa0.csv	CC similarities against 1 drugs from the COVID19 literature
+2.0	1.0	df_cand_cc_evi2_moa1.csv	CC similarities against 1 drugs from the COVID19 literature
+2.0	2.0	df_cand_cc_evi2_moa2.csv	CC similarities against 2 drugs from the COVID19 literature
+2.0	3.0	df_cand_cc_evi2_moa3.csv	CC similarities against 2 drugs from the COVID19 literature
+2.0	4.0	df_cand_cc_evi2_moa4.csv	CC similarities against 3 drugs from the COVID19 literature
+2.0	5.0	df_cand_cc_evi2_moa5.csv	CC similarities against 4 drugs from the COVID19 literature
+3.0		df_cand_cc_evi3_moaall.csv	CC similarities against 9 drugs from the COVID19 literature
+3.0	0.0	df_cand_cc_evi3_moa0.csv	CC similarities against 1 drugs from the COVID19 literature
+3.0	1.0	df_cand_cc_evi3_moa1.csv	CC similarities against 1 drugs from the COVID19 literature
+3.0	2.0	df_cand_cc_evi3_moa2.csv	CC similarities against 1 drugs from the COVID19 literature
+3.0	3.0	df_cand_cc_evi3_moa3.csv	CC similarities against 2 drugs from the COVID19 literature
+3.0	4.0	df_cand_cc_evi3_moa4.csv	CC similarities against 2 drugs from the COVID19 literature
+3.0	5.0	df_cand_cc_evi3_moa5.csv	CC similarities against 2 drugs from the COVID19 literature

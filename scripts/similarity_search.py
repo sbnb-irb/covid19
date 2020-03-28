@@ -18,7 +18,7 @@ output_path = os.path.join(script_path, '..', 'web', 'data')
 input_path = os.path.join(script_path, '..', 'data')
 
 
-MAX_ROWS=100000
+MAX_ROWS=10000
 
 def get_raw_literature():
     scope = ['https://spreadsheets.google.com/feeds',
@@ -153,9 +153,10 @@ def main(simtype):
             R += [(ik, n, e, m)]
     R_ = []
     for r in R:
-        R_ += [(r[0], r[1], evidence_legend[r[2]], moa_legend[r[3]])]
+        R_ += [(r[0], r[1], r[2], evidence_legend[r[2]], moa_legend[r[3]])]
     df_lit = pd.DataFrame(
-        R_, columns=["inchikey", "name", "evidence", "moa"])
+        R_, columns=["InChIKey", "Name", "Level", "Evidence", "MoA"])
+    df_lit = df_lit.sort_values(["Level", "InChIKey"], ascending=[False, True])
     print("...saving literature for web")
     dest_file = os.path.join(output_path, "df_lit_%s.csv" % simtype)
     df_lit.to_csv(dest_file, index=False, sep="\t")
@@ -393,7 +394,7 @@ def main(simtype):
         M = np.vstack([support, cou_pv5, cou_pv4, cou_pv3,
                        top1_idx, top2_idx, top3_idx]).astype(np.int32)
         M = M.T
-        return M, keep, ranks.shape[0], ranks.shape[1]
+        return M, keep, ranks.shape[0], np.sum(mask)
 
     def similarities(simtype, min_evidence, moa):
         if min_evidence is not None:
@@ -421,7 +422,10 @@ def main(simtype):
         }
         df = pd.DataFrame(results)
         print("...filtering")
-        caption = "%s similarities" % simtype.upper()
+        if simtype == "cc":
+            caption = "CC similarities"
+        else:
+            caption = "Chemical similarities"
         if min_evidence is None:
             evi_suf = "eviall"
         else:
@@ -430,7 +434,7 @@ def main(simtype):
             moa_suf = "moaall"
         else:
             moa_suf = "moa%d" % moa
-        caption += " (%d cand. x %d lit.)" % (n_rows, n_cols)
+        caption += " against %d drugs from the COVID19 literature" % n_cols
         fn = "df_cand_%s_%s_%s.csv" % (simtype, evi_suf, moa_suf)
         df.to_csv(os.path.join(output_path, fn), index=False, sep="\t")
         return fn, caption
