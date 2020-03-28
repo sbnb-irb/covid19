@@ -1,153 +1,150 @@
-inchikey,name,evidence,moa,descriptions,links
-KBOPZPXVLCULAV-UHFFFAOYSA-N,Mesalazine,0,5,"None, it´s a computational repurposing strategy based on PPI networks (human and host-pathogen) and CoV-induced transcriptional changes. However, several of the drugs proposed have shown some level of effectiveness against other human viruses (Table 1).",https://www.nature.com/articles/s41421-020-0153-3;;
-XFCLJVABOIYOMF-QPLCGJKRSA-N,Toremifene;Toremifene citrate,1,2,"None, it´s a computational repurposing strategy based on PPI networks (human and host-pathogen) and CoV-induced transcriptional changes. However, several of the drugs proposed have shown some level of effectiveness against other human viruses (Table 1).;Effective against SARS-CoV MERS-CoV in vitro / inhibits EVOB entry in cells / identified in network screening",https://www.nature.com/articles/s41421-020-0153-3;https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4136000/;;https://stm.sciencemag.org/content/5/190/190ra79;;https://www.nature.com/articles/s41421-020-0153-3
-JUKPWJGBANNWMW-VWBFHTRKSA-N,Eplerenone;Eplerenone,1,5,"None, it´s a computational repurposing strategy based on PPI networks (human and host-pathogen) and CoV-induced transcriptional changes. However, several of the drugs proposed have shown some level of effectiveness against other human viruses (Table 1).;Prolongs survival, tested in viral myocarditis in mice",https://www.nature.com/articles/s41421-020-0153-3;https://www.ncbi.nlm.nih.gov/pubmed/19213804;;;;
-AHOUBRCZNHFOSL-YOEHRIQHSA-N,Paroxetine,0,0,"None, it´s a computational repurposing strategy based on PPI networks (human and host-pathogen) and CoV-induced transcriptional changes. However, several of the drugs proposed have shown some level of effectiveness against other human viruses (Table 1).",https://www.nature.com/articles/s41421-020-0153-3;;
-QFJCIRLUMZQUOT-HPLJOQBZSA-N,Sirolimus;Sirolimus;Rapamycin;Rapamycin,2,5,"None, it´s a computational repurposing strategy based on PPI networks (human and host-pathogen) and CoV-induced transcriptional changes. However, several of the drugs proposed have shown some level of effectiveness against other human viruses (Table 1).;MERS-CoV 60% decreased infection in vitro / improved clinical outcome H1N1;Inhibits MERS replication in vitro;Drugs from Sars-Cov-2-Human PPI map",https://www.nature.com/articles/s41421-020-0153-3;https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5733787;https://www.ncbi.nlm.nih.gov/pubmed/25487801;https://www.biorxiv.org/content/10.1101/2020.03.22.002386v1.full.pdf;;https://www.ncbi.nlm.nih.gov/pubmed/24105455;;;;;;
-RJURFGZVJUQBHK-IIXSONLDSA-N,Dactinomycin,0,0,"None, it´s a computational repurposing strategy based on PPI networks (human and host-pathogen) and CoV-induced transcriptional changes. However, several of the drugs proposed have shown some level of effectiveness against other human viruses (Table 1).",https://www.nature.com/articles/s41421-020-0153-3;;
-YOSHYTLCDANDAN-UHFFFAOYSA-N,Ibesartan;Irbesartan,1,2,"None, it´s a computational repurposing strategy based on PPI networks (human and host-pathogen) and CoV-induced transcriptional changes. However, several of the drugs proposed have shown some level of effectiveness against other human viruses (Table 1).;identified in network screening",https://www.nature.com/articles/s41421-020-0153-3;https://www.nature.com/articles/s41421-020-0153-3;;;;
-GLVAUDGFNGKCSF-UHFFFAOYSA-N,Mercaptopurine,0,5,"None, it´s a computational repurposing strategy based on PPI networks (human and host-pathogen) and CoV-induced transcriptional changes. However, several of the drugs proposed have shown some level of effectiveness against other human viruses (Table 1).",https://www.nature.com/articles/s41421-020-0153-3;;
-DRLFMBDRBRZALE-UHFFFAOYSA-N,Melatonin;Melatonin,1,5,"None, it´s a computational repurposing strategy based on PPI networks (human and host-pathogen) and CoV-induced transcriptional changes. However, several of the drugs proposed have shown some level of effectiveness against other human viruses (Table 1).;Prolongs survival due to anti inflammation (not virus related)",https://www.nature.com/articles/s41421-020-0153-3;https://www.nature.com/articles/s41421-020-0153-3;;;;
-GPKJTRJOBQGKQK-UHFFFAOYSA-N,Quinacrine,0,2,"None, it´s a computational repurposing strategy based on PPI networks (human and host-pathogen) and CoV-induced transcriptional changes. However, several of the drugs proposed have shown some level of effectiveness against other human viruses (Table 1).",https://www.nature.com/articles/s41421-020-0153-3;;
-OGHNVEJMJSYVRP-UHFFFAOYSA-N,Carvedilol,0,5,"None, it´s a computational repurposing strategy based on PPI networks (human and host-pathogen) and CoV-induced transcriptional changes. However, several of the drugs proposed have shown some level of effectiveness against other human viruses (Table 1).",https://www.nature.com/articles/s41421-020-0153-3;;
-IAKHMKGGTNLKSZ-INIZCTEOSA-N,Colchicine,0,0,"None, it´s a computational repurposing strategy based on PPI networks (human and host-pathogen) and CoV-induced transcriptional changes. However, several of the drugs proposed have shown some level of effectiveness against other human viruses (Table 1).",https://www.nature.com/articles/s41421-020-0153-3;;
-DSSYKIVIOFKYAU-UHFFFAOYSA-N,Camphor,0,2,"None, it´s a computational repurposing strategy based on PPI networks (human and host-pathogen) and CoV-induced transcriptional changes. However, several of the drugs proposed have shown some level of effectiveness against other human viruses (Table 1).",https://www.nature.com/articles/s41421-020-0153-3;;
-WKRLQDKEXYKHJB-HFTRVMKXSA-N,Equilin;Equilin,1,2,"None, it´s a computational repurposing strategy based on PPI networks (human and host-pathogen) and CoV-induced transcriptional changes. However, several of the drugs proposed have shown some level of effectiveness against other human viruses (Table 1).;inhibits EVOB entry in cells / identified in network screening",https://www.nature.com/articles/s41421-020-0153-3;https://stm.sciencemag.org/content/5/190/190ra79;;https://www.nature.com/articles/s41421-020-0153-3;;
-DLZUBMGMHUNDLF-UHFFFAOYSA-N,Oxymetholone,0,0,"None, it´s a computational repurposing strategy based on PPI networks (human and host-pathogen) and CoV-induced transcriptional changes. However, several of the drugs proposed have shown some level of effectiveness against other human viruses (Table 1).",https://www.nature.com/articles/s41421-020-0153-3;;
-RHMXXJGYXNZAPX-UHFFFAOYSA-N,Emodin,0,0,"None, it´s a computational repurposing strategy based on PPI networks (human and host-pathogen) and CoV-induced transcriptional changes. However, several of the drugs proposed have shown some level of effectiveness against other human viruses (Table 1).",https://www.nature.com/articles/s41421-020-0153-3;;
-ZCGNOVWYSGBHAU-UHFFFAOYSA-N,6-fluoro-3-hydroxy-2-pyrazinecarboxamide;Favilavir;Favipiravir;favipiravir,3,4,"Developed as antiinfluenza;;Increases 7-day recovery rate in patients with COVID19;COVID-19 patients untreated with antiviral previously, favipiravir can be considered as a preferred treatment",https://www.ncbi.nlm.nih.gov/pubmed/28769016;https://www.upi.com/Health_News/2020/02/17/China-approves-antiviral-favilavir-to-treat-coronavirus/5291581953892/;https://www.medrxiv.org/content/10.1101/2020.03.17.20037432v1;https://www.medrxiv.org/content/10.1101/2020.03.17.20037432v1;https://www.dailysabah.com/life/health/japanese-drug-favipiravir-proving-effective-against-covid-19-in-as-little-as-4-days;;https://www.sciencedirect.com/science/article/pii/S2095809920300631?via%3Dihub;;;;;
-WHTVZRBIWZFKQO-UHFFFAOYSA-N,Chloroquine diphosphate;Chloroquine,3,3,Anti SARS-CoV and MERS-CoV in vitro;Papain-like protease inhibitors found by docking using Homology modeling from SARS CoV. Drugs found through VS of FDA aproved drugs.,https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4136071;https://chemrxiv.org/articles/Potential_Inhibitors_Against_Papain-like_Protease_of_Novel_Coronavirus_COVID-19_from_FDA_Approved_Drugs/11860011/16;https://www.sciencedirect.com/science/article/pii/S0883944120303907;;https://www.ncbi.nlm.nih.gov/pubmed/32074550;
-RDOIQAHITMMDAJ-UHFFFAOYSA-N,Loperamide,1,0,Anti SARS-CoV and MERS-CoV in vitro,https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5733787/;https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4136071/;
-KJHKTHWMRKYKJE-SUGCFTRWSA-N,Used for MERS clinically / No effect in clinical trial for Covid19;Lopinavir,3,3,"Anti SARS-CoV and MERS-CoV in vitro / NO EFFECT IN CLINICAL TRIAL;HIV drug. Combination of Lopinavir, ritonavir and interferon beta is being evaluated in humans",https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4136071/;https://www.nature.com/articles/s41467-019-13940-6;https://www.nejm.org/doi/full/10.1056/NEJMoa2001282;;;
-ZPEIMTDSQAKGNT-UHFFFAOYSA-N,Chlorpromazine hydrochloride,1,2,Effective against SARS-CoV and MERS-CoV in vitro,https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4136000/;https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4136071/;
-XSCGXQMFQXDFCW-UHFFFAOYSA-N,Triflupromazine hydrochloride,1,2,Effective against SARS-CoV and MERS-CoV in vitro,https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4136000/;;
-KTUFNOKKBVMGRW-UHFFFAOYSA-N,Imatinib mesylate,1,1,Effective against SARS-CoV and MERS-CoV in vitro,https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4136000/;https://jvi.asm.org/content/90/19/8924;
-ZBNZXTGUTAYRHI-UHFFFAOYSA-N,Dasatinib,1,1,Effective against SARS-CoV and MERS-CoV in vitro,https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4136000/;;
-SDUQYLNIPVEERB-QPPQHZFASA-N,Gemcitabine hydrochloride,1,1,Effective against SARS-CoV and MERS-CoV in vitro,https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4136000/;;
-BJNLLBUOHPVGFT-UHFFFAOYSA-N,Teicoplanin,1,2,Blocks cell entry of Covid-19 in vitro,https://www.biorxiv.org/content/10.1101/2020.02.05.935387v1.abstract;https://www.ncbi.nlm.nih.gov/pubmed/30170320;
-IWUCXVSUMQZMFG-AFCXAGJDSA-N,Ribavirin;Ribavirin,3,4,Combined with IFNalpha improves MERS-Cov;Drugs from Sars-Cov-2-Human PPI map,https://www.thelancet.com/journals/laninf/article/PIIS1473-3099(14)70920-X/fulltext;https://www.biorxiv.org/content/10.1101/2020.03.22.002386v1.full.pdf;;;;
-JNTOCHDNEULJHD-UHFFFAOYSA-N,Penciclovir,2,4,Used in Herpex treatment,https://pubchem.ncbi.nlm.nih.gov/compound/Penciclovir;;
-AMFDITJFBUXZQN-KUBHLMPHSA-N,Galidesivir;BCX4430 (Immucillin-A),1,4,"High efficacy in vitro for filoviruses, under clinical trials;inhibition of virus proliferation in cell culture assays using a Vero-E6 cell line infected with MERS-CoV",https://www.ncbi.nlm.nih.gov/pubmed/24590073;https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4937725/;;;;
-AUZONCFQVSMFAP-UHFFFAOYSA-N,Disulfiram;Disulfiram,1,3,In vitro inhibition of SARS and MERS enzymes;Mpro (Viral Main proteinase) inhibitors found though VS + Enzimolgy tests ,https://www.ncbi.nlm.nih.gov/pubmed/29289665;https://www.jstage.jst.go.jp/article/ddt/14/1/14_2020.01012/_pdf/-char/en;;;;
-NCDNCNXCDXHOMX-XGKFQTDJSA-N,Ritonavir,-1,3,Used for MERS clinically / No effect in clinical trial for Covid19,https://www.nejm.org/doi/full/10.1056/NEJMoa2001282;https://trialsjournal.biomedcentral.com/articles/10.1186/s13063-019-3846-x;
-CJBJHOAVZSMMDJ-UHFFFAOYSA-N,Darunavir;Darunavir,1,3,Not clear if clinical trial ongoing;Mpro (Viral Main proteinase) inhibitors found though VS + Enzimolgy tests ,https://www.pharmaceutical-technology.com/news/jj-janssen-darunavir-coronavirus/;https://www.jstage.jst.go.jp/article/ddt/14/1/14_2020.01012/_pdf/-char/en;;;;
-VSZGPKBBMSAYNT-RRFJBIMHSA-N,Oseltamivir,3,0,"Ongoing trial, used for influenza A and B",https://laegemiddelstyrelsen.dk/da/nyheder/temaer/ny-coronavirus-covid-19/~/media/5B83D25935DF43A38FF823E24604AC36.ashx;;
-MQQNFDZXWVTQEH-UHFFFAOYSA-N,Nafamostat,1,3,"effective against MERS, COVID19",https://www.nature.com/articles/s41422-020-0282-0;;
-LUKBXSAWLPMMSZ-OWOJBTEDSA-N,Resveratrol,1,0,In principle inhibits MERS infection...,https://bmcinfectdis.biomedcentral.com/articles/10.1186/s12879-017-2253-8;;
-KCFYEAOKVJSACF-UHFFFAOYSA-N,Umifenovir;arbidol,3,2,"Used in influenza treatment, only approved in Russia, clinical assays for COVID 19 ongoing;COVID-19 patients untreated with antiviral previously, favipiravir can be considered as a preferred treatment",https://pubmed.ncbi.nlm.nih.gov/15266832/;https://www.medrxiv.org/content/10.1101/2020.03.17.20037432v1;;;;
-XEEQGYMUWCZPDN-DOMZBBRYSA-N,Mefloquine;Mefloquine,1,2,Effective against MERS and SARS in vitro;Preclinical evidence that diminishes SARS-Cov-2 viral load in Vero cells *BioArx,https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4136000/;https://www.biorxiv.org/content/10.1101/2020.03.20.999730v2.full.pdf+html;;;;
-OVCDSSHSILBFBN-UHFFFAOYSA-N,Amodiaquine;Amodiaquine,2,2,Effective against MERS and SARS in vitro / used in EBOLa;Preclinical evidence that diminishes SARS-Cov-2 viral load in Vero cells *BioArx,https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4136000/;https://www.biorxiv.org/content/10.1101/2020.03.20.999730v2.full.pdf+html;https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6934550/;;;
-UYNVMODNBIQBMV-UHFFFAOYSA-N,Ifenprodil (maybe enters clinical trial),3,5,Improves survival of H5N1 infected mice,https://www.ncbi.nlm.nih.gov/pubmed/31822599;;
-BSPZFJDYQHDZNR-BOSXTWCSSA-N,GC376,1,3,Cures a coronavirus-like disease in felines,https://www.ncbi.nlm.nih.gov/pubmed/27027316;;
-YQNQNVDNTFHQSW-UHFFFAOYSA-N,Nitazoxanide,3,1,"Induces interferon production, works in influenza",https://www.ncbi.nlm.nih.gov/pubmed/25108173;;
-PMATZTZNYRCHOR-CGLBZJNRSA-N,Cyclosporine A;Cyclosporine,2,5,Reduces MERS infection in human in vitro ex vivo;Preclinical evidence that diminishes SARS-Cov-2 viral load in Vero cells *BioArx,https://www.ncbi.nlm.nih.gov/pubmed/29772254;https://www.biorxiv.org/content/10.1101/2020.03.20.999730v2.full.pdf+html;https://www.ncbi.nlm.nih.gov/pubmed/23620378;;;
-OLROWHGDTNFZBH-XEMWPYQTSA-N,Alisporivir,1,0,Prevents in vitro MERS/SARS infection but not in mouse model,https://www.ncbi.nlm.nih.gov/pubmed/27840112;;
-CYOHGALHFOKKQC-UHFFFAOYSA-N,Selumetinib,1,1,Inhibits MERS replication in vitro,https://www.ncbi.nlm.nih.gov/pubmed/25487801;;
-LIRYPHYGHXZJBZ-UHFFFAOYSA-N,Trametinib,1,1,Inhibits MERS replication in vitro,https://www.ncbi.nlm.nih.gov/pubmed/25487801;;
-OUKYUETWWIPKQR-UHFFFAOYSA-N,Saracatinib,1,1,Inhibits MERS replication in vitro,https://www.ncbi.nlm.nih.gov/pubmed/29795047;;
-XASIMHXSUQUHLV-UHFFFAOYSA-N,Camostat mesylate;Camostat,1,2,Reduce SARS-Cov2 infection in Calu2 cells.;Drugs from Sars-Cov-2-Human PPI map,https://www.cell.com/cell/fulltext/S0092-8674(20)30229-4;https://www.biorxiv.org/content/10.1101/2020.03.22.002386v1.full.pdf;;;;
-SRVFFFJZQVENJC-IHRRRGAJSA-N,E-64d,1,2,Reduce SARS-2-S infection in caco2 and 293T. No data for SARS-Cov2,https://www.cell.com/cell/fulltext/S0092-8674(20)30229-4;;
-LUKZNWIVRBCLON-GXOBDPJESA-N,Ciclesonide;Ciclesonide,3,5,very small clinical trial with positive outcome;Preclinical evidence that diminishes SARS-Cov-2 viral load in Vero cells *BioArx,https://www3.nhk.or.jp/nhkworld/en/news/20200303_20/;https://www.biorxiv.org/content/10.1101/2020.03.20.999730v2.full.pdf+html;;;;
-RJMUSRYZPJIFPJ-UHFFFAOYSA-N,Niclosamide,1,1,"MoA: inhibits SKP2 enzyme, tested in Vero cells *BioArx / Effect validated for Sars-CoV in 2003",https://www.biorxiv.org/content/10.1101/2020.03.20.999730v2.full.pdf+html;;
-UUSZLLQJYRSZIS-LXNNNBEUSA-N,Aplidin,1,1,"Pharmamar. Preclinical results on HCoV-229E, at nM range. Unpublished",http://www.pmfarma.es/noticias/28280-pharmamar-anuncia-resultados-positivos-de-aplidin-contra-el-coronavirus-hcov-229e.html;;
-MPMFCABZENCRHV-UHFFFAOYSA-N,Tilorone,0,5,Preclinical evidence that diminishes SARS-Cov-2 viral load in Vero cells *BioArx,https://www.biorxiv.org/content/10.1101/2020.03.20.999730v2.full.pdf+html;;
-MYEJFUXQJGHEQK-ALRJYLEOSA-N,Proscillaridin,0,0,Preclinical evidence that diminishes SARS-Cov-2 viral load in Vero cells *BioArx,https://www.biorxiv.org/content/10.1101/2020.03.20.999730v2.full.pdf+html;;
-WDJUZGPOPHTGOT-XUDUSOBPSA-N,Digitoxin,0,0,Preclinical evidence that diminishes SARS-Cov-2 viral load in Vero cells *BioArx,https://www.biorxiv.org/content/10.1101/2020.03.20.999730v2.full.pdf+html;;
-LTMHDMANZUZIPE-PUGKRICDSA-N,Digoxin,0,0,Preclinical evidence that diminishes SARS-Cov-2 viral load in Vero cells *BioArx,https://www.biorxiv.org/content/10.1101/2020.03.20.999730v2.full.pdf+html;;
-ACGUYXCXAPNIKK-UHFFFAOYSA-N,Hexachlorophene,0,3,Preclinical evidence that diminishes SARS-Cov-2 viral load in Vero cells *BioArx,https://www.biorxiv.org/content/10.1101/2020.03.20.999730v2.full.pdf+html;;
-DOMWKUIIPQCAJU-LJHIYBGHSA-N,Hydroxyprogesterone caproate,0,0,Preclinical evidence that diminishes SARS-Cov-2 viral load in Vero cells *BioArx,https://www.biorxiv.org/content/10.1101/2020.03.20.999730v2.full.pdf+html;;
-KQXDHUJYNAXLNZ-XQSDOZFQSA-N,Salinomycin,0,0,Preclinical evidence that diminishes SARS-Cov-2 viral load in Vero cells *BioArx,https://www.biorxiv.org/content/10.1101/2020.03.20.999730v2.full.pdf+html;;
-LPMXVESGRSUGHW-HBYQJFLCSA-N,Ouabain,0,0,Preclinical evidence that diminishes SARS-Cov-2 viral load in Vero cells *BioArx,https://www.biorxiv.org/content/10.1101/2020.03.20.999730v2.full.pdf+html;;
-YVPXVXANRNDGTA-WDYNHAJCSA-N,Cepharanthine,0,0,Preclinical evidence that diminishes SARS-Cov-2 viral load in Vero cells *BioArx,https://www.biorxiv.org/content/10.1101/2020.03.20.999730v2.full.pdf+html;;
-JYWIYHUXVMAGLG-UHFFFAOYSA-N,Oxyclozanide,0,0,Preclinical evidence that diminishes SARS-Cov-2 viral load in Vero cells *BioArx,https://www.biorxiv.org/content/10.1101/2020.03.20.999730v2.full.pdf+html;;
-JHVAMHSQVVQIOT-MFAJLEFUSA-N,Anidulafungin,0,0,Preclinical evidence that diminishes SARS-Cov-2 viral load in Vero cells *BioArx,https://www.biorxiv.org/content/10.1101/2020.03.20.999730v2.full.pdf+html;;
-GYQYAJJFPNQOOW-UHFFFAOYSA-N,Gilteritinib,0,1,Preclinical evidence that diminishes SARS-Cov-2 viral load in Vero cells *BioArx,https://www.biorxiv.org/content/10.1101/2020.03.20.999730v2.full.pdf+html;;
-DFOCUWZXJBAUSQ-URLMMPGGSA-N,Berbamine,0,0,Preclinical evidence that diminishes SARS-Cov-2 viral load in Vero cells *BioArx,https://www.biorxiv.org/content/10.1101/2020.03.20.999730v2.full.pdf+html;;
-WVTKBKWTSCPRNU-KYJUHHDHSA-N,Tetrandine,0,0,Preclinical evidence that diminishes SARS-Cov-2 viral load in Vero cells *BioArx,https://www.biorxiv.org/content/10.1101/2020.03.20.999730v2.full.pdf+html;;
-UZWDCWONPYILKI-UHFFFAOYSA-N,Abemaciclib,0,1,Preclinical evidence that diminishes SARS-Cov-2 viral load in Vero cells *BioArx,https://www.biorxiv.org/content/10.1101/2020.03.20.999730v2.full.pdf+html;;
-PURKAOJPTOLRMP-UHFFFAOYSA-N,Ivacaftor,0,1,Preclinical evidence that diminishes SARS-Cov-2 viral load in Vero cells *BioArx,https://www.biorxiv.org/content/10.1101/2020.03.20.999730v2.full.pdf+html;;
-UCJGJABZCDBEDK-UHFFFAOYSA-N,Bazedoxifene,0,0,Preclinical evidence that diminishes SARS-Cov-2 viral load in Vero cells *BioArx,https://www.biorxiv.org/content/10.1101/2020.03.20.999730v2.full.pdf+html;;
-SVOQIEJWJCQGDQ-UHFFFAOYSA-N,Eltrombopag,0,0,Preclinical evidence that diminishes SARS-Cov-2 viral load in Vero cells *BioArx,https://www.biorxiv.org/content/10.1101/2020.03.20.999730v2.full.pdf+html;;
-IACQCQDWSIQSRP-ZCFIWIBFSA-N,Tenofovir diphosphate,0,4,Inhibition of RdRp in polymerase extension experiment *BioArx,https://www.biorxiv.org/content/10.1101/2020.03.18.997585v1.full.pdf+html;;
-TTZHDVOVKQGIBA-IAAJYNJHSA-N,Sofosbuvir,0,4,Inhibition of RdRp in polymerase extension experiment *BioArx,https://www.biorxiv.org/content/10.1101/2020.03.18.997585v1.full.pdf+html;;
-UNKRRBWXJZNMAN-XLPZGREQSA-N,3’-fluoro-3’-deoxythymidine triphosphate (Alovudine),0,4,Inhibition of RdRp in polymerase extension experiment *BioArx,https://www.biorxiv.org/content/10.1101/2020.03.18.997585v1.full.pdf+html;;
-GLWHPRRGGYLLRV-XLPZGREQSA-N,3’-azido-3’- deoxythymidine triphosphate (AZT-triP),0,4,Inhibition of RdRp in polymerase extension experiment *BioArx,https://www.biorxiv.org/content/10.1101/2020.03.18.997585v1.full.pdf+html;;
-AXRYRYVKAWYZBR-GASGPIRDSA-N,Atazanavir,0,3,"None, computational (MoA: inhibitor 3CLp) *BioArx",https://www.biorxiv.org/content/10.1101/2020.01.31.929547v1;;
-XPOQHMRABVBWPR-ZDUSSCGKSA-N,Efavirenz,0,4,"None, computational (MoA: inhibitor 3CLp) *BioArx",https://www.biorxiv.org/content/10.1101/2020.01.31.929547v1;;
-XUZMWHLSFXCVMG-UHFFFAOYSA-N,Baricitinib,0,5,affinity AAK-1 binding drug,https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(20)30304-4/fulltext;;
-FHCUMDQMBHQXKK-UHFFFAOYSA-N,Velpatasvir,0,4,NS5A inhibtors in HCV found through Virtual Screening,https://f1000research.com/articles/9-129/v1;;
-VRTWBAAJJOHBQU-UHFFFAOYSA-N,Ledipasvir,0,4,NS5A inhibtors in HCV found through Virtual Screening,https://f1000research.com/articles/9-129/v1;;
-FSVJFNAIGNNGKK-UHFFFAOYSA-N,Praziquantel,0,3,Papain-like protease inhibitors found by docking using Homology modeling from SARS CoV. Drugs found through VS of FDA aproved drugs.,https://chemrxiv.org/articles/Potential_Inhibitors_Against_Papain-like_Protease_of_Novel_Coronavirus_COVID-19_from_FDA_Approved_Drugs/11860011/2;;
-VDHAWDNDOKGFTD-UHFFFAOYSA-N,Cinacalcet,0,3,Papain-like protease inhibitors found by docking using Homology modeling from SARS CoV. Drugs found through VS of FDA aproved drugs.,https://chemrxiv.org/articles/Potential_Inhibitors_Against_Papain-like_Protease_of_Novel_Coronavirus_COVID-19_from_FDA_Approved_Drugs/11860011/3;;
-REQCZEXYDRLIBE-UHFFFAOYSA-N,Procainamide,0,3,Papain-like protease inhibitors found by docking using Homology modeling from SARS CoV. Drugs found through VS of FDA aproved drugs.,https://chemrxiv.org/articles/Potential_Inhibitors_Against_Papain-like_Protease_of_Novel_Coronavirus_COVID-19_from_FDA_Approved_Drugs/11860011/4;;
-DOMXUEMWDBAQBQ-UHFFFAOYSA-N,Terbinafine,0,3,Papain-like protease inhibitors found by docking using Homology modeling from SARS CoV. Drugs found through VS of FDA aproved drugs.,https://chemrxiv.org/articles/Potential_Inhibitors_Against_Papain-like_Protease_of_Novel_Coronavirus_COVID-19_from_FDA_Approved_Drugs/11860011/5;;
-XADCESSVHJOZHK-UHFFFAOYSA-N,Pethidine,0,3,Papain-like protease inhibitors found by docking using Homology modeling from SARS CoV. Drugs found through VS of FDA aproved drugs.,https://chemrxiv.org/articles/Potential_Inhibitors_Against_Papain-like_Protease_of_Novel_Coronavirus_COVID-19_from_FDA_Approved_Drugs/11860011/6;;
-SGUAFYQXFOLMHL-UHFFFAOYSA-N,Labetalol,0,3,Papain-like protease inhibitors found by docking using Homology modeling from SARS CoV. Drugs found through VS of FDA aproved drugs.,https://chemrxiv.org/articles/Potential_Inhibitors_Against_Papain-like_Protease_of_Novel_Coronavirus_COVID-19_from_FDA_Approved_Drugs/11860011/7;;
-BYJAVTDNIXVSPW-UHFFFAOYSA-N,Tetrahydrozoline,0,3,Papain-like protease inhibitors found by docking using Homology modeling from SARS CoV. Drugs found through VS of FDA aproved drugs.,https://chemrxiv.org/articles/Potential_Inhibitors_Against_Papain-like_Protease_of_Novel_Coronavirus_COVID-19_from_FDA_Approved_Drugs/11860011/8;;
-PHWBOXQYWZNQIN-UHFFFAOYSA-N,Ticlopidine,0,3,Papain-like protease inhibitors found by docking using Homology modeling from SARS CoV. Drugs found through VS of FDA aproved drugs.,https://chemrxiv.org/articles/Potential_Inhibitors_Against_Papain-like_Protease_of_Novel_Coronavirus_COVID-19_from_FDA_Approved_Drugs/11860011/9;;
-HLFSDGLLUJUHTE-SNVBAGLBSA-N,Levamisole,0,3,Papain-like protease inhibitors found by docking using Homology modeling from SARS CoV. Drugs found through VS of FDA aproved drugs.,https://chemrxiv.org/articles/Potential_Inhibitors_Against_Papain-like_Protease_of_Novel_Coronavirus_COVID-19_from_FDA_Approved_Drugs/11860011/11;;
-KRMDCWKBEZIMAB-UHFFFAOYSA-N,Amitriptyline,0,3,Papain-like protease inhibitors found by docking using Homology modeling from SARS CoV. Drugs found through VS of FDA aproved drugs.,https://chemrxiv.org/articles/Potential_Inhibitors_Against_Papain-like_Protease_of_Novel_Coronavirus_COVID-19_from_FDA_Approved_Drugs/11860011/12;;
-CNIIGCLFLJGOGP-UHFFFAOYSA-N,Naphazoline,0,3,Papain-like protease inhibitors found by docking using Homology modeling from SARS CoV. Drugs found through VS of FDA aproved drugs.,https://chemrxiv.org/articles/Potential_Inhibitors_Against_Papain-like_Protease_of_Novel_Coronavirus_COVID-19_from_FDA_Approved_Drugs/11860011/13;;
-BPZSYCZIITTYBL-UHFFFAOYSA-N,Formoterol,0,3,Papain-like protease inhibitors found by docking using Homology modeling from SARS CoV. Drugs found through VS of FDA aproved drugs.,https://chemrxiv.org/articles/Potential_Inhibitors_Against_Papain-like_Protease_of_Novel_Coronavirus_COVID-19_from_FDA_Approved_Drugs/11860011/14;;
-JGSARLDLIJGVTE-MBNYWOFBSA-N,Benzylpenicillin,0,3,Papain-like protease inhibitors found by docking using Homology modeling from SARS CoV. Drugs found through VS of FDA aproved drugs.,https://chemrxiv.org/articles/Potential_Inhibitors_Against_Papain-like_Protease_of_Novel_Coronavirus_COVID-19_from_FDA_Approved_Drugs/11860011/15;;
-JBMKAUGHUNFTOL-UHFFFAOYSA-N,Chlorothiazide,0,3,Papain-like protease inhibitors found by docking using Homology modeling from SARS CoV. Drugs found through VS of FDA aproved drugs.,https://chemrxiv.org/articles/Potential_Inhibitors_Against_Papain-like_Protease_of_Novel_Coronavirus_COVID-19_from_FDA_Approved_Drugs/11860011/17;;
-CBVCZFGXHXORBI-UHFFFAOYSA-N,Indinavir,0,3,Mpro (Viral Main proteinase) inhibitors found though VS + Enzimolgy tests ,https://www.jstage.jst.go.jp/article/ddt/14/1/14_2020.01012/_pdf/-char/en;;
-QWAXKHKRTORLEM-UHFFFAOYSA-N,Saquinavir,0,3,Mpro (Viral Main proteinase) inhibitors found though VS + Enzimolgy tests ,https://www.jstage.jst.go.jp/article/ddt/14/1/14_2020.01012/_pdf/-char/en;;
-KJHKTHWMRKYKJE-UHFFFAOYSA-N,Lopinavir,0,3,Mpro (Viral Main proteinase) inhibitors found though VS + Enzimolgy tests ,https://www.jstage.jst.go.jp/article/ddt/14/1/14_2020.01012/_pdf/-char/en;;
-BLMPQMFVWMYDKT-UHFFFAOYSA-N,Carfilzomib,0,1,Mpro (Viral Main proteinase) inhibitors found though VS + Enzimolgy tests ,https://www.jstage.jst.go.jp/article/ddt/14/1/14_2020.01012/_pdf/-char/en;;
-AXRYRYVKAWYZBR-UHFFFAOYSA-N,Atazanavir,0,3,Mpro (Viral Main proteinase) inhibitors found though VS + Enzimolgy tests ,https://www.jstage.jst.go.jp/article/ddt/14/1/14_2020.01012/_pdf/-char/en;;
-MYXACKZCYFKMTE-JETRDCLMSA-N,Tipranavir,0,3,Mpro (Viral Main proteinase) inhibitors found though VS + Enzimolgy tests ,https://www.jstage.jst.go.jp/article/ddt/14/1/14_2020.01012/_pdf/-char/en;;
-MLBVMOWEQCZNCC-UHFFFAOYSA-N,Fosamprenavir,0,3,Mpro (Viral Main proteinase) inhibitors found though VS + Enzimolgy tests ,https://www.jstage.jst.go.jp/article/ddt/14/1/14_2020.01012/_pdf/-char/en;;
-MCGSCOLBFJQGHM-UHFFFAOYSA-N,Abacavir,0,4,Mpro (Viral Main proteinase) inhibitors found though VS + Enzimolgy tests ,https://www.jstage.jst.go.jp/article/ddt/14/1/14_2020.01012/_pdf/-char/en;;
-JUZYLCPPVHEVSV-UHFFFAOYSA-N,Elvitegravir,0,0,Mpro (Viral Main proteinase) inhibitors found though VS + Enzimolgy tests ,https://www.jstage.jst.go.jp/article/ddt/14/1/14_2020.01012/_pdf/-char/en;;
-KJFBVJALEQWJBS-XUXIUFHCSA-N,Maribavir,0,0,Mpro (Viral Main proteinase) inhibitors found though VS + Enzimolgy tests ,https://www.jstage.jst.go.jp/article/ddt/14/1/14_2020.01012/_pdf/-char/en;;
-CZFFBEXEKNGXKS-UHFFFAOYSA-N,Raltegravir,0,0,Mpro (Viral Main proteinase) inhibitors found though VS + Enzimolgy tests ,https://www.jstage.jst.go.jp/article/ddt/14/1/14_2020.01012/_pdf/-char/en;;
-UCHDWCPVSPXUMX-UHFFFAOYSA-N,Montelukast,0,5,Mpro (Viral Main proteinase) inhibitors found though VS + Enzimolgy tests ,https://www.jstage.jst.go.jp/article/ddt/14/1/14_2020.01012/_pdf/-char/en;;
-MFMQRDLLSRLUJY-YMQHIKHWSA-N,Deoxyrhapontin,0,0,Mpro (Viral Main proteinase) inhibitors found though VS + Enzimolgy tests ,https://www.jstage.jst.go.jp/article/ddt/14/1/14_2020.01012/_pdf/-char/en;;
-HSTZMXCBWJGKHG-UHFFFAOYSA-N,Polydatin,0,0,Mpro (Viral Main proteinase) inhibitors found though VS + Enzimolgy tests ,https://www.jstage.jst.go.jp/article/ddt/14/1/14_2020.01012/_pdf/-char/en;;
-DQFBYFPFKXHELB-UHFFFAOYSA-N,Chalcone,0,0,Mpro (Viral Main proteinase) inhibitors found though VS + Enzimolgy tests ,https://www.jstage.jst.go.jp/article/ddt/14/1/14_2020.01012/_pdf/-char/en;;
-AOCCBINRVIKJHY-UHFFFAOYSA-N,Carmofur,0,4,Mpro (Viral Main proteinase) inhibitors found though VS + Enzimolgy tests ,https://www.jstage.jst.go.jp/article/ddt/14/1/14_2020.01012/_pdf/-char/en;;
-NEZONWMXZKDMKF-UHFFFAOYSA-N,Shikonin,0,0,Mpro (Viral Main proteinase) inhibitors found though VS + Enzimolgy tests ,https://www.jstage.jst.go.jp/article/ddt/14/1/14_2020.01012/_pdf/-char/en;;
-PMJIHLSCWIDGMD-UHFFFAOYSA-N,Tideglusib,0,0,Mpro (Viral Main proteinase) inhibitors found though VS + Enzimolgy tests ,https://www.jstage.jst.go.jp/article/ddt/14/1/14_2020.01012/_pdf/-char/en;;
-BPBPYQWMFCTCNG-UHFFFAOYSA-N,PX-12,0,0,Mpro (Viral Main proteinase) inhibitors found though VS + Enzimolgy tests ,https://www.jstage.jst.go.jp/article/ddt/14/1/14_2020.01012/_pdf/-char/en;;
-JDSJDASOXWCHPN-UHFFFAOYSA-N,TDZD-8,0,1,Mpro (Viral Main proteinase) inhibitors found though VS + Enzimolgy tests ,https://www.jstage.jst.go.jp/article/ddt/14/1/14_2020.01012/_pdf/-char/en;;
-PMATZTZNYRCHOR-UHFFFAOYSA-N,Cyclosporin A,0,0,Mpro (Viral Main proteinase) inhibitors found though VS + Enzimolgy tests ,https://www.jstage.jst.go.jp/article/ddt/14/1/14_2020.01012/_pdf/-char/en;;
-RSUVYMGADVXGOU-BUHFOSPRSA-N,Cinanserin,0,3,Mpro (Viral Main proteinase) inhibitors found though VS + Enzimolgy tests ,https://www.jstage.jst.go.jp/article/ddt/14/1/14_2020.01012/_pdf/-char/en;;
-DNVXATUJJDPFDM-KRWDZBQOSA-N,JQ1,0,1,Drugs from Sars-Cov-2-Human PPI map,https://www.biorxiv.org/content/10.1101/2020.03.22.002386v1.full.pdf;;
-NETXMUIMUZJUTB-UHFFFAOYSA-N,RVX-208,0,1,Drugs from Sars-Cov-2-Human PPI map,https://www.biorxiv.org/content/10.1101/2020.03.22.002386v1.full.pdf;;
-MUOKSQABCJCOPU-UHFFFAOYSA-N,Silmitasertib,0,1,Drugs from Sars-Cov-2-Human PPI map,https://www.biorxiv.org/content/10.1101/2020.03.22.002386v1.full.pdf;;
-PHAOTASRLQMKBE-UHFFFAOYSA-N,TMCB,0,1,Drugs from Sars-Cov-2-Human PPI map,https://www.biorxiv.org/content/10.1101/2020.03.22.002386v1.full.pdf;;
-JWOGUUIOCYMBPV-LQJYRIKDSA-N,Apicidin,0,0,Drugs from Sars-Cov-2-Human PPI map,https://www.biorxiv.org/content/10.1101/2020.03.22.002386v1.full.pdf;;
-NIJJYAXOARWZEE-UHFFFAOYSA-N,Valproic Acid,0,0,Drugs from Sars-Cov-2-Human PPI map,https://www.biorxiv.org/content/10.1101/2020.03.22.002386v1.full.pdf;;
-XDHNQDDQEHDUTM-UHFFFAOYSA-N,Bafilomycin A1,0,2,Drugs from Sars-Cov-2-Human PPI map,https://www.biorxiv.org/content/10.1101/2020.03.22.002386v1.full.pdf;;
-DGPGXHRHNRYVDH-UHFFFAOYSA-N,E-52862,0,1,Drugs from Sars-Cov-2-Human PPI map,https://www.biorxiv.org/content/10.1101/2020.03.22.002386v1.full.pdf;;
-FOQRKFCLRMMKAT-UHFFFAOYSA-N,PD-144418,0,1,Drugs from Sars-Cov-2-Human PPI map,https://www.biorxiv.org/content/10.1101/2020.03.22.002386v1.full.pdf;;
-BDSYECBSUUOPCT-UHFFFAOYSA-N,RS-PPC,0,0,Drugs from Sars-Cov-2-Human PPI map,https://www.biorxiv.org/content/10.1101/2020.03.22.002386v1.full.pdf;;
-PHRCDWVPTULQMT-UHFFFAOYSA-N,PB28,0,0,Drugs from Sars-Cov-2-Human PPI map,https://www.biorxiv.org/content/10.1101/2020.03.22.002386v1.full.pdf;;
-LNEPOXFFQSENCJ-UHFFFAOYSA-N,Haloperidol ,0,0,Drugs from Sars-Cov-2-Human PPI map,https://www.biorxiv.org/content/10.1101/2020.03.22.002386v1.full.pdf;;
-JRURYQJSLYLRLN-BJMVGYQFSA-N,Entacapone,0,0,Drugs from Sars-Cov-2-Human PPI map,https://www.biorxiv.org/content/10.1101/2020.03.22.002386v1.full.pdf;;
-CGIGDMFJXJATDK-UHFFFAOYSA-N,Indomethacin ,0,5,Drugs from Sars-Cov-2-Human PPI map,https://www.biorxiv.org/content/10.1101/2020.03.22.002386v1.full.pdf;;
-XZWYZXLIPXDOLR-UHFFFAOYSA-N,Metformin,0,0,Drugs from Sars-Cov-2-Human PPI map,https://www.biorxiv.org/content/10.1101/2020.03.22.002386v1.full.pdf;;
-PHXJVRSECIGDHY-UHFFFAOYSA-N,Ponatinib ,0,1,Drugs from Sars-Cov-2-Human PPI map,https://www.biorxiv.org/content/10.1101/2020.03.22.002386v1.full.pdf;;
-ZKZXNDJNWUTGDK-NSCUHMNNSA-N,H-89,0,1,Drugs from Sars-Cov-2-Human PPI map,https://www.biorxiv.org/content/10.1101/2020.03.22.002386v1.full.pdf;;
-JBPUGFODGPKTDW-SFHVURJKSA-N,Merimepodib,0,1,Drugs from Sars-Cov-2-Human PPI map,https://www.biorxiv.org/content/10.1101/2020.03.22.002386v1.full.pdf;;
-LXBIFEVIBLOUGU-DPYQTVNSSA-N,Migalastat,0,1,Drugs from Sars-Cov-2-Human PPI map,https://www.biorxiv.org/content/10.1101/2020.03.22.002386v1.full.pdf;;
-HPNSFSBZBAHARI-RUDMXATFSA-N,Mycophenolic acid,0,5,Drugs from Sars-Cov-2-Human PPI map,https://www.biorxiv.org/content/10.1101/2020.03.22.002386v1.full.pdf;;
-JJWLXRKVUJDJKG-VIFPVBQESA-N,XL413,0,1,Drugs from Sars-Cov-2-Human PPI map,https://www.biorxiv.org/content/10.1101/2020.03.22.002386v1.full.pdf;;
-BMGQWWVMWDBQGC-IIFHNQTCSA-N,Midostaurin,0,1,Drugs from Sars-Cov-2-Human PPI map,https://www.biorxiv.org/content/10.1101/2020.03.22.002386v1.full.pdf;;
-HFNKQEVNSGCOJV-OAHLLOKOSA-N,Ruxolitinib,0,1,Drugs from Sars-Cov-2-Human PPI map,https://www.biorxiv.org/content/10.1101/2020.03.22.002386v1.full.pdf;;
-UCUHFWIFSHROPY-RWPZCVJISA-N,AC-55541,0,1,Drugs from Sars-Cov-2-Human PPI map,https://www.biorxiv.org/content/10.1101/2020.03.22.002386v1.full.pdf;;
-STQGQHZAVUOBTE-VGBVRHCVSA-N,Daunorubicin,0,0,Drugs from Sars-Cov-2-Human PPI map,https://www.biorxiv.org/content/10.1101/2020.03.22.002386v1.full.pdf;;
-SGTNSNPWRIOYBX-UHFFFAOYSA-N,S-verapamil,0,0,Drugs from Sars-Cov-2-Human PPI map,https://www.biorxiv.org/content/10.1101/2020.03.22.002386v1.full.pdf;;
-GCWIQUVXWZWCLE-INIZCTEOSA-N,CPI-0610,0,1,Drugs from Sars-Cov-2-Human PPI map,https://www.biorxiv.org/content/10.1101/2020.03.22.002386v1.full.pdf;;
-GYLDXIAOMVERTK-UHFFFAOYSA-N,Sapanisertib,0,1,Drugs from Sars-Cov-2-Human PPI map,https://www.biorxiv.org/content/10.1101/2020.03.22.002386v1.full.pdf;;
-BFSMGDJOXZAERB-UHFFFAOYSA-N,Dabrafenib,0,1,Drugs from Sars-Cov-2-Human PPI map,https://www.biorxiv.org/content/10.1101/2020.03.22.002386v1.full.pdf;;
-ONJZYZYZIKTIEG-CFBQITSMSA-N,Sanglifehrin A,0,5,Drugs from Sars-Cov-2-Human PPI map,https://www.biorxiv.org/content/10.1101/2020.03.22.002386v1.full.pdf;;
-QJJXYPPXXYFBGM-LFZNUXCKSA-N,FK-506,0,5,Drugs from Sars-Cov-2-Human PPI map,https://www.biorxiv.org/content/10.1101/2020.03.22.002386v1.full.pdf;;
-MPUQHZXIXSTTDU-QXGSTGNESA-N,Pevonedistat,0,1,Drugs from Sars-Cov-2-Human PPI map,https://www.biorxiv.org/content/10.1101/2020.03.22.002386v1.full.pdf;;
-WOBPZFKXPCYOLU-YBFXNURJSA-N,4E2RCat,0,4,Drugs from Sars-Cov-2-Human PPI map,https://www.biorxiv.org/content/10.1101/2020.03.22.002386v1.full.pdf;https://www.ncbi.nlm.nih.gov/pubmed/?term=Blocking+eIF4E%3AeIF4G+interaction+as+a+strategy+to+impair+coronavirus+replication;
-FAKRSMQSSFJEIM-RQJHMYQMSA-N,Captopril,0,2,Drugs from Sars-Cov-2-Human PPI map,https://www.biorxiv.org/content/10.1101/2020.03.22.002386v1.full.pdf;;
-RLAWWYSOJDYHDC-BZSNNMDCSA-N,Lisinopril,0,2,Drugs from Sars-Cov-2-Human PPI map,https://www.biorxiv.org/content/10.1101/2020.03.22.002386v1.full.pdf;;
-WIIZWVCIJKGZOK-RKDXNWHRSA-N,Chloramphenicol,0,0,Drugs from Sars-Cov-2-Human PPI map,https://www.biorxiv.org/content/10.1101/2020.03.22.002386v1.full.pdf;;
-CGZOGNUFXMNYEI-UDUHKTKDSA-N,Tigecycline,0,0,Drugs from Sars-Cov-2-Human PPI map,https://www.biorxiv.org/content/10.1101/2020.03.22.002386v1.full.pdf;;
-TYZROVQLWOKYKF-ZDUSSCGKSA-N,Linezolid,0,0,Drugs from Sars-Cov-2-Human PPI map,https://www.biorxiv.org/content/10.1101/2020.03.22.002386v1.full.pdf;;
+inchikey	name	evidence	moa
+KBOPZPXVLCULAV-UHFFFAOYSA-N	Mesalazine	Computational	Immunomodulator
+XFCLJVABOIYOMF-QPLCGJKRSA-N	Toremifene	Preclinical	Virus entry
+JUKPWJGBANNWMW-VWBFHTRKSA-N	Eplerenone	Preclinical	Immunomodulator
+AHOUBRCZNHFOSL-YOEHRIQHSA-N	Paroxetine	Computational	Unknown
+QFJCIRLUMZQUOT-HPLJOQBZSA-N	Sirolimus	Clinics	Immunomodulator
+RJURFGZVJUQBHK-IIXSONLDSA-N	Dactinomycin	Computational	Unknown
+YOSHYTLCDANDAN-UHFFFAOYSA-N	Irbesartan	Preclinical	Virus entry
+GLVAUDGFNGKCSF-UHFFFAOYSA-N	Mercaptopurine	Computational	Immunomodulator
+DRLFMBDRBRZALE-UHFFFAOYSA-N	Melatonin	Preclinical	Immunomodulator
+GPKJTRJOBQGKQK-UHFFFAOYSA-N	Quinacrine	Computational	Virus entry
+OGHNVEJMJSYVRP-UHFFFAOYSA-N	Carvedilol	Computational	Immunomodulator
+IAKHMKGGTNLKSZ-INIZCTEOSA-N	Colchicine	Computational	Unknown
+DSSYKIVIOFKYAU-UHFFFAOYSA-N	Synthetic camphor	Computational	Virus entry
+WKRLQDKEXYKHJB-HFTRVMKXSA-N	Equilin	Preclinical	Virus entry
+DLZUBMGMHUNDLF-UHFFFAOYSA-N	Chebi:125460	Computational	Unknown
+RHMXXJGYXNZAPX-UHFFFAOYSA-N	Emodin	Computational	Unknown
+ZCGNOVWYSGBHAU-UHFFFAOYSA-N	Favipiravir	Clinics COVID19	RNA trans./rep.
+WHTVZRBIWZFKQO-UHFFFAOYSA-N	Chloroquine	Clinics COVID19	Protease inh.
+RDOIQAHITMMDAJ-UHFFFAOYSA-N	Loperamide	Preclinical	Unknown
+KJHKTHWMRKYKJE-SUGCFTRWSA-N	Lopinavir	Clinics COVID19	Protease inh.
+ZPEIMTDSQAKGNT-UHFFFAOYSA-N	Chlorpromazine	Preclinical	Virus entry
+XSCGXQMFQXDFCW-UHFFFAOYSA-N	Triflupromazine	Preclinical	Virus entry
+KTUFNOKKBVMGRW-UHFFFAOYSA-N	Imatinib	Preclinical	Host factor
+ZBNZXTGUTAYRHI-UHFFFAOYSA-N	Dasatinib	Preclinical	Host factor
+SDUQYLNIPVEERB-QPPQHZFASA-N	Gemcitabine	Preclinical	Host factor
+BJNLLBUOHPVGFT-UHFFFAOYSA-N	Teicoplanin	Preclinical	Virus entry
+IWUCXVSUMQZMFG-AFCXAGJDSA-N	Levovirin	Clinics COVID19	RNA trans./rep.
+JNTOCHDNEULJHD-UHFFFAOYSA-N	Penciclovir	Clinics	RNA trans./rep.
+AMFDITJFBUXZQN-KUBHLMPHSA-N	Galidesivir	Preclinical	RNA trans./rep.
+AUZONCFQVSMFAP-UHFFFAOYSA-N	Disulfiram	Preclinical	Protease inh.
+NCDNCNXCDXHOMX-XGKFQTDJSA-N	Ritonavir	Failed in clinics	Protease inh.
+CJBJHOAVZSMMDJ-UHFFFAOYSA-N	Darunavir	Preclinical	Protease inh.
+VSZGPKBBMSAYNT-RRFJBIMHSA-N	Oseltamivir	Clinics COVID19	Unknown
+MQQNFDZXWVTQEH-UHFFFAOYSA-N	Nafamostat	Preclinical	Protease inh.
+LUKBXSAWLPMMSZ-OWOJBTEDSA-N	Resveratrol	Preclinical	Unknown
+KCFYEAOKVJSACF-UHFFFAOYSA-N	Umifenovir	Clinics COVID19	Virus entry
+XEEQGYMUWCZPDN-DOMZBBRYSA-N	Mefloquine	Preclinical	Virus entry
+OVCDSSHSILBFBN-UHFFFAOYSA-N	Amodiaquine	Clinics	Virus entry
+UYNVMODNBIQBMV-UHFFFAOYSA-N	Ifenprodil	Clinics COVID19	Immunomodulator
+BSPZFJDYQHDZNR-BOSXTWCSSA-N	BSPZFJDYQHDZNR-BOSXTWCSSA-N	Preclinical	Protease inh.
+YQNQNVDNTFHQSW-UHFFFAOYSA-N	Nitazoxanide	Clinics COVID19	Host factor
+PMATZTZNYRCHOR-CGLBZJNRSA-N	Ciclosporin	Clinics	Immunomodulator
+OLROWHGDTNFZBH-XEMWPYQTSA-N	Alisporivir	Preclinical	Unknown
+CYOHGALHFOKKQC-UHFFFAOYSA-N	Selumetinib	Preclinical	Host factor
+LIRYPHYGHXZJBZ-UHFFFAOYSA-N	Trametinib	Preclinical	Host factor
+OUKYUETWWIPKQR-UHFFFAOYSA-N	Saracatinib	Preclinical	Host factor
+XASIMHXSUQUHLV-UHFFFAOYSA-N	Camostat	Preclinical	Virus entry
+SRVFFFJZQVENJC-IHRRRGAJSA-N	Aloxistatin	Preclinical	Virus entry
+LUKZNWIVRBCLON-GXOBDPJESA-N	Ciclesonide	Clinics COVID19	Immunomodulator
+RJMUSRYZPJIFPJ-UHFFFAOYSA-N	Niclosamide	Preclinical	Host factor
+UUSZLLQJYRSZIS-LXNNNBEUSA-N	Plitidepsin	Preclinical	Host factor
+MPMFCABZENCRHV-UHFFFAOYSA-N	Tilorone	Computational	Immunomodulator
+MYEJFUXQJGHEQK-ALRJYLEOSA-N	Proscillaridin	Computational	Unknown
+WDJUZGPOPHTGOT-XUDUSOBPSA-N	Digitoxin	Computational	Unknown
+LTMHDMANZUZIPE-PUGKRICDSA-N	Digoxin	Computational	Unknown
+ACGUYXCXAPNIKK-UHFFFAOYSA-N	Hexachlorophene	Computational	Protease inh.
+DOMWKUIIPQCAJU-LJHIYBGHSA-N	Hydroxyprogesterone caproate	Computational	Unknown
+KQXDHUJYNAXLNZ-XQSDOZFQSA-N	Salinomycin	Computational	Unknown
+LPMXVESGRSUGHW-HBYQJFLCSA-N	Ouabain	Computational	Unknown
+YVPXVXANRNDGTA-WDYNHAJCSA-N	Cepharanthine	Computational	Unknown
+JYWIYHUXVMAGLG-UHFFFAOYSA-N	Oxyclozanide	Computational	Unknown
+JHVAMHSQVVQIOT-MFAJLEFUSA-N	Anidulafungin	Computational	Unknown
+GYQYAJJFPNQOOW-UHFFFAOYSA-N	Gilteritinib	Computational	Host factor
+DFOCUWZXJBAUSQ-URLMMPGGSA-N	Berbamine	Computational	Unknown
+WVTKBKWTSCPRNU-KYJUHHDHSA-N	Tetrandrine	Computational	Unknown
+UZWDCWONPYILKI-UHFFFAOYSA-N	Abemaciclib	Computational	Host factor
+PURKAOJPTOLRMP-UHFFFAOYSA-N	Deutivacaftor	Computational	Host factor
+UCJGJABZCDBEDK-UHFFFAOYSA-N	Bazedoxifene	Computational	Unknown
+SVOQIEJWJCQGDQ-UHFFFAOYSA-N	SVOQIEJWJCQGDQ-UHFFFAOYSA-N	Computational	Unknown
+IACQCQDWSIQSRP-ZCFIWIBFSA-N	Tenofovir Diphosphate	Computational	RNA trans./rep.
+TTZHDVOVKQGIBA-IAAJYNJHSA-N	Sofosbuvir	Computational	RNA trans./rep.
+UNKRRBWXJZNMAN-XLPZGREQSA-N	3'-Fluorothymidine-5'-Triphosphate	Computational	RNA trans./rep.
+GLWHPRRGGYLLRV-XLPZGREQSA-N	Zidovudine Triphosphate	Computational	RNA trans./rep.
+AXRYRYVKAWYZBR-GASGPIRDSA-N	Atazanavir	Computational	Protease inh.
+XPOQHMRABVBWPR-ZDUSSCGKSA-N	Efavirenz	Computational	RNA trans./rep.
+XUZMWHLSFXCVMG-UHFFFAOYSA-N	Baricitinib	Computational	Immunomodulator
+FHCUMDQMBHQXKK-UHFFFAOYSA-N	Velpatasvir	Computational	RNA trans./rep.
+VRTWBAAJJOHBQU-UHFFFAOYSA-N	Ledipasvir	Computational	RNA trans./rep.
+FSVJFNAIGNNGKK-UHFFFAOYSA-N	(R)-Praziquantel	Computational	Protease inh.
+VDHAWDNDOKGFTD-UHFFFAOYSA-N	Cinacalcet	Computational	Protease inh.
+REQCZEXYDRLIBE-UHFFFAOYSA-N	Procainamide	Computational	Protease inh.
+DOMXUEMWDBAQBQ-UHFFFAOYSA-N	Terbinafine	Computational	Protease inh.
+XADCESSVHJOZHK-UHFFFAOYSA-N	Meperidine	Computational	Protease inh.
+SGUAFYQXFOLMHL-UHFFFAOYSA-N	Labetalol	Computational	Protease inh.
+BYJAVTDNIXVSPW-UHFFFAOYSA-N	Tetryzoline	Computational	Protease inh.
+PHWBOXQYWZNQIN-UHFFFAOYSA-N	Ticlopidine	Computational	Protease inh.
+HLFSDGLLUJUHTE-SNVBAGLBSA-N	Levamisole	Computational	Protease inh.
+KRMDCWKBEZIMAB-UHFFFAOYSA-N	Amitriptyline	Computational	Protease inh.
+CNIIGCLFLJGOGP-UHFFFAOYSA-N	Naphazoline	Computational	Protease inh.
+BPZSYCZIITTYBL-UHFFFAOYSA-N	Arformoterol	Computational	Protease inh.
+JGSARLDLIJGVTE-MBNYWOFBSA-N	Benzylpenicillin	Computational	Protease inh.
+JBMKAUGHUNFTOL-UHFFFAOYSA-N	Chlorothiazide	Computational	Protease inh.
+CBVCZFGXHXORBI-UHFFFAOYSA-N	Indinavir	Computational	Protease inh.
+QWAXKHKRTORLEM-UHFFFAOYSA-N	Saquinavir	Computational	Protease inh.
+BLMPQMFVWMYDKT-UHFFFAOYSA-N	Carfilzomib	Computational	Host factor
+MYXACKZCYFKMTE-JETRDCLMSA-N	3Spk	Computational	Protease inh.
+MLBVMOWEQCZNCC-UHFFFAOYSA-N	Fosamprenavir	Computational	Protease inh.
+MCGSCOLBFJQGHM-UHFFFAOYSA-N	Abacavir	Computational	RNA trans./rep.
+JUZYLCPPVHEVSV-UHFFFAOYSA-N	Elvitegravir	Computational	Unknown
+KJFBVJALEQWJBS-XUXIUFHCSA-N	Maribavir	Computational	Unknown
+CZFFBEXEKNGXKS-UHFFFAOYSA-N	Raltegravir	Computational	Unknown
+UCHDWCPVSPXUMX-UHFFFAOYSA-N	Montelukast	Computational	Immunomodulator
+MFMQRDLLSRLUJY-YMQHIKHWSA-N	Spectrum_001131	Computational	Unknown
+HSTZMXCBWJGKHG-UHFFFAOYSA-N	Polydatin	Computational	Unknown
+DQFBYFPFKXHELB-UHFFFAOYSA-N	Dqfbyfpfkxhelb-Uhfffaoysa-N	Computational	Unknown
+AOCCBINRVIKJHY-UHFFFAOYSA-N	Carmofur	Computational	RNA trans./rep.
+NEZONWMXZKDMKF-UHFFFAOYSA-N	Shikonin	Computational	Unknown
+PMJIHLSCWIDGMD-UHFFFAOYSA-N	Tideglusib	Computational	Unknown
+BPBPYQWMFCTCNG-UHFFFAOYSA-N	PX-12	Computational	Unknown
+JDSJDASOXWCHPN-UHFFFAOYSA-N	Tdzd-8	Computational	Host factor
+RSUVYMGADVXGOU-BUHFOSPRSA-N	Cinanserin	Computational	Protease inh.
+DNVXATUJJDPFDM-KRWDZBQOSA-N	1268524-70-4	Computational	Host factor
+NETXMUIMUZJUTB-UHFFFAOYSA-N	Apabetalone	Computational	Host factor
+MUOKSQABCJCOPU-UHFFFAOYSA-N	Silmitasertib	Computational	Host factor
+PHAOTASRLQMKBE-UHFFFAOYSA-N	Tmcb	Computational	Host factor
+JWOGUUIOCYMBPV-LQJYRIKDSA-N	Apicidin	Computational	Unknown
+NIJJYAXOARWZEE-UHFFFAOYSA-N	Valproic Acid	Computational	Unknown
+XDHNQDDQEHDUTM-UHFFFAOYSA-N	Bafilomycin A1	Computational	Virus entry
+DGPGXHRHNRYVDH-UHFFFAOYSA-N	S1Ra	Computational	Host factor
+FOQRKFCLRMMKAT-UHFFFAOYSA-N	Pd144418	Computational	Host factor
+BDSYECBSUUOPCT-UHFFFAOYSA-N	Chembl222301	Computational	Unknown
+PHRCDWVPTULQMT-UHFFFAOYSA-N	Pb-28	Computational	Unknown
+LNEPOXFFQSENCJ-UHFFFAOYSA-N	Haloperidol	Computational	Unknown
+JRURYQJSLYLRLN-BJMVGYQFSA-N	Entacapone	Computational	Unknown
+CGIGDMFJXJATDK-UHFFFAOYSA-N	Indometacin	Computational	Immunomodulator
+XZWYZXLIPXDOLR-UHFFFAOYSA-N	Metformin	Computational	Unknown
+PHXJVRSECIGDHY-UHFFFAOYSA-N	Ponatinib	Computational	Host factor
+ZKZXNDJNWUTGDK-NSCUHMNNSA-N	N-[2-(4-BROMOCINNAMYLAMINO)ETHYL]-5-ISOQUINOLINE SULFONAMIDE	Computational	Host factor
+JBPUGFODGPKTDW-SFHVURJKSA-N	Merimepodib	Computational	Host factor
+LXBIFEVIBLOUGU-DPYQTVNSSA-N	Migalastat	Computational	Host factor
+HPNSFSBZBAHARI-RUDMXATFSA-N	Mycophenolic acid	Computational	Immunomodulator
+JJWLXRKVUJDJKG-VIFPVBQESA-N	BMS-863233	Computational	Host factor
+BMGQWWVMWDBQGC-IIFHNQTCSA-N	Midostaurin	Computational	Host factor
+HFNKQEVNSGCOJV-OAHLLOKOSA-N	Ruxolitinib	Computational	Host factor
+UCUHFWIFSHROPY-RWPZCVJISA-N	Ac-55541	Computational	Host factor
+STQGQHZAVUOBTE-VGBVRHCVSA-N	Daunorubicin	Computational	Unknown
+SGTNSNPWRIOYBX-UHFFFAOYSA-N	Dexverapamil	Computational	Unknown
+GCWIQUVXWZWCLE-INIZCTEOSA-N	Cpi-0610	Computational	Host factor
+GYLDXIAOMVERTK-UHFFFAOYSA-N	Sapanisertib	Computational	Host factor
+BFSMGDJOXZAERB-UHFFFAOYSA-N	Dabrafenib	Computational	Host factor
+ONJZYZYZIKTIEG-CFBQITSMSA-N	(3s6s9r10r11s12s13e15e18s21s)-18-{(1e3e7s8s)-9-[(2s3r4s5s6r9s11s)-9-Ethyl-4-Hydroxy-3511-Trimethyl-8-Oxo-1-Oxa-7-Azaspiro[5.5]Undec-2-Yl]-8-Hydroxy-17-Dimethylnona-13-Dienyl}-1012-Dihydroxy-3-(3-Hydroxybenzyl)-6-Isopropyl-11-Methyl-	Computational	Immunomodulator
+QJJXYPPXXYFBGM-LFZNUXCKSA-N	Tacrolimus	Computational	Immunomodulator
+MPUQHZXIXSTTDU-QXGSTGNESA-N	Pevonedistat	Computational	Host factor
+WOBPZFKXPCYOLU-YBFXNURJSA-N	Mls000690029	Computational	RNA trans./rep.
+FAKRSMQSSFJEIM-RQJHMYQMSA-N	1-(3-Mercapto-2-Methyl-Propionyl)-Pyrrolidine-2-Carboxylic Acid	Computational	Virus entry
+RLAWWYSOJDYHDC-BZSNNMDCSA-N	Lisinopril	Computational	Virus entry
+WIIZWVCIJKGZOK-RKDXNWHRSA-N	Chloramphenicol	Computational	Unknown
+CGZOGNUFXMNYEI-UDUHKTKDSA-N	Chebi:125390	Computational	Unknown
+TYZROVQLWOKYKF-ZDUSSCGKSA-N	Linezolid	Computational	Unknown

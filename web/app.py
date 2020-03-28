@@ -12,7 +12,7 @@ app_path = os.path.dirname(os.path.realpath(__file__))
 
 def get_literature_data():
     file_path = os.path.join(app_path, 'data', 'df_lit_cc.csv')
-    data = pd.read_csv(file_path)
+    data = pd.read_csv(file_path, sep="\t")
     print('LOADED %s' % file_path)
     print('LENGTH %s' % len(data))
     return data
@@ -33,7 +33,7 @@ def get_candidate_data(signature='cc', evidence='', moa=''):
         moa = int(moa)
     filen_name = 'df_cand_%s_evi%s_moa%s.csv' % (signature, evidence, moa)
     file_path = os.path.join(app_path, 'data', filen_name)
-    data = pd.read_csv(file_path)
+    data = pd.read_csv(file_path, sep="\t")
     print('LOADED %s' % file_path)
     print('LENGTH %s' % len(data))
     return data
@@ -92,7 +92,7 @@ def get_table_title(signature='cc', evidence='', moa=''):
     moa = request.args.get('moa')
     filen_name = 'legend_%s.csv' % signature
     file_path = os.path.join(app_path, 'data', filen_name)
-    df = pd.read_csv(file_path)
+    df = pd.read_csv(file_path, sep="\t")
     if evidence == '':
         df = df[(df['evidence'].isnull())]
     else:

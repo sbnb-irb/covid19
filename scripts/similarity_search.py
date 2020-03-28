@@ -5,6 +5,7 @@ import gspread
 import collections
 import numpy as np
 import pandas as pd
+from tqdm import tqdm
 from oauth2client.service_account import ServiceAccountCredentials
 
 from chemicalchecker import ChemicalChecker
@@ -30,6 +31,23 @@ def get_raw_literature():
     df = pd.DataFrame(records)
     return df
 
+evidence_legend = {
+   -2 : "NA",
+   -1 : "Failed in clinics",
+    0 : "Computational",
+    1 : "Preclinical",
+    2 : "Clinics",
+    3 : "Clinics COVID19"
+}
+moa_legend = {
+   -2 : "NA",
+    0 : "Unknown",
+    1 : "Host factor",
+    2 : "Virus entry",
+    3 : "Protease inh.",
+    4 : "RNA trans./rep.",
+    5 : "Immunomodulator"
+}
 
 def main(simtype):
 
@@ -48,9 +66,33 @@ def main(simtype):
     print('Fetching literature annotation.')
     df = get_raw_literature()
     literature_file = os.path.join(input_path, 'literature.csv')
-    df.to_csv(literature_file, index=False)
+    df.to_csv(literature_file, index=False, sep="\t")
     literature_file = os.path.join(output_path, 'literature.csv')
-    df.to_csv(literature_file, index=False)
+    df.to_csv(literature_file, index=False, sep="\t")
+
+    # Drugbank
+    with open("data/db2ikey.tsv", "r") as f:
+        druglist = []
+        druglist_conn = []
+        favconn_names = {}
+        favconn_iks   = {}
+        for l in f:
+            l = l.rstrip("\n").split("\t")
+            druglist += [l[-1]]
+            druglist_conn += [l[-1].split("-")[0]]
+            favconn_names[l[-1].split("-")[0]] = l[1]
+            favconn_iks[l[-1].split("-")[0]] = l[-1]
+        druglist = set(druglist)
+        druglist_conn = set(druglist_conn)
+
+    # Names
+    ik_name = {}
+    with open("data/inchikeys_names.csv", "r") as f:
+        for l in f:
+            l = l.rstrip("\n")
+            ik = l[:27]
+            name = l[28:]
+            ik_name[ik] = name
 
     print("Converting inchikeys")
     # Convert to inchikeys
@@ -71,7 +113,14 @@ def main(simtype):
             continue
     R = []
     for k, v in d.items():
-        name = ";".join([x[1] for x in v if type(x[1]) is str])
+        c = k.split("-")[0]
+        if c in favconn_names:
+            name = favconn_names[c]
+        else:
+            if k in ik_name:
+                name = ik_name[k]
+            else:
+                name = k
         evi = [x[2] for x in v if not np.isnan(x[2])]
         if len(evi) > 0:
             evi = np.max(evi)
@@ -82,19 +131,38 @@ def main(simtype):
             moa = int(np.max(moa))
         else:
             moa = -2
-        descriptions = ";".join([x[4] for x in v if type(x[4]) is str])
-        links1 = [x[5] for x in v if type(x[5]) is str]
-        links2 = [x[6] for x in v if type(x[6]) is str]
-        links3 = [x[7] for x in v if type(x[7]) is str]
-        links = links1 + links2 + links3
-        links = ";".join(links)
-        R += [(k, name, evi, moa, descriptions, links)]
+        R += [(k, name, evi, moa)]
+    print("Aggregate literature candidates")
+    d_lit = collections.defaultdict(list)
+    for r in R:
+        d_lit[r[0].split("-")[0]] += [r]
+    R = []
+    for k,v in d_lit.items():
+        if len(v) == 1:
+            R += [v[0]]
+        else:
+            evids_ = [x[2] for x in v]
+            idx = np.argmax(evids_)
+            n = v[idx][1]
+            e = v[idx][2]
+            m = v[idx][3]
+            if k in favconn_iks:
+                ik = favconn_iks[k]
+            else:
+                ik = v[idx][0]
+            R += [(ik, n, e, m)]
+    R_ = []
+    for r in R:
+        R_ += [(r[0], r[1], evidence_legend[r[2]], moa_legend[r[3]])]
     df_lit = pd.DataFrame(
-        R, columns=["inchikey", "name", "evidence",
-                    "moa", "descriptions", "links"])
+        R_, columns=["inchikey", "name", "evidence", "moa"])
+    print("...saving literature for web")
     dest_file = os.path.join(output_path, "df_lit_%s.csv" % simtype)
-    df_lit.to_csv(dest_file, index=False)
-
+    df_lit.to_csv(dest_file, index=False, sep="\t")
+    print("...keeping tractable version of literature")
+    df_lit = pd.DataFrame(
+        R, columns=["inchikey", "name", "evidence", "moa"])
+    print(df_lit.shape)
     print("Getting precomputed similarities")
     # Get precomputed similarities
     iks_can = neig.row_keys
@@ -135,20 +203,6 @@ def main(simtype):
     # Metadata
     print("Metadata: is drug")
     # Drugs
-    with open("data/db2ikey.tsv", "r") as f:
-        druglist = []
-        druglist_conn = []
-        favconn_names = {}
-        favconn_iks = {}
-        for l in f:
-            l = l.rstrip("\n").split("\t")
-            druglist += [l[-1]]
-            c = l[-1].split("-")[0]
-            druglist_conn += [c]
-            favconn_names[c] = l[1]
-            favconn_iks[c] = l[-1]
-        druglist = set(druglist)
-        druglist_conn = set(druglist_conn)
     isdrug_can = []
     for k in iks_can:
         if k.split("-")[0] in druglist_conn:
@@ -159,13 +213,6 @@ def main(simtype):
 
     print("Metadata: names")
     #  Names
-    ik_name = {}
-    with open("data/inchikeys_names.csv", "r") as f:
-        for l in f:
-            l = l.rstrip("\n")
-            ik = l[:27]
-            name = l[28:]
-            ik_name[ik] = name
     nam_can = []
     for k in iks_can:
         if k.split("-")[0] in favconn_names:
@@ -203,9 +250,9 @@ def main(simtype):
     }
     print(cutoffs)
     ranks[ranks == -1] = 100000
-    ranks[np.logical_and(ranks < cutoffs["lpv_5"], ranks > 0)] = -3
-    ranks[np.logical_and(ranks < cutoffs["lpv_4"], ranks > 0)] = -2
-    ranks[np.logical_and(ranks < cutoffs["lpv_3"], ranks > 0)] = -1
+    ranks[np.logical_and(ranks < cutoffs["lpv_5"], ranks >= 0)] = -3
+    ranks[np.logical_and(ranks < cutoffs["lpv_4"], ranks >= 0)] = -2
+    ranks[np.logical_and(ranks < cutoffs["lpv_3"], ranks >= 0)] = -1
     ranks[ranks >= 0] = 0
     ranks = ranks*(-1)
     print(ranks.shape)
@@ -225,6 +272,10 @@ def main(simtype):
     moa_can_ = []
     nam_can_ = []
     isdrug_can_ = []
+    conn_lit_idx = {}
+    assert (len(iks_lit) == len(idxs_lit))
+    for i, k in enumerate(iks_lit):
+        conn_lit_idx[k.split("-")[0]] = idxs_lit[i]
     for conn, idxs in iks_can_conn_idx.items():
         if len(idxs) == 1:
             idx = idxs[0]
@@ -235,8 +286,11 @@ def main(simtype):
             nam_can_    += [nam_can[idx]]
             isdrug_can_ += [isdrug_can[idx]] 
         else:
-            supps = [support[idx] for idx in idxs]
-            idx = idxs[np.argmax(supps)]
+            if conn in conn_lit_idx:
+                idx = conn_lit_idx[conn]
+            else:
+                supps = [support[idx] for idx in idxs]
+                idx = idxs[np.argmax(supps)]
             # keep inchikey
             keep_idx_ += [idx]
             # inchikey
@@ -313,14 +367,13 @@ def main(simtype):
         cou_pv5 = np.sum(ranks[keep][:,mask] >= 3, axis=1, dtype=np.int16)
         cou_pv4 = np.sum(ranks[keep][:,mask] >= 2, axis=1, dtype=np.int16)
         cou_pv3 = np.sum(ranks[keep][:,mask] >= 1, axis=1, dtype=np.int16)
-        from tqdm import tqdm
         top1_idx = []
         top2_idx = []
         top3_idx = []
         for idx in tqdm(keep):
             worth_idxs = np.argwhere(ranks[idx,:] > 0).ravel()
-            vals = ranks[idx, worth_idxs]
-            top_idxs = worth_idxs[np.argsort(-vals)[:3]]
+            vals = ranks_raw[idx, worth_idxs]
+            top_idxs = worth_idxs[np.argsort(vals)[:3]]
             n = len(top_idxs)
             if   n == 1:
                 top1_idx += [top_idxs[0]]
@@ -334,9 +387,9 @@ def main(simtype):
                 top1_idx += [top_idxs[0]]
                 top2_idx += [top_idxs[1]]
                 top3_idx += [top_idxs[2]]
-        top1_idx = np.array(top1_idx, dtype=np.int8)
-        top2_idx = np.array(top2_idx, dtype=np.int8)
-        top3_idx = np.array(top3_idx, dtype=np.int8)
+        top1_idx = np.array(top1_idx, dtype=np.int32)
+        top2_idx = np.array(top2_idx, dtype=np.int32)
+        top3_idx = np.array(top3_idx, dtype=np.int32)
         M = np.vstack([support, cou_pv5, cou_pv4, cou_pv3,
                        top1_idx, top2_idx, top3_idx]).astype(np.int32)
         M = M.T
@@ -352,13 +405,13 @@ def main(simtype):
         results = {
             "inchikey": iks_can[keep],
             "name"    : [nam_can[i] for i in keep],
-            "is drug" : isdrug_can[keep],
+            "is_drug" : isdrug_can[keep],
             "evidence": evi_can[keep],
             "moa"     : moa_can[keep],
             "support" : M[:,0],
-            "p 1e-5"  : M[:,1],
-            "p 1e-4"  : M[:,2],
-            "p 1e-3"  : M[:,3],
+            "lpv_5"  : M[:,1],
+            "lpv_4"  : M[:,2],
+            "lpv_3"  : M[:,3],
             "top1_inchikey": [iks_lit_[int(idx)] for idx in M[:,4]],
             "top2_inchikey": [iks_lit_[int(idx)] for idx in M[:,5]],
             "top3_inchikey": [iks_lit_[int(idx)] for idx in M[:,6]],
@@ -379,7 +432,7 @@ def main(simtype):
             moa_suf = "moa%d" % moa
         caption += " (%d cand. x %d lit.)" % (n_rows, n_cols)
         fn = "df_cand_%s_%s_%s.csv" % (simtype, evi_suf, moa_suf)
-        df.to_csv(os.path.join(output_path, fn), index=False)
+        df.to_csv(os.path.join(output_path, fn), index=False, sep="\t")
         return fn, caption
 
     print("Saving legend")
@@ -394,7 +447,7 @@ def main(simtype):
                 {'evidence': min_evidence, 'moa': moa, 'filename': fn, 'caption': caption})
     legend = pd.DataFrame(legend)
     dest_file = os.path.join(output_path, "legend_%s.csv" % simtype)
-    legend.to_csv(dest_file, index=False)
+    legend.to_csv(dest_file, index=False, sep="\t")
 
 
 if __name__ == "__main__":
