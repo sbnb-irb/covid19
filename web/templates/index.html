@@ -59,13 +59,28 @@
             var mol = "https://chemicalchecker.com/images/molecules/" + data.slice(0,2) + "/" + data.slice(2,4) + "/" + data + "/2d.svg";
             var mol_img = "<img src=\'" + mol + "\'/>";
             var mol_tag = "<a data-toggle=\"tooltip\" title=\"" + mol_img + "\">" + cc_tag + "</a>";
-            return cc_tag;
+            return mol_tag;
             },
           targets: [0, -2]
         },
         {
+          render: function ( data, type, row ) {
+            var cc = "https://chemicalchecker.com/explore/" + row['best_inchikey'];
+            var cc_tag = "<a href=\"" + cc + "\">" + data + "</a>";
+            return cc_tag;
+            },
+          targets: 11
+        },
+        {
+          render: function ( data, type, row ) {
+            if (data == '0'){return 'No';}
+            if (data == '1'){return 'Yes';}
+            },
+          targets: 2
+        },
+        {
           visible: false,
-          targets: [3, 4, 5 ],
+          targets: [3, 4, 5, 9, 10 ],
         },
         {
           render: $.fn.dataTable.render.ellipsis( 17, true ),
@@ -79,6 +94,19 @@
         {% endfor %}
       ]
     });
+
+    $( cc_table.column( 0 ).header() ).text( 'InChIKey' );
+    $( cc_table.column( 1 ).header() ).text( 'Name' );
+    $( cc_table.column( 2 ).header() ).text( 'Drug?' );
+    $( cc_table.column( 3 ).header() ).text( 'Evidence' );
+    $( cc_table.column( 4 ).header() ).text( 'Mode of Action' );
+    $( cc_table.column( 5 ).header() ).text( 'Support' );
+    $( cc_table.column( 6 ).header() ).text( '10e-5' );
+    $( cc_table.column( 7 ).header() ).text( '10e-4' );
+    $( cc_table.column( 8 ).header() ).text( '10e-3' );
+    $( cc_table.column( 9 ).header() ).text( '10e-2' );
+    $( cc_table.column( 10 ).header() ).text( '1st Lit. Match InChIKey' );
+    $( cc_table.column( 11 ).header() ).text( '1st Literature Match' );
 
     $('[data-toggle="tooltip"]').tooltip();
 
