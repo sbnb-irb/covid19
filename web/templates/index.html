@@ -61,10 +61,12 @@
             var mol_tag = "<a data-toggle=\"tooltip\" title=\"" + mol_img + "\">" + cc_tag + "</a>";
             return mol_tag;
             },
-          targets: [0, -2]
+          targets: [0]
         },
         {
           render: function ( data, type, row ) {
+            console.log(data);
+            console.log(row);
             var cc = "https://chemicalchecker.com/explore/" + row['best_inchikey'];
             var cc_tag = "<a href=\"" + cc + "\">" + data + "</a>";
             return cc_tag;
@@ -80,12 +82,16 @@
         },
         {
           visible: false,
-          targets: [3, 4, 5, 9, 10 ],
+          targets: [3, 4, 5, 9, 10, 11 ],
         },
         {
           render: $.fn.dataTable.render.ellipsis( 17, true ),
-          targets: [1, -1],
+          targets: [1, 12, 13, 14],
         },
+        { 
+          width: 20,
+         targets: 0 
+       },
     
       ],
       "columns": [
@@ -104,9 +110,12 @@
     $( cc_table.column( 6 ).header() ).text( '10e-5' );
     $( cc_table.column( 7 ).header() ).text( '10e-4' );
     $( cc_table.column( 8 ).header() ).text( '10e-3' );
-    $( cc_table.column( 9 ).header() ).text( '10e-2' );
-    $( cc_table.column( 10 ).header() ).text( '1st Lit. Match InChIKey' );
-    $( cc_table.column( 11 ).header() ).text( '1st Literature Match' );
+    $( cc_table.column( 9 ).header() ).text( '1st Lit. Match InChIKey' );
+    $( cc_table.column( 10 ).header() ).text( '2nd Lit. Match InChIKey' );
+    $( cc_table.column( 11 ).header() ).text( '3rd Lit. Match InChIKey' );
+    $( cc_table.column( 12 ).header() ).text( '1st Literature Match' );
+    $( cc_table.column( 13 ).header() ).text( '2nd Literature Match' );
+    $( cc_table.column( 14 ).header() ).text( '3rd Literature Match' );
 
     $('[data-toggle="tooltip"]').tooltip();
 
