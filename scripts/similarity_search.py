@@ -371,8 +371,10 @@ def main(simtype):
         top1_idx = []
         top2_idx = []
         top3_idx = []
+        mask_idxs = np.argwhere(mask).ravel()
         for idx in tqdm(keep):
             worth_idxs = np.argwhere(ranks[idx,:] > 0).ravel()
+            worth_idxs = np.intersect1d(worth_idxs, mask_idxs)
             vals = ranks_raw[idx, worth_idxs]
             top_idxs = worth_idxs[np.argsort(vals)[:3]]
             n = len(top_idxs)
