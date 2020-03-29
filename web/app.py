@@ -16,6 +16,7 @@ def get_literature_data():
     print('LOADED %s' % file_path)
     print('LENGTH %s' % len(data))
     print('COLUMNS %s' % str(data.columns))
+    print('EXAMPLE\n%s' % str(data.iloc[0]))
     return data
 
 
