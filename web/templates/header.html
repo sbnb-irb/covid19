@@ -1,67 +1,69 @@
 <!-- Intro -->
 <div class="container">
-  <div class="row">
-    <div class="col-md-5 title">
-        <h2 class="text-center">Candidates against <i>SARS-CoV-2</i> based on drugs from the literature</h2>
-        <img alt="Covid19" class="rounded mx-auto d-block" id="covid19_img" width="250"
-          src="{{ url_for('static', filename='images/covid19_logo_small.png') }}"/>
-    </div>
-    <div class="col-md-7 options-sets">
-      <br>
-      <p class="text-center">Here we present a list of plausible drug and compound candidates obtained using the <a href="https://chemicalchecker.com/" target="_blank">Chemical Checker</a> resource.</p>
-      <p class="text-center">We are actively collecting <a href="https://sbnb.irbbarcelona.org/covid19/literature" target="_blank">tested drugs</a> from the current COVID-19 literature. These literature-based candidates are used to expand the search across a universe of almost 800k compounds. Please feel free to <a href="https://docs.google.com/spreadsheets/d/1BesqNdhHoVyldk372JOyNbhKAl0ncVZwloTpWb6YWZw/edit#gid=424137782" target="_blank">contribute drug annotations</a> and improve our search engine.</p>
+  <div class="card card-default">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-md-5 title">
+            <h2 class="text-center">Candidates against <i>SARS-CoV-2</i> based on drugs from the literature</h2>
+            <img alt="Covid19" class="rounded mx-auto d-block" id="covid19_img" width="250"
+              src="{{ url_for('static', filename='images/covid19_logo_small.png') }}"/>
+        </div>
+        <div class="col-md-7 options-sets">
+          <br>
+          <p class="text-center">Here we present a list of plausible drug and compound candidates obtained using the <a href="https://chemicalchecker.com/" target="_blank">Chemical Checker</a> resource.</p>
+          <p class="text-center">We are actively collecting <a href="https://sbnb.irbbarcelona.org/covid19/literature" target="_blank">tested drugs</a> from the current COVID-19 literature. These literature-based candidates are used to expand the search across a universe of almost 800k compounds. Please feel free to <a href="https://docs.google.com/spreadsheets/d/1BesqNdhHoVyldk372JOyNbhKAl0ncVZwloTpWb6YWZw/edit#gid=424137782" target="_blank">contribute drug annotations</a> and improve our search engine.</p>
 
-      <div class="d-flex justify-content-center">
-        <div class="d-inline-flex p-2 ">
-          <div class="card card-default">
-            <div class="card-header font-weight-bold">Select a table:</div>
-            <div class="card-body">
+          <div class="d-flex justify-content-center">
+            <div class="d-inline-flex p-2 ">
+              <div class="card card-default">
+                <div class="card-header font-weight-bold">Select a table:</div>
+                <div class="card-body">
 
-              <form>
-                <div class="form-group row">
-                  <label for="evidence" class="col col-form-label text-right">Evidence Level:</label>
-                  <div class="col text-left">
-                    <div id="evidence" class="btn-group" role="group" aria-label="Evidence Level">
-                      <button id="button-default" type="button" value="" class="btn btn-secondary active">All</button>
-                      <button type="button" value="0" class="btn btn-secondary" data-toggle="tooltip" title="Computational">Comp.</button>
-                      <button type="button" value="1" class="btn btn-secondary" data-toggle="tooltip" title="Preclinical">Pre.</button>
-                      <button type="button" value="2" class="btn btn-secondary" data-toggle="tooltip" title="Clinics">Clin.</button>
-                      <button type="button" value="3" class="btn btn-secondary" data-toggle="tooltip" title="Clinics COVID19">COV19</button>
+                  <form>
+                    <div class="form-group row">
+                      <label for="evidence" class="col col-form-label text-right">Evidence Level:</label>
+                      <div class="col text-left">
+                        <div id="evidence" class="btn-group" role="group" aria-label="Evidence Level">
+                          <button id="button-default" type="button" value="" class="btn btn-secondary active">All</button>
+                          <button type="button" value="0" class="btn btn-secondary" data-toggle="tooltip" title="Computational">Comp.</button>
+                          <button type="button" value="1" class="btn btn-secondary" data-toggle="tooltip" title="Preclinical">Pre.</button>
+                          <button type="button" value="2" class="btn btn-secondary" data-toggle="tooltip" title="Clinics">Clin.</button>
+                          <button type="button" value="3" class="btn btn-secondary" data-toggle="tooltip" title="Clinics COVID19">COV19</button>
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                </div>
 
-                <div class="form-group row">
-                  <label for="moa" class="col col-form-label text-right">Mode of Action:</label>
-                  <div class="col">
-                    <div id="moa" class="btn-group" role="group" aria-label="Mode of Action">
-                      <button type="button" value="" class="btn btn-secondary active">All</button>
-                      <button type="button" value="0" class="btn btn-secondary" data-toggle="tooltip" title="Unkown">UNK</button>
-                      <button type="button" value="1" class="btn btn-secondary" data-toggle="tooltip" title="Host Factor">HF</button>
-                      <button type="button" value="2" class="btn btn-secondary" data-toggle="tooltip" title="Virus Entry">VE</button>
-                      <button type="button" value="3" class="btn btn-secondary" data-toggle="tooltip" title="Protease Inhibitor">PI</button>
-                      <button type="button" value="4" class="btn btn-secondary" data-toggle="tooltip" title="RNA trans./rep.">RNA</button>
-                      <button type="button" value="5" class="btn btn-secondary" data-toggle="tooltip" title="Immunomodulator">IM</button>
+                    <div class="form-group row">
+                      <label for="moa" class="col col-form-label text-right">Mode of Action:</label>
+                      <div class="col">
+                        <div id="moa" class="btn-group" role="group" aria-label="Mode of Action">
+                          <button type="button" value="" class="btn btn-secondary active">All</button>
+                          <button type="button" value="0" class="btn btn-secondary" data-toggle="tooltip" title="Unkown">UNK</button>
+                          <button type="button" value="1" class="btn btn-secondary" data-toggle="tooltip" title="Host Factor">HF</button>
+                          <button type="button" value="2" class="btn btn-secondary" data-toggle="tooltip" title="Virus Entry">VE</button>
+                          <button type="button" value="3" class="btn btn-secondary" data-toggle="tooltip" title="Protease Inhibitor">PI</button>
+                          <button type="button" value="4" class="btn btn-secondary" data-toggle="tooltip" title="RNA trans./rep.">RNA</button>
+                          <button type="button" value="5" class="btn btn-secondary" data-toggle="tooltip" title="Immunomodulator">IM</button>
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                </div>
 
-                <div class="form-group row">
-                  <label for="signature" class="col col-form-label text-right">Similarity:</label>
-                  <div class="col">
-                    <div id="signature" class="btn-group" role="group" aria-label="Similarity">
-                      <button type="button" value="cc" class="btn btn-secondary active">Chemical Checker</button>
-                      <button type="button" value="fp" class="btn btn-secondary">Only Chemistry</button>
+                    <div class="form-group row">
+                      <label for="signature" class="col col-form-label text-right">Similarity:</label>
+                      <div class="col">
+                        <div id="signature" class="btn-group" role="group" aria-label="Similarity">
+                          <button type="button" value="cc" class="btn btn-secondary active">Chemical Checker</button>
+                          <button type="button" value="fp" class="btn btn-secondary">Only Chemistry</button>
+                        </div>
+                      </div>
                     </div>
-                  </div>
+                  </form>
                 </div>
-              </form>
+              </div>
             </div>
           </div>
         </div>
       </div>
-
-
     </div>
   </div>
 </div>
