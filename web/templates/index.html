@@ -48,12 +48,14 @@
       "sAjaxSource": "{{ url_for('get_candidate_table') }}" + "?signature=cc&evidence=&moa=",
       "columnDefs": [
         // approximate to second decimal
+        /*
         { 
           render: function ( data, type, row ) {
             return data.toFixed(2);
             },
           targets: [4, 5]
         },
+        */
         // Add link to CC and image on tooltip
         {
           render: function ( data, type, row ) {
@@ -108,10 +110,10 @@
     // Rename columns 
     $( cc_table.column( 0 ).header() ).text( 'InChIKey' );
     $( cc_table.column( 1 ).header() ).text( 'Name' );
-    $( cc_table.column( 2 ).header() ).text( 'Is drug' );
+    $( cc_table.column( 2 ).header() ).text( 'Is Drug' );
     $( cc_table.column( 3 ).header() ).text( 'Evidence' );
     $( cc_table.column( 4 ).header() ).text( 'MoA' );
-    $( cc_table.column( 5 ).header() ).text( 'Supp' );
+    $( cc_table.column( 5 ).header() ).text( 'Support' );
     $( cc_table.column( 6 ).header() ).text( '# P5' );
     $( cc_table.column( 7 ).header() ).text( '# P4' );
     $( cc_table.column( 8 ).header() ).text( '# P3' );
@@ -140,6 +142,8 @@
         $("#table_title").text(data);
       });
     });
+
+    $("#button-default").trigger('click');
 
   });
 
