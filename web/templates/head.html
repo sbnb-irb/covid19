@@ -42,4 +42,31 @@
       font-size: 20px;
       float: right;
     }
+    .tooltip-inner{
+      background: transparent;
+    }
+    .tooltip.bs-tooltip-bottom {
+      margin-top: 5px;
+    }
+    .tooltip.bs-tooltip-top {
+      margin-bottom: 5px;
+    }
+    .tooltip.bs-tooltip-left {
+      margin-right: 10px;
+    }
+    .tooltip.bs-tooltip-right {
+      margin-left: 10px;
+    }
+    .bs-tooltip-auto[x-placement^=bottom] .arrow::before,.bs-tooltip-bottom .arrow::before {
+      border-bottom-color: #6398cf !important;
+    }
+    .bs-tooltip-auto[x-placement^=top] .arrow::before,.bs-tooltip-top .arrow::before {
+      border-top-color: #6398cf !important;
+    }
+    .bs-tooltip-auto[x-placement^=left] .arrow::before,.bs-tooltip-left .arrow::before {
+      border-left-color: #6398cf !important;
+    }
+    .bs-tooltip-auto[x-placement^=right] .arrow::before,.bs-tooltip-right .arrow::before {
+      border-right-color: #6398cf !important;
+    }
   </style>

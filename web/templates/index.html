@@ -107,7 +107,7 @@
             var cc_tag = "<a target='_blank' href='" + cc + "'>" + data + "</a>";
             var mol = "https://chemicalchecker.com/images/molecules/" + data.slice(0,2) + "/" + data.slice(2,4) + "/" + data + "/2d.svg";
             var mol_img = "title=\'<img style=&quot;width:100%&quot; src=&quot;" + mol + "&quot;>\'";
-            var mol_tag = "<tooltip data-toggle='tooltip' data-html='true'" + mol_img + ">" + cc_tag + "</tooltip>";
+            var mol_tag = "<tooltip-right data-toggle='tooltip' data-html='true'" + mol_img + ">" + cc_tag + "</tooltip-right>";
             return mol_tag;
             },
           targets: [0]
@@ -123,7 +123,11 @@
               data = data.slice(0, 17) + '&hellip;';
             }
             var cc_tag = "<a target='_blank' href=\"" + cc + "\">" + data + "</a>";
-            return cc_tag;
+            ink = row['top1_inchikey']
+            var mol = "https://chemicalchecker.com/images/molecules/" + ink.slice(0,2) + "/" + ink.slice(2,4) + "/" + ink + "/2d.svg";
+            var mol_img = "title=\'<img style=&quot;width:100%&quot; src=&quot;" + mol + "&quot;>\'";
+            var mol_tag = "<tooltip-top data-toggle='tooltip' data-html='true'" + mol_img + ">" + cc_tag + "</tooltip-top>";
+            return mol_tag;
             },
           targets: 12
         },
@@ -137,7 +141,11 @@
               data = data.slice(0, 17) + '&hellip;';
             }
             var cc_tag = "<a target='_blank' href=\"" + cc + "\">" + data + "</a>";
-            return cc_tag;
+            ink = row['top2_inchikey']
+            var mol = "https://chemicalchecker.com/images/molecules/" + ink.slice(0,2) + "/" + ink.slice(2,4) + "/" + ink + "/2d.svg";
+            var mol_img = "title=\'<img style=&quot;width:100%&quot; src=&quot;" + mol + "&quot;>\'";
+            var mol_tag = "<tooltip-top data-toggle='tooltip' data-html='true'" + mol_img + ">" + cc_tag + "</tooltip-top>";
+            return mol_tag;
             },
           targets: 13
         },
@@ -151,7 +159,11 @@
               data = data.slice(0, 17) + '&hellip;';
             }
             var cc_tag = "<a target='_blank' href=\"" + cc + "\">" + data + "</a>";
-            return cc_tag;
+            ink = row['top3_inchikey']
+            var mol = "https://chemicalchecker.com/images/molecules/" + ink.slice(0,2) + "/" + ink.slice(2,4) + "/" + ink + "/2d.svg";
+            var mol_img = "title=\'<img style=&quot;width:100%&quot; src=&quot;" + mol + "&quot;>\'";
+            var mol_tag = "<tooltip-top data-toggle='tooltip' data-html='true'" + mol_img + ">" + cc_tag + "</tooltip-top>";
+            return mol_tag;
             },
           targets: 14
         },
@@ -232,10 +244,11 @@
     $("div.export-label").html('<b>Export:</b>');
 
     cc_table.on( 'draw', function () {
-      $('tooltip[data-toggle="tooltip"]').tooltip({
-          animated: 'fade',
-          placement: 'right',
-          html: true,
+      $('tooltip-right[data-toggle="tooltip"]').tooltip({
+          placement: 'right'
+      });
+      $('tooltip-top[data-toggle="tooltip"]').tooltip({
+          placement: 'top'
       });
     });
 
