@@ -71,13 +71,23 @@
                     search : 'none' // 'none', 'applied', 'removed'
                   },
                   //columns: [ 0, 1, 2, 3, 4, 5, 6, 7, 8 ]
+                  /*
+                  format: {
+                    body: function ( data, row, column, node ) {
+                      console.log(column);
+                      return column === 0 ?
+                        data.substr(2):
+                        data;
+                    }
+                  }
+                  */
                 }
             }
       ],
       "bProcessing": true,
       "bServerSide": true,
       "sPaginationType": "full_numbers",
-      "lengthMenu": [[50, 100, 200, -1], [50, 100, 200, 'all']],
+      "lengthMenu": [[50, 100, 200, -1], [50, 100, 200, 'All']],
       "bjQueryUI": true,
       "sAjaxSource": "{{ url_for('get_candidate_table') }}" + "?signature=cc&evidence=&moa=",
       "columnDefs": [
@@ -107,7 +117,7 @@
           render: function ( data, type, row, meta ) {
             var cc = "https://chemicalchecker.com/explore/" + row['top1_inchikey'];
             if (data == '!N/A') {
-              return data.slice(1, -1);
+              return data.substr(1);
             }
             if (data.length >= 17) {
               data = data.slice(0, 17) + '&hellip;';
@@ -121,7 +131,7 @@
           render: function ( data, type, row, meta ) {
             var cc = "https://chemicalchecker.com/explore/" + row['top2_inchikey'];
             if (data == '!N/A') {
-              return data.slice(1, -1);
+              return data.substr(1);
             }
             if (data.length >= 17) {
               data = data.slice(0, 17) + '&hellip;';
@@ -134,8 +144,8 @@
         {
           render: function ( data, type, row, meta ) {
             var cc = "https://chemicalchecker.com/explore/" + row['top3_inchikey'];
-            if (data == 'N/A') {
-              return data;
+            if (data == '!N/A') {
+              return data.substr(1);
             }
             if (data.length >= 17) {
               data = data.slice(0, 17) + '&hellip;';
@@ -187,16 +197,16 @@
     $( cc_table.column( 2 ).header() ).html( 'Is Drug' );
     $( cc_table.column( 3 ).header() ).html( 'Evidence' );
     $( cc_table.column( 4 ).header() ).html( 'MoA' );
-    $( cc_table.column( 5 ).header() ).html( '<i style="color:grey;font-size:15px;" data-toggle="tooltip" title="DESCRIPTION" class="fa fa-info-circle fa-lg"></i> Support' );
-    $( cc_table.column( 6 ).header() ).html( '<i style="color:grey" data-toggle="tooltip" title="DESCRIPTION" class="fa fa-info-circle fa-lg"></i> # P5' );
-    $( cc_table.column( 7 ).header() ).html( '<i style="color:grey" data-toggle="tooltip" title="DESCRIPTION" class="fa fa-info-circle fa-lg"></i> # P4' );
-    $( cc_table.column( 8 ).header() ).html( '<i style="color:grey" data-toggle="tooltip" title="DESCRIPTION" class="fa fa-info-circle fa-lg"></i> # P3' );
+    $( cc_table.column( 5 ).header() ).html( '<i id="header-info" data-toggle="tooltip" title="DESCRIPTION" class="fa fa-info-circle fa-lg"></i> Support' );
+    $( cc_table.column( 6 ).header() ).html( '<i id="header-info" data-toggle="tooltip" title="DESCRIPTION" class="fa fa-info-circle fa-lg"></i> # P5' );
+    $( cc_table.column( 7 ).header() ).html( '<i id="header-info" data-toggle="tooltip" title="DESCRIPTION" class="fa fa-info-circle fa-lg"></i> # P4' );
+    $( cc_table.column( 8 ).header() ).html( '<i id="header-info" data-toggle="tooltip" title="DESCRIPTION" class="fa fa-info-circle fa-lg"></i> # P3' );
     $( cc_table.column( 9 ).header() ).html( '1st Lit. match InChIKey' );
     $( cc_table.column( 10 ).header() ).html( '2nd Lit match InChIKey' );
     $( cc_table.column( 11 ).header() ).html( '3rd Lit match InChIKey' );
-    $( cc_table.column( 12 ).header() ).html( '<i style="color:grey" data-toggle="tooltip" title="DESCRIPTION" class="fa fa-info-circle fa-lg"></i> Sim CoV (1)' );
-    $( cc_table.column( 13 ).header() ).html( '<i style="color:grey" data-toggle="tooltip" title="DESCRIPTION" class="fa fa-info-circle fa-lg"></i> Sim CoV (2)' );
-    $( cc_table.column( 14 ).header() ).html( '<i style="color:grey" data-toggle="tooltip" title="DESCRIPTION" class="fa fa-info-circle fa-lg"></i> Sim CoV (3)' );
+    $( cc_table.column( 12 ).header() ).html( '<i id="header-info" data-toggle="tooltip" title="DESCRIPTION" class="fa fa-info-circle fa-lg"></i> Sim CoV (1)' );
+    $( cc_table.column( 13 ).header() ).html( '<i id="header-info" data-toggle="tooltip" title="DESCRIPTION" class="fa fa-info-circle fa-lg"></i> Sim CoV (2)' );
+    $( cc_table.column( 14 ).header() ).html( '<i id="header-info" data-toggle="tooltip" title="DESCRIPTION" class="fa fa-info-circle fa-lg"></i> Sim CoV (3)' );
 
     // Get click event, assign active state, get values from all btn-groups
     $('.btn-group button').on('click', function() {
