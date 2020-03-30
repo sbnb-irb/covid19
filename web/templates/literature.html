@@ -14,7 +14,8 @@
 
   <script>
   $(document).ready(function() {
-    $('#literature').DataTable( {
+    
+    var cc_table = $('#literature').DataTable( {
       "sAjaxSource": "{{ url_for('get_literature_table') }}",
       "lengthMenu": [[50, 100, 200, -1], [50, 100, 200, 'All']],
       "dom": "<'row' <'col' <'row'<'col-md-auto my-3 ml-2'<'export-label'>> <'col-md-auto my-2'B>>> <'col my-2'l> <'col'i> <'col my-2'p> > t",
@@ -90,8 +91,8 @@
             var cc = "https://chemicalchecker.com/explore/" + data;
             var cc_tag = "<a target='_blank' href='" + cc + "'>" + data + "</a>";
             var mol = "https://chemicalchecker.com/images/molecules/" + data.slice(0,2) + "/" + data.slice(2,4) + "/" + data + "/2d.svg";
-            var mol_img = "title=\"<img src='" + mol + "'>\"";
-            var mol_tag = "<div id='cc_structure'><span data-toggle='tooltip'" + mol_img + ">" + cc_tag + "</span></div>";
+            var mol_img = "title=\'<img style=&quot;width:100%&quot; src=&quot;" + mol + "&quot;>\'";
+            var mol_tag = "<tooltip-right data-toggle='tooltip' data-html='true'" + mol_img + ">" + cc_tag + "</tooltip-right>";
             return mol_tag;
             },
           targets: [0]
@@ -101,7 +102,16 @@
 
     $("div.export-label").html('<b>Export:</b>');
     
-  } );
+    cc_table.on( 'draw', function () {
+      $('tooltip-right[data-toggle="tooltip"]').tooltip({
+          placement: 'right'
+      });
+      $('tooltip-top[data-toggle="tooltip"]').tooltip({
+          placement: 'top'
+      });
+    });
+
+  });
   </script>
 </head>
 <body>
