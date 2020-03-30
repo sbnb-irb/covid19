@@ -16,28 +16,60 @@
   $(document).ready(function() {
     $('#literature').DataTable( {
       "sAjaxSource": "{{ url_for('get_literature_table') }}",
-      "lengthMenu": [[50, 100, 200], [50, 100, 200]],
-      "dom": "<'row' <'col'B> <'col'l> <'col'i> <'col'p> > t",//'rilBpt',
+      "lengthMenu": [[50, 100, 200, -1], [50, 100, 200, 'all']],
+      "dom": "<'row' <'col' <'row'<'col-md-auto my-3 ml-2'<'export-label'>> <'col-md-auto my-2'B>>> <'col my-2'l> <'col'i> <'col my-2'p> > t",
       "buttons": [
             {
                 extend:    'copyHtml5',
                 text:      '<i class="fa fa-files-o"></i>',
-                titleAttr: 'Copy'
+                titleAttr: 'Copy',
+                exportOptions: {
+                  modifier : {
+                    order : 'current', // 'current', 'applied','index', 'original'
+                    page : 'all', // 'all', 'current'
+                    search : 'none' // 'none', 'applied', 'removed'
+                  },
+                  //columns: [ 0, 1, 2, 3, 4, 5, 6, 7, 8 ]
+                }
             },
             {
                 extend:    'excelHtml5',
                 text:      '<i class="fa fa-file-excel-o"></i>',
-                titleAttr: 'Excel'
+                titleAttr: 'Excel',
+                exportOptions: {
+                  modifier : {
+                    order : 'current', // 'current', 'applied','index', 'original'
+                    page : 'all', // 'all', 'current'
+                    search : 'none' // 'none', 'applied', 'removed'
+                  },
+                  //columns: [ 0, 1, 2, 3, 4, 5, 6, 7, 8 ]
+                }
             },
             {
                 extend:    'csvHtml5',
                 text:      '<i class="fa fa-file-text-o"></i>',
-                titleAttr: 'CSV'
+                titleAttr: 'CSV',
+                exportOptions: {
+                  modifier : {
+                    order : 'current', // 'current', 'applied','index', 'original'
+                    page : 'all', // 'all', 'current'
+                    search : 'none' // 'none', 'applied', 'removed'
+                  },
+                  //columns: [ 0, 1, 2, 3, 4, 5, 6, 7, 8 ]
+                }
             },
             {
                 extend:    'pdfHtml5',
                 text:      '<i class="fa fa-file-pdf-o"></i>',
-                titleAttr: 'PDF'
+                titleAttr: 'PDF',
+                exportOptions: {
+                  modifier : {
+                    order : 'current', // 'current', 'applied','index', 'original'
+                    page : 'all', // 'all', 'current'
+                    search : 'none' // 'none', 'applied', 'removed'
+                  },
+                  //columns: [ 0, 1, 2, 3, 4, 5, 6, 7, 8 ]
+                }
             }
       ],
       "columnDefs": [
@@ -66,6 +98,9 @@
         },       
       ],
     });
+
+    $("div.export-label").html('<b>Export:</b>');
+    
   } );
   </script>
 </head>

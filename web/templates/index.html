@@ -17,35 +17,67 @@
 
     var cc_table = $('#cc_table').DataTable( {
       //"scrollX": true,
-      "dom": "<'row' <'col'<'export-label'>B> <'col'l> <'col'i> <'col'p> > t",//'rilBpt',
+      "dom": "<'row' <'col' <'row'<'col-md-auto my-3 ml-2'<'export-label'>> <'col-md-auto my-2'B>>> <'col my-2'l> <'col'i> <'col my-2'p> > t",//'rilBpt',
       "buttons": [
             {
                 extend:    'copyHtml5',
                 text:      '<i class="fa fa-files-o"></i>',
-                titleAttr: 'Copy'
+                titleAttr: 'Copy',
+                exportOptions: {
+                  modifier : {
+                    order : 'current', // 'current', 'applied','index', 'original'
+                    page : 'all', // 'all', 'current'
+                    search : 'none' // 'none', 'applied', 'removed'
+                  },
+                  //columns: [ 0, 1, 2, 3, 4, 5, 6, 7, 8 ]
+                }
             },
             {
                 extend:    'excelHtml5',
                 text:      '<i class="fa fa-file-excel-o"></i>',
-                titleAttr: 'Excel'
+                titleAttr: 'Excel',
+                exportOptions: {
+                  modifier : {
+                    order : 'current', // 'current', 'applied','index', 'original'
+                    page : 'all', // 'all', 'current'
+                    search : 'none' // 'none', 'applied', 'removed'
+                  },
+                  //columns: [ 0, 1, 2, 3, 4, 5, 6, 7, 8 ]
+                }
             },
             {
                 extend:    'csvHtml5',
                 text:      '<i class="fa fa-file-text-o"></i>',
-                titleAttr: 'CSV'
+                titleAttr: 'CSV',
+                exportOptions: {
+                  modifier : {
+                    order : 'current', // 'current', 'applied','index', 'original'
+                    page : 'all', // 'all', 'current'
+                    search : 'none' // 'none', 'applied', 'removed'
+                  },
+                  //columns: [ 0, 1, 2, 3, 4, 5, 6, 7, 8 ]
+                }
             },
             {
                 extend:    'pdfHtml5',
                 text:      '<i class="fa fa-file-pdf-o"></i>',
                 orientation: 'landscape',
                 pageSize: 'A3',
-                titleAttr: 'PDF'
+                titleAttr: 'PDF',
+                exportOptions: {
+                  modifier : {
+                    order : 'current', // 'current', 'applied','index', 'original'
+                    page : 'all', // 'all', 'current'
+                    search : 'none' // 'none', 'applied', 'removed'
+                  },
+                  //columns: [ 0, 1, 2, 3, 4, 5, 6, 7, 8 ]
+                }
             }
       ],
       "bProcessing": true,
       "bServerSide": true,
       "sPaginationType": "full_numbers",
-      "lengthMenu": [[50, 100, 200], [50, 100, 200]],
+      "lengthMenu": [[50, 100, 200, -1], [50, 100, 200, 'all']],
       "bjQueryUI": true,
       "sAjaxSource": "{{ url_for('get_candidate_table') }}" + "?signature=cc&evidence=&moa=",
       "columnDefs": [
@@ -145,6 +177,8 @@
         {"data": "{{ col }}"},
         {% endfor %}
       ],
+      // default ordering by Support score
+      "order": [[ 5, "desc" ]],
     });
 
     // Rename columns 
@@ -153,7 +187,7 @@
     $( cc_table.column( 2 ).header() ).html( 'Is Drug' );
     $( cc_table.column( 3 ).header() ).html( 'Evidence' );
     $( cc_table.column( 4 ).header() ).html( 'MoA' );
-    $( cc_table.column( 5 ).header() ).html( '<i style="color:grey" data-toggle="tooltip" title="DESCRIPTION" class="fa fa-info-circle fa-lg"></i> Support' );
+    $( cc_table.column( 5 ).header() ).html( '<i style="color:grey;font-size:15px;" data-toggle="tooltip" title="DESCRIPTION" class="fa fa-info-circle fa-lg"></i> Support' );
     $( cc_table.column( 6 ).header() ).html( '<i style="color:grey" data-toggle="tooltip" title="DESCRIPTION" class="fa fa-info-circle fa-lg"></i> # P5' );
     $( cc_table.column( 7 ).header() ).html( '<i style="color:grey" data-toggle="tooltip" title="DESCRIPTION" class="fa fa-info-circle fa-lg"></i> # P4' );
     $( cc_table.column( 8 ).header() ).html( '<i style="color:grey" data-toggle="tooltip" title="DESCRIPTION" class="fa fa-info-circle fa-lg"></i> # P3' );
@@ -185,7 +219,7 @@
 
     $("#button-default").trigger('click');
 
-    $(".export-label").text('Export:');
+    $("div.export-label").html('<b>Export:</b>');
 
 /*
     cc_table.on( 'draw', function () {

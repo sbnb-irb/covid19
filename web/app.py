@@ -48,9 +48,18 @@ df_candidates = get_candidate_data()
 df_candidates_collection = df_candidates.to_dict(orient='records')
 
 
+def get_candidate_update(signature='cc', evidence='', moa=''):
+    filen_name = 'similarity_update.txt'
+    file_path = os.path.join(app_path, 'data', filen_name)
+    with open(file_path, 'r') as fh:
+        last_update = fh.readline()
+    return last_update
+
+
 @app.route('/')
 def index():
-    return render_template('index.html', columns=df_candidates.columns)
+    return render_template('index.html', columns=df_candidates.columns,
+                           last_update=get_candidate_update())
 
 
 @app.route('/literature')
