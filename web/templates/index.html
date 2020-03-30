@@ -106,8 +106,8 @@
         {
           render: function ( data, type, row, meta ) {
             var cc = "https://chemicalchecker.com/explore/" + row['top1_inchikey'];
-            if (data == 'N/A') {
-              return data;
+            if (data == '!N/A') {
+              return data.slice(1, -1);
             }
             if (data.length >= 17) {
               data = data.slice(0, 17) + '&hellip;';
@@ -120,8 +120,8 @@
         {
           render: function ( data, type, row, meta ) {
             var cc = "https://chemicalchecker.com/explore/" + row['top2_inchikey'];
-            if (data == 'N/A') {
-              return data;
+            if (data == '!N/A') {
+              return data.slice(1, -1);
             }
             if (data.length >= 17) {
               data = data.slice(0, 17) + '&hellip;';
