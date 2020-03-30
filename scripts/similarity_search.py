@@ -2,6 +2,7 @@
 import os
 import h5py
 import gspread
+import datetime
 import collections
 import numpy as np
 import pandas as pd
@@ -29,6 +30,13 @@ def get_raw_literature():
     sheet = client.open('Drugs against SARS-CoV-2').get_worksheet(1)
     records = sheet.get_all_records()
     df = pd.DataFrame(records)
+    '''
+    updated = sheet.updated
+    print('LITERATURE UPDATED:', updated)
+    dest_file = os.path.join(output_path, "literature_update.txt")
+    with open(dest_file, 'wb') as fh:
+        fh.write(updated)
+    '''
     return df
 
 evidence_legend = {
@@ -459,5 +467,11 @@ def main(simtype):
 if __name__ == "__main__":
     main(simtype="cc")
     main(simtype="fp")
+    now = datetime.datetime.now()
+    updated = str(now.strftime("%c"))
+    print('SIMILARITY UPDATED:', updated)
+    dest_file = os.path.join(output_path, "similarity_update.txt")
+    with open(dest_file, 'wb') as fh:
+        fh.write(updated)
 
 print("Done!")
