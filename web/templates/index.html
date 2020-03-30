@@ -6,7 +6,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>COVID19</title>
+  <title>COVID19: Drug Candidates</title>
   <meta name="description" content="COVID19 Chemical Checker Drug Candidates">
   <meta name="author" content="SBNB">
 
@@ -17,7 +17,7 @@
 
     var cc_table = $('#cc_table').DataTable( {
       //"scrollX": true,
-      "dom": "<'row' <'col'B> <'col'l> <'col'i> <'col'p> > t",//'rilBpt',
+      "dom": "<'row' <'col'<'export-label'>B> <'col'l> <'col'i> <'col'p> > t",//'rilBpt',
       "buttons": [
             {
                 extend:    'copyHtml5',
@@ -37,13 +37,15 @@
             {
                 extend:    'pdfHtml5',
                 text:      '<i class="fa fa-file-pdf-o"></i>',
+                orientation: 'landscape',
+                pageSize: 'A3',
                 titleAttr: 'PDF'
             }
       ],
       "bProcessing": true,
       "bServerSide": true,
       "sPaginationType": "full_numbers",
-      "lengthMenu": [[25, 50, 100], [25, 50, 100]],
+      "lengthMenu": [[50, 100, 200], [50, 100, 200]],
       "bjQueryUI": true,
       "sAjaxSource": "{{ url_for('get_candidate_table') }}" + "?signature=cc&evidence=&moa=",
       "columnDefs": [
@@ -60,25 +62,57 @@
         {
           render: function ( data, type, row ) {
             var cc = "https://chemicalchecker.com/explore/" + data;
-            var cc_tag = "<a target=\"_blank\" href=\"" + cc + "\">" + data + "</a>";
+            var cc_tag = "<a target='_blank' href='" + cc + "'>" + data + "</a>";
             var mol = "https://chemicalchecker.com/images/molecules/" + data.slice(0,2) + "/" + data.slice(2,4) + "/" + data + "/2d.svg";
             var mol_img = "title=\"<img src='" + mol + "'>\"";
-            var mol_tag = "<span data-toggle=\"tooltip\"" + mol_img + "\">" + cc_tag + "</span>";
+            var mol_tag = "<div id='cc_structure'><span data-toggle='tooltip'" + mol_img + ">" + cc_tag + "</span></div>";
             return mol_tag;
             },
           targets: [0]
         },
         // Add link to CC for best literature match DISABLE
-        /*
         {
-          render: function ( data, type, row ) {
+          render: function ( data, type, row, meta ) {
             var cc = "https://chemicalchecker.com/explore/" + row['top1_inchikey'];
-            var cc_tag = "<a href=\"" + cc + "\">" + data + "</a>";
+            if (data == 'N/A') {
+              return data;
+            }
+            if (data.length >= 17) {
+              data = data.slice(0, 17) + '&hellip;';
+            }
+            var cc_tag = "<a target='_blank' href=\"" + cc + "\">" + data + "</a>";
             return cc_tag;
             },
           targets: 12
         },
-        */
+        {
+          render: function ( data, type, row, meta ) {
+            var cc = "https://chemicalchecker.com/explore/" + row['top2_inchikey'];
+            if (data == 'N/A') {
+              return data;
+            }
+            if (data.length >= 17) {
+              data = data.slice(0, 17) + '&hellip;';
+            }
+            var cc_tag = "<a target='_blank' href=\"" + cc + "\">" + data + "</a>";
+            return cc_tag;
+            },
+          targets: 13
+        },
+        {
+          render: function ( data, type, row, meta ) {
+            var cc = "https://chemicalchecker.com/explore/" + row['top3_inchikey'];
+            if (data == 'N/A') {
+              return data;
+            }
+            if (data.length >= 17) {
+              data = data.slice(0, 17) + '&hellip;';
+            }
+            var cc_tag = "<a target='_blank' href=\"" + cc + "\">" + data + "</a>";
+            return cc_tag;
+            },
+          targets: 14
+        },
         // Convert 1/0 to Yes/No
         {
           render: function ( data, type, row ) {
@@ -96,6 +130,12 @@
         {
           render: $.fn.dataTable.render.ellipsis( 17, true ),
           targets: [1, 12, 13, 14],
+        },
+        // Column descriptions
+        {
+          data: '0',
+          title: '<i class="fa fa-info-circle fa-lg"></i>',
+          targets: 0,
         }
     
       ],
@@ -108,21 +148,21 @@
     });
 
     // Rename columns 
-    $( cc_table.column( 0 ).header() ).text( 'InChIKey' );
-    $( cc_table.column( 1 ).header() ).text( 'Name' );
-    $( cc_table.column( 2 ).header() ).text( 'Is Drug' );
-    $( cc_table.column( 3 ).header() ).text( 'Evidence' );
-    $( cc_table.column( 4 ).header() ).text( 'MoA' );
-    $( cc_table.column( 5 ).header() ).text( 'Support' );
-    $( cc_table.column( 6 ).header() ).text( '# P5' );
-    $( cc_table.column( 7 ).header() ).text( '# P4' );
-    $( cc_table.column( 8 ).header() ).text( '# P3' );
-    $( cc_table.column( 9 ).header() ).text( '1st Lit. match InChIKey' );
-    $( cc_table.column( 10 ).header() ).text( '2nd Lit match InChIKey' );
-    $( cc_table.column( 11 ).header() ).text( '3rd Lit match InChIKey' );
-    $( cc_table.column( 12 ).header() ).text( 'Sim CoV (1)' );
-    $( cc_table.column( 13 ).header() ).text( 'Sim CoV (2)' );
-    $( cc_table.column( 14 ).header() ).text( 'Sim CoV (3)' );
+    $( cc_table.column( 0 ).header() ).html( 'InChIKey' );
+    $( cc_table.column( 1 ).header() ).html( 'Name' );
+    $( cc_table.column( 2 ).header() ).html( 'Is Drug' );
+    $( cc_table.column( 3 ).header() ).html( 'Evidence' );
+    $( cc_table.column( 4 ).header() ).html( 'MoA' );
+    $( cc_table.column( 5 ).header() ).html( '<i style="color:grey" data-toggle="tooltip" title="DESCRIPTION" class="fa fa-info-circle fa-lg"></i> Support' );
+    $( cc_table.column( 6 ).header() ).html( '<i style="color:grey" data-toggle="tooltip" title="DESCRIPTION" class="fa fa-info-circle fa-lg"></i> # P5' );
+    $( cc_table.column( 7 ).header() ).html( '<i style="color:grey" data-toggle="tooltip" title="DESCRIPTION" class="fa fa-info-circle fa-lg"></i> # P4' );
+    $( cc_table.column( 8 ).header() ).html( '<i style="color:grey" data-toggle="tooltip" title="DESCRIPTION" class="fa fa-info-circle fa-lg"></i> # P3' );
+    $( cc_table.column( 9 ).header() ).html( '1st Lit. match InChIKey' );
+    $( cc_table.column( 10 ).header() ).html( '2nd Lit match InChIKey' );
+    $( cc_table.column( 11 ).header() ).html( '3rd Lit match InChIKey' );
+    $( cc_table.column( 12 ).header() ).html( '<i style="color:grey" data-toggle="tooltip" title="DESCRIPTION" class="fa fa-info-circle fa-lg"></i> Sim CoV (1)' );
+    $( cc_table.column( 13 ).header() ).html( '<i style="color:grey" data-toggle="tooltip" title="DESCRIPTION" class="fa fa-info-circle fa-lg"></i> Sim CoV (2)' );
+    $( cc_table.column( 14 ).header() ).html( '<i style="color:grey" data-toggle="tooltip" title="DESCRIPTION" class="fa fa-info-circle fa-lg"></i> Sim CoV (3)' );
 
     // Get click event, assign active state, get values from all btn-groups
     $('.btn-group button').on('click', function() {
@@ -145,6 +185,24 @@
 
     $("#button-default").trigger('click');
 
+    $(".export-label").text('Export:');
+
+/*
+    cc_table.on( 'draw', function () {
+      $('#cc_structure [data-toggle="tooltip"]').tooltip({
+          animated: 'fade',
+          placement: 'bottom',
+          html: true,
+      });
+    });
+
+
+    $('#cc_structure [data-toggle="tooltip"]').tooltip({
+        animated: 'fade',
+        placement: 'bottom',
+        html: true,
+    });
+    */
   });
 
   </script>
@@ -164,16 +222,10 @@
     <div class="card-body">
 
       <table id='cc_table' class='table table-striped table-hover table-bordered wrap dataTable' style="width:100%">
-        <thead>
-          <tr>
-            {% for col in columns %}
-            <th>{{ col }}</th>
-            {% endfor %}
-          </tr>
-        </thead>
       </table>
     </div>
   </div>
+
 </div>
 {% include 'footer.html' %}
 

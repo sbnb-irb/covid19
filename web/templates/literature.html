@@ -6,7 +6,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>COVID19</title>
+  <title>COVID19: Literature-based candidates</title>
   <meta name="description" content="COVID19 ChemicalChecker Drug-candidates.">
   <meta name="author" content="SBNB">
 
@@ -16,7 +16,7 @@
   $(document).ready(function() {
     $('#literature').DataTable( {
       "sAjaxSource": "{{ url_for('get_literature_table') }}",
-      "lengthMenu": [[25, 50, 100], [25, 50, 100]],
+      "lengthMenu": [[50, 100, 200], [50, 100, 200]],
       "dom": "<'row' <'col'B> <'col'l> <'col'i> <'col'p> > t",//'rilBpt',
       "buttons": [
             {
@@ -51,7 +51,19 @@
         {
           render: $.fn.dataTable.render.ellipsis( 17, true ),
           targets: [ 1 ],
-        },            
+        },     
+        // Add link to CC and image on tooltip
+        {
+          render: function ( data, type, row ) {
+            var cc = "https://chemicalchecker.com/explore/" + data;
+            var cc_tag = "<a target='_blank' href='" + cc + "'>" + data + "</a>";
+            var mol = "https://chemicalchecker.com/images/molecules/" + data.slice(0,2) + "/" + data.slice(2,4) + "/" + data + "/2d.svg";
+            var mol_img = "title=\"<img src='" + mol + "'>\"";
+            var mol_tag = "<div id='cc_structure'><span data-toggle='tooltip'" + mol_img + ">" + cc_tag + "</span></div>";
+            return mol_tag;
+            },
+          targets: [0]
+        },       
       ],
     });
   } );
