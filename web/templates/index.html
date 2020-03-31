@@ -107,7 +107,7 @@
             var cc_tag = "<a target='_blank' href='" + cc + "'>" + data + "</a>";
             var mol = "https://chemicalchecker.com/images/molecules/" + data.slice(0,2) + "/" + data.slice(2,4) + "/" + data + "/2d.svg";
             var mol_img = "title=\'<img style=&quot;width:100%&quot; src=&quot;" + mol + "&quot;>\'";
-            var mol_tag = "<tooltip-right data-toggle='tooltip' data-html='true'" + mol_img + ">" + cc_tag + "</tooltip-right>";
+            var mol_tag = "<div id='chem-tooltip' class='d-inline-flex' data-placement='right' data-toggle='tooltip' data-html='true'" + mol_img + ">" + cc_tag + "</div>";
             return mol_tag;
             },
           targets: [0]
@@ -126,7 +126,7 @@
             ink = row['top1_inchikey']
             var mol = "https://chemicalchecker.com/images/molecules/" + ink.slice(0,2) + "/" + ink.slice(2,4) + "/" + ink + "/2d.svg";
             var mol_img = "title=\'<img style=&quot;width:100%&quot; src=&quot;" + mol + "&quot;>\'";
-            var mol_tag = "<tooltip-top data-toggle='tooltip' data-html='true'" + mol_img + ">" + cc_tag + "</tooltip-top>";
+            var mol_tag = "<div id='chem-tooltip' class='d-inline-flex' data-placement='top' data-toggle='tooltip' data-html='true'" + mol_img + ">" + cc_tag + "</div>";
             return mol_tag;
             },
           targets: 12
@@ -144,7 +144,7 @@
             ink = row['top2_inchikey']
             var mol = "https://chemicalchecker.com/images/molecules/" + ink.slice(0,2) + "/" + ink.slice(2,4) + "/" + ink + "/2d.svg";
             var mol_img = "title=\'<img style=&quot;width:100%&quot; src=&quot;" + mol + "&quot;>\'";
-            var mol_tag = "<tooltip-top data-toggle='tooltip' data-html='true'" + mol_img + ">" + cc_tag + "</tooltip-top>";
+            var mol_tag = "<div id='chem-tooltip' class='d-inline-flex' data-placement='top' data-toggle='tooltip' data-html='true'" + mol_img + ">" + cc_tag + "</div>";
             return mol_tag;
             },
           targets: 13
@@ -162,7 +162,7 @@
             ink = row['top3_inchikey']
             var mol = "https://chemicalchecker.com/images/molecules/" + ink.slice(0,2) + "/" + ink.slice(2,4) + "/" + ink + "/2d.svg";
             var mol_img = "title=\'<img style=&quot;width:100%&quot; src=&quot;" + mol + "&quot;>\'";
-            var mol_tag = "<tooltip-top data-toggle='tooltip' data-html='true'" + mol_img + ">" + cc_tag + "</tooltip-top>";
+            var mol_tag = "<div id='chem-tooltip' class='d-inline-flex' data-placement='left' data-toggle='tooltip' data-html='true'" + mol_img + ">" + cc_tag + "</div>";
             return mol_tag;
             },
           targets: 14
@@ -204,21 +204,21 @@
     });
 
     // Rename columns 
-    $( cc_table.column( 0 ).header() ).html( '<i id="header-info" data-toggle="tooltip" title="Candidate molecule identifier" class="fa fa-info-circle fa-lg"></i> InChIKey' );
-    $( cc_table.column( 1 ).header() ).html( '<i id="header-info" data-toggle="tooltip" title="Candidate molecule name" class="fa fa-info-circle fa-lg"></i> Name' );
-    $( cc_table.column( 2 ).header() ).html( '<i id="header-info" data-toggle="tooltip" title="Is the candidate an approved or experimental drug?" class="fa fa-info-circle fa-lg"></i> Is Drug' );
+    $( cc_table.column( 0 ).header() ).html( '<i id="header-info" data-toggle="tooltip" title="Candidate molecule identifier" class="fa fa-info-circle fa-lg"></i>&nbsp;&nbsp; InChIKey' );
+    $( cc_table.column( 1 ).header() ).html( '<i id="header-info" data-toggle="tooltip" title="Candidate molecule name" class="fa fa-info-circle fa-lg"></i>&nbsp;&nbsp; Name' );
+    $( cc_table.column( 2 ).header() ).html( '<i id="header-info" data-toggle="tooltip" title="Is the candidate an approved or experimental drug?" class="fa fa-info-circle fa-lg"></i>&nbsp;&nbsp; Is Drug' );
     $( cc_table.column( 3 ).header() ).html( 'Evidence' );
     $( cc_table.column( 4 ).header() ).html( 'MoA' );
-    $( cc_table.column( 5 ).header() ).html( '<i id="header-info" data-toggle="tooltip" title="Composite score calculated as the weighted sum of -logP-values of similarity and level of evidence" class="fa fa-info-circle fa-lg"></i> Support' );
-    $( cc_table.column( 6 ).header() ).html( '<i id="header-info" data-toggle="tooltip" title="Number of CoV literature compounds with a similarity P-value < 1e-5" class="fa fa-info-circle fa-lg"></i> # P5' );
-    $( cc_table.column( 7 ).header() ).html( '<i id="header-info" data-toggle="tooltip" title="Number of CoV literature compounds with a similarity P-value < 1e-4" class="fa fa-info-circle fa-lg"></i> # P4' );
-    $( cc_table.column( 8 ).header() ).html( '<i id="header-info" data-toggle="tooltip" title="Number of CoV literature compounds with a similarity P-value < 1e-3" class="fa fa-info-circle fa-lg"></i> # P3' );
+    $( cc_table.column( 5 ).header() ).html( '<i id="header-info" data-toggle="tooltip" title="Composite score calculated as the weighted sum of -logP-values of similarity and level of evidence" class="fa fa-info-circle fa-lg"></i>&nbsp;&nbsp; Support' );
+    $( cc_table.column( 6 ).header() ).html( '<i id="header-info" data-toggle="tooltip" title="Number of CoV literature compounds with a similarity P-value < 1e-5" class="fa fa-info-circle fa-lg"></i>&nbsp;&nbsp; # P5' );
+    $( cc_table.column( 7 ).header() ).html( '<i id="header-info" data-toggle="tooltip" title="Number of CoV literature compounds with a similarity P-value < 1e-4" class="fa fa-info-circle fa-lg"></i>&nbsp;&nbsp; # P4' );
+    $( cc_table.column( 8 ).header() ).html( '<i id="header-info" data-toggle="tooltip" title="Number of CoV literature compounds with a similarity P-value < 1e-3" class="fa fa-info-circle fa-lg"></i>&nbsp;&nbsp; # P3' );
     $( cc_table.column( 9 ).header() ).html( '1st Lit. match InChIKey' );
     $( cc_table.column( 10 ).header() ).html( '2nd Lit match InChIKey' );
     $( cc_table.column( 11 ).header() ).html( '3rd Lit match InChIKey' );
-    $( cc_table.column( 12 ).header() ).html( '<i id="header-info" data-toggle="tooltip" title="Most similar CoV literature compound" class="fa fa-info-circle fa-lg"></i> Sim CoV (1)' );
-    $( cc_table.column( 13 ).header() ).html( '<i id="header-info" data-toggle="tooltip" title="Second-most similar CoV literature compound" class="fa fa-info-circle fa-lg"></i> Sim CoV (2)' );
-    $( cc_table.column( 14 ).header() ).html( '<i id="header-info" data-toggle="tooltip" title="Third-most similar CoV literature compound" class="fa fa-info-circle fa-lg"></i> Sim CoV (3)' );
+    $( cc_table.column( 12 ).header() ).html( '<i id="header-info" data-toggle="tooltip" title="Most similar CoV literature compound" class="fa fa-info-circle fa-lg"></i>&nbsp;&nbsp; Sim CoV (1)' );
+    $( cc_table.column( 13 ).header() ).html( '<i id="header-info" data-toggle="tooltip" title="Second-most similar CoV literature compound" class="fa fa-info-circle fa-lg"></i>&nbsp;&nbsp; Sim CoV (2)' );
+    $( cc_table.column( 14 ).header() ).html( '<i id="header-info" data-toggle="tooltip" title="Third-most similar CoV literature compound" class="fa fa-info-circle fa-lg"></i>&nbsp;&nbsp; Sim CoV (3)' );
 
     // Get click event, assign active state, get values from all btn-groups
     $('.btn-group button').on('click', function() {
@@ -244,11 +244,12 @@
     $("div.export-label").html('<b>Export:</b>');
 
     cc_table.on( 'draw', function () {
-      $('tooltip-right[data-toggle="tooltip"]').tooltip({
-          placement: 'right'
+      $('#chem-tooltip[data-toggle="tooltip"]').tooltip({
+        template: '<div class="tooltip tooltip-chem" role="tooltip"><div class="arrow arrow-chem"></div><div class="tooltip-inner tooltip-inner-chem"></div></div>',
       });
-      $('tooltip-top[data-toggle="tooltip"]').tooltip({
-          placement: 'top'
+      $('i[data-toggle="tooltip"]').tooltip({
+        delay: { show: 0 },
+        placement: 'top'
       });
     });
 

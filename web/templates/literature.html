@@ -94,7 +94,7 @@
             var cc_tag = "<a target='_blank' href='" + cc + "'>" + data + "</a>";
             var mol = "https://chemicalchecker.com/images/molecules/" + data.slice(0,2) + "/" + data.slice(2,4) + "/" + data + "/2d.svg";
             var mol_img = "title=\'<img style=&quot;width:100%&quot; src=&quot;" + mol + "&quot;>\'";
-            var mol_tag = "<tooltip-right data-toggle='tooltip' data-html='true'" + mol_img + ">" + cc_tag + "</tooltip-right>";
+            var mol_tag = "<div id='chem-tooltip' class='d-inline-flex' data-placement='right' data-toggle='tooltip' data-html='true'" + mol_img + ">" + cc_tag + "</div>";
             return mol_tag;
             },
           targets: [0]
@@ -105,11 +105,8 @@
     $("div.export-label").html('<b>Export:</b>');
     
     cc_table.on( 'draw', function () {
-      $('tooltip-right[data-toggle="tooltip"]').tooltip({
-          placement: 'right'
-      });
-      $('tooltip-top[data-toggle="tooltip"]').tooltip({
-          placement: 'top'
+      $('#chem-tooltip[data-toggle="tooltip"]').tooltip({
+        template: '<div class="tooltip tooltip-chem" role="tooltip"><div class="arrow arrow-chem"></div><div class="tooltip-inner tooltip-inner-chem"></div></div>',
       });
     });
 
