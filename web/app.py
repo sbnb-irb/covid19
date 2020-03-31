@@ -21,10 +21,6 @@ def get_literature_data():
     return data
 
 
-df_literature = get_literature_data()
-df_literature_collection = df_literature.to_dict(orient='records')
-
-
 def get_candidate_data(signature='cc', evidence='', moa=''):
     if evidence == '':
         evidence = 'all'
@@ -65,11 +61,14 @@ def index():
 
 @app.route('/literature')
 def literature():
+    df_literature = get_literature_data()
     return render_template('literature.html', columns=df_literature.columns)
 
 
 @app.route('/_literature_table')
 def get_literature_table():
+    df_literature = get_literature_data()
+    df_literature_collection = df_literature.to_dict(orient='records')
     columns = df_literature.columns
     collection = df_literature_collection
     results = BaseDataTables(request, columns, collection).output_result()
