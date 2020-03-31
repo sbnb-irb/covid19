@@ -471,7 +471,7 @@ if __name__ == "__main__":
     updated = str(now.strftime("%c"))
     print('SIMILARITY UPDATED:', updated)
     dest_file = os.path.join(output_path, "similarity_update.txt")
-    with open(dest_file, 'wb') as fh:
+    with open(dest_file, 'w') as fh:
         fh.write(updated)
 
 print("Done!")
