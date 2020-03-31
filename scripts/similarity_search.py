@@ -19,7 +19,8 @@ output_path = os.path.join(script_path, '..', 'web', 'data')
 input_path = os.path.join(script_path, '..', 'data')
 
 
-MAX_ROWS=10000
+MAX_ROWS = 10000
+
 
 def get_raw_literature():
     scope = ['https://spreadsheets.google.com/feeds',
@@ -39,26 +40,27 @@ def get_raw_literature():
     '''
     return df
 
+
 evidence_legend = {
-   -2 : "NA",
-   -1 : "Failed in clinics",
-    0 : "Computational",
-    1 : "Preclinical",
-    2 : "Clinics",
-    3 : "Clinics COVID19"
+    -2: "NA",
+    -1: "Failed in clinics",
+    0: "Computational",
+    1: "Preclinical",
+    2: "Clinics",
+    3: "Clinics COVID19"
 }
 moa_legend = {
-   -2 : "NA",
-    0 : "Unknown",
-    1 : "Host factor",
-    2 : "Virus entry",
-    3 : "Protease inh.",
-    4 : "RNA trans./rep.",
-    5 : "Immunomodulator"
+    -2: "NA",
+    0: "Unknown",
+    1: "Host factor",
+    2: "Virus entry",
+    3: "Protease inh.",
+    4: "RNA trans./rep.",
+    5: "Immunomodulator"
 }
 
-def main(simtype):
 
+def main(simtype):
     # Load CC signatures
     cc = ChemicalChecker("/aloy/web_checker/package_cc/paper/")
     if simtype == "cc":
@@ -79,11 +81,11 @@ def main(simtype):
     df.to_csv(literature_file, index=False, sep="\t")
 
     # Drugbank
-    with open("data/db2ikey.tsv", "r") as f:
+    with open(os.path.join(input_path, "db2ikey.tsv"), "r") as f:
         druglist = []
         druglist_conn = []
         favconn_names = {}
-        favconn_iks   = {}
+        favconn_iks = {}
         for l in f:
             l = l.rstrip("\n").split("\t")
             druglist += [l[-1]]
@@ -95,7 +97,7 @@ def main(simtype):
 
     # Names
     ik_name = {}
-    with open("data/inchikeys_names.csv", "r") as f:
+    with open(os.path.join(input_path, "inchikeys_names.csv"), "r") as f:
         for l in f:
             l = l.rstrip("\n")
             ik = l[:27]
@@ -145,7 +147,7 @@ def main(simtype):
     for r in R:
         d_lit[r[0].split("-")[0]] += [r]
     R = []
-    for k,v in d_lit.items():
+    for k, v in d_lit.items():
         if len(v) == 1:
             R += [v[0]]
         else:
@@ -246,7 +248,7 @@ def main(simtype):
     vals = [i for i in range(0, nn.shape[1])]
     for j in range(0, ranks_raw.shape[1]):
         ranks_raw[nn[j, :], j] = vals
-    
+
     # clean
     del nn
 
@@ -254,7 +256,7 @@ def main(simtype):
     ranks = np.array(ranks_raw, dtype=np.int32)
     cutoffs = {
         "lpv_5": int(np.round(ranks.shape[0] * 1e-5, 0)),
-        "lpv_4": int(np.round(ranks.shape[0] * 1e-4, 0)), 
+        "lpv_4": int(np.round(ranks.shape[0] * 1e-4, 0)),
         "lpv_3": int(np.round(ranks.shape[0] * 1e-3, 0))
     }
     print(cutoffs)
@@ -263,17 +265,17 @@ def main(simtype):
     ranks[np.logical_and(ranks < cutoffs["lpv_4"], ranks >= 0)] = -2
     ranks[np.logical_and(ranks < cutoffs["lpv_3"], ranks >= 0)] = -1
     ranks[ranks >= 0] = 0
-    ranks = ranks*(-1)
+    ranks = ranks * (-1)
     print(ranks.shape)
     print("...weighting ranks by evidence (<=0=1, 1=2, 2=3, 3=4)")
     evis = np.array(evi_lit, dtype=np.int8)
     evis[evis < 0] = 0
-    evis = evis+1
-    ranks_w = ranks*evis
+    evis = evis + 1
+    ranks_w = ranks * evis
     support = np.sum(ranks_w, axis=1)
     print("...aggregate by inchikey connectivity")
     iks_can_conn_idx = collections.defaultdict(list)
-    for i,ik in enumerate(iks_can):
+    for i, ik in enumerate(iks_can):
         iks_can_conn_idx[ik.split("-")[0]] += [i]
     keep_idx_ = []
     iks_can_ = []
@@ -288,12 +290,12 @@ def main(simtype):
     for conn, idxs in iks_can_conn_idx.items():
         if len(idxs) == 1:
             idx = idxs[0]
-            keep_idx_   += [idx]
-            iks_can_    += [iks_can[idx]]
-            evi_can_    += [evi_can[idx]]
-            moa_can_    += [moa_can[idx]]
-            nam_can_    += [nam_can[idx]]
-            isdrug_can_ += [isdrug_can[idx]] 
+            keep_idx_ += [idx]
+            iks_can_ += [iks_can[idx]]
+            evi_can_ += [evi_can[idx]]
+            moa_can_ += [moa_can[idx]]
+            nam_can_ += [nam_can[idx]]
+            isdrug_can_ += [isdrug_can[idx]]
         else:
             if conn in conn_lit_idx:
                 idx = conn_lit_idx[conn]
@@ -317,18 +319,19 @@ def main(simtype):
             else:
                 nam_can_ += [nam_can[idx]]
             # conservative is drug
-            isdrug_can_ += [np.max([isdrug_can[idx] for idx in idxs])]    
-    sort_idxs  = np.argsort(iks_can_)
-    iks_can    = np.array(iks_can_)[sort_idxs]
-    keep_idx   = np.array(keep_idx_, dtype=np.int32)[sort_idxs]
-    evi_can    = np.array(evi_can_ , dtype=np.int8)[sort_idxs]
-    moa_can    = np.array(moa_can_ , dtype=np.int8)[sort_idxs]
-    nam_can    = [nam_can_[idx] for idx in sort_idxs]
+            isdrug_can_ += [np.max([isdrug_can[idx] for idx in idxs])]
+    sort_idxs = np.argsort(iks_can_)
+    iks_can = np.array(iks_can_)[sort_idxs]
+    keep_idx = np.array(keep_idx_, dtype=np.int32)[sort_idxs]
+    evi_can = np.array(evi_can_, dtype=np.int8)[sort_idxs]
+    moa_can = np.array(moa_can_, dtype=np.int8)[sort_idxs]
+    nam_can = [nam_can_[idx] for idx in sort_idxs]
     isdrug_can = np.array(isdrug_can_, dtype=np.int8)[sort_idxs]
-    ranks      = ranks[keep_idx]
-    ranks_raw  = ranks_raw[keep_idx]
-    ranks_w    = ranks_w[keep_idx]
-    assert (ranks_w.shape[0] == ranks_raw.shape[0] == ranks.shape[0] == len(isdrug_can) == len(evi_can) == len(iks_can) == len(nam_can) == len(moa_can))
+    ranks = ranks[keep_idx]
+    ranks_raw = ranks_raw[keep_idx]
+    ranks_w = ranks_w[keep_idx]
+    assert (ranks_w.shape[0] == ranks_raw.shape[0] == ranks.shape[0] == len(
+        isdrug_can) == len(evi_can) == len(iks_can) == len(nam_can) == len(moa_can))
     del iks_can_
     del keep_idx
     del keep_idx_
@@ -369,24 +372,24 @@ def main(simtype):
             mask = None
         if mask is None:
             mask = np.array([True for _ in range(0, ranks.shape[1])])
-        support = np.sum(ranks_w[:,mask], axis=1, dtype=np.int32)
-        keep    = np.argsort(-support)[:MAX_ROWS]
-        keep    = keep[support[keep] > 0]
+        support = np.sum(ranks_w[:, mask], axis=1, dtype=np.int32)
+        keep = np.argsort(-support)[:MAX_ROWS]
+        keep = keep[support[keep] > 0]
         support = support[keep]
-        cou_pv5 = np.sum(ranks[keep][:,mask] >= 3, axis=1, dtype=np.int16)
-        cou_pv4 = np.sum(ranks[keep][:,mask] >= 2, axis=1, dtype=np.int16)
-        cou_pv3 = np.sum(ranks[keep][:,mask] >= 1, axis=1, dtype=np.int16)
+        cou_pv5 = np.sum(ranks[keep][:, mask] >= 3, axis=1, dtype=np.int16)
+        cou_pv4 = np.sum(ranks[keep][:, mask] >= 2, axis=1, dtype=np.int16)
+        cou_pv3 = np.sum(ranks[keep][:, mask] >= 1, axis=1, dtype=np.int16)
         top1_idx = []
         top2_idx = []
         top3_idx = []
         mask_idxs = np.argwhere(mask).ravel()
         for idx in tqdm(keep):
-            worth_idxs = np.argwhere(ranks[idx,:] > 0).ravel()
+            worth_idxs = np.argwhere(ranks[idx, :] > 0).ravel()
             worth_idxs = np.intersect1d(worth_idxs, mask_idxs)
             vals = ranks_raw[idx, worth_idxs]
             top_idxs = worth_idxs[np.argsort(vals)[:3]]
             n = len(top_idxs)
-            if   n == 1:
+            if n == 1:
                 top1_idx += [top_idxs[0]]
                 top2_idx += [-1]
                 top3_idx += [-1]
@@ -415,20 +418,20 @@ def main(simtype):
         nam_lit_ = list(nam_lit) + [""]
         results = {
             "inchikey": iks_can[keep],
-            "name"    : [nam_can[i] for i in keep],
-            "is_drug" : isdrug_can[keep],
+            "name": [nam_can[i] for i in keep],
+            "is_drug": isdrug_can[keep],
             "evidence": evi_can[keep],
-            "moa"     : moa_can[keep],
-            "support" : M[:,0],
-            "lpv_5"  : M[:,1],
-            "lpv_4"  : M[:,2],
-            "lpv_3"  : M[:,3],
-            "top1_inchikey": [iks_lit_[int(idx)] for idx in M[:,4]],
-            "top2_inchikey": [iks_lit_[int(idx)] for idx in M[:,5]],
-            "top3_inchikey": [iks_lit_[int(idx)] for idx in M[:,6]],
-            "top1_name"    : [nam_lit_[int(idx)] for idx in M[:,4]],
-            "top2_name"    : [nam_lit_[int(idx)] for idx in M[:,5]],
-            "top3_name"    : [nam_lit_[int(idx)] for idx in M[:,6]]
+            "moa": moa_can[keep],
+            "support": M[:, 0],
+            "lpv_5": M[:, 1],
+            "lpv_4": M[:, 2],
+            "lpv_3": M[:, 3],
+            "top1_inchikey": [iks_lit_[int(idx)] for idx in M[:, 4]],
+            "top2_inchikey": [iks_lit_[int(idx)] for idx in M[:, 5]],
+            "top3_inchikey": [iks_lit_[int(idx)] for idx in M[:, 6]],
+            "top1_name": [nam_lit_[int(idx)] for idx in M[:, 4]],
+            "top2_name": [nam_lit_[int(idx)] for idx in M[:, 5]],
+            "top3_name": [nam_lit_[int(idx)] for idx in M[:, 6]]
         }
         df = pd.DataFrame(results)
         print("...filtering")
