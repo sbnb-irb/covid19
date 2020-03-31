@@ -122,8 +122,8 @@
             if (data.length >= 17) {
               data = data.slice(0, 17) + '&hellip;';
             }
-            var cc_tag = "<a onclick='_paq.push([&quot;trackEvent&quot;, &quot;Literature&quot;, &quot;" + data + "&quot;]);' target='_blank' href=\"" + cc + "\">" + data + "</a>";
             ink = row['top1_inchikey']
+            var cc_tag = "<a onclick='_paq.push([&quot;trackEvent&quot;, &quot;Literature&quot;, &quot;" + ink + "&quot;]);' target='_blank' href=\"" + cc + "\">" + data + "</a>";
             var mol = "https://chemicalchecker.com/images/molecules/" + ink.slice(0,2) + "/" + ink.slice(2,4) + "/" + ink + "/2d.svg";
             var mol_img = "title=\'<img style=&quot;width:100%&quot; src=&quot;" + mol + "&quot;>\'";
             var mol_tag = "<div id='chem-tooltip' class='d-inline-flex' data-placement='top' data-toggle='tooltip' data-html='true'" + mol_img + ">" + cc_tag + "</div>";
@@ -140,8 +140,8 @@
             if (data.length >= 17) {
               data = data.slice(0, 17) + '&hellip;';
             }
-            var cc_tag = "<a onclick='_paq.push([&quot;trackEvent&quot;, &quot;Literature&quot;, &quot;" + data + "&quot;]);' target='_blank' href=\"" + cc + "\">" + data + "</a>";
             ink = row['top2_inchikey']
+            var cc_tag = "<a onclick='_paq.push([&quot;trackEvent&quot;, &quot;Literature&quot;, &quot;" + ink + "&quot;]);' target='_blank' href=\"" + cc + "\">" + data + "</a>";
             var mol = "https://chemicalchecker.com/images/molecules/" + ink.slice(0,2) + "/" + ink.slice(2,4) + "/" + ink + "/2d.svg";
             var mol_img = "title=\'<img style=&quot;width:100%&quot; src=&quot;" + mol + "&quot;>\'";
             var mol_tag = "<div id='chem-tooltip' class='d-inline-flex' data-placement='top' data-toggle='tooltip' data-html='true'" + mol_img + ">" + cc_tag + "</div>";
@@ -158,8 +158,8 @@
             if (data.length >= 17) {
               data = data.slice(0, 17) + '&hellip;';
             }
-            var cc_tag = "<a onclick='_paq.push([&quot;trackEvent&quot;, &quot;Literature&quot;, &quot;" + data + "&quot;]);' target='_blank' href=\"" + cc + "\">" + data + "</a>";
             ink = row['top3_inchikey']
+            var cc_tag = "<a onclick='_paq.push([&quot;trackEvent&quot;, &quot;Literature&quot;, &quot;" + ink + "&quot;]);' target='_blank' href=\"" + cc + "\">" + data + "</a>";
             var mol = "https://chemicalchecker.com/images/molecules/" + ink.slice(0,2) + "/" + ink.slice(2,4) + "/" + ink + "/2d.svg";
             var mol_img = "title=\'<img style=&quot;width:100%&quot; src=&quot;" + mol + "&quot;>\'";
             var mol_tag = "<div id='chem-tooltip' class='d-inline-flex' data-placement='left' data-toggle='tooltip' data-html='true'" + mol_img + ">" + cc_tag + "</div>";
