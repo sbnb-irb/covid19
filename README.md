@@ -1,6 +1,38 @@
-# covid19
+# Chemical Checker based candidates for COVID-19
 
-ChemicalChecker based candidates for COVID19.
+This is the repository for scripts and web front-end for the COVID-19 project.
+The goal is to present a list of bioactive chemical compounds with potential to be effective against COVID-19.
+
+We are actively collecting suggested drugs from the current COVID-19 literature, with different levels of supporting evidence. We then use the Chemical Checker to identify small-molecules with similar chemical and bioactivity features to the reported drugs in a universe of 800 thousand bioactive compounds.
+
+
+## Tables provided:
+
+### Literature table
+
+A cleaned and tractable version of [literature candidates}(https://docs.google.com/spreadsheets/d/1BesqNdhHoVyldk372JOyNbhKAl0ncVZwloTpWb6YWZw/edit#gid=424137782) where molecules standardized, aggregated and duplications resolved.
+
+It contains the following fields:
+
+1. Molecule InChIKey
+2. Molecule name
+3. Evidence level
+4. Evidence type
+5. Mode of action
+
+### Candidates table
+
+1. Molecule InChIKey
+2. Molecule name
+3. Is Drug?
+4. Support score
+5. 1e-5 score
+6. 1e-4 score
+7. 1e-3 score
+8. Most similar literature compound
+9. Second most similar literature compound
+10. Third most similar literature compound
+
 
 ## Quickstart
 
@@ -11,23 +43,6 @@ python scripts/fetch_literature.py
 export FLASK_APP=web/app.py
 flask run 
 ```
-
-## Tables provided:
-
-### Literature table
-1. mol inchikey (link to CC)
-2. mol name
-3. evidence score
-4. description (wrapped)
-5. aggregated reference link
-
-### Candidates table
-1. mol inchikey
-2. mol name
-3. mol categories (multiple choice)
-4. score (nr similar)
-5. score (nr similar different MoA)
-6. more scores
 
 ## Remote debug
 
