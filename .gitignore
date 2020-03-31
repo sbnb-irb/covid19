@@ -108,4 +108,5 @@ ENV/
 .mypy_cache/
 
 #large data files
-web/data/*.h5
+web/data/*
+cc_image/
