@@ -6,8 +6,9 @@
 #$ -S /bin/bash
 #$ -r yes
 #$ -j yes
-#$ -N sign4_predict_hpc.py
-#$ -wd /aloy/scratch/mbertoni/tmp_jobs/tmp_bpgfsv02
+#$ -N cc_covid
+#$ -wd /aloy/scratch/sbnb-www/job_covid/
+#$ -q ws.q
 #$ -pe make 4
 #$ -l mem_free=10G,h_vmem=2.2G
 # End of qsub options
