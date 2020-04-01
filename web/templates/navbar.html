@@ -13,19 +13,27 @@
   <div class="collapse navbar-collapse" id="navbarsExampleDefault">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="https://docs.google.com/spreadsheets/d/1BesqNdhHoVyldk372JOyNbhKAl0ncVZwloTpWb6YWZw/edit#gid=424137782" target="_blank">Contribute</a>
+        <a class="nav-link active" href="{{ url_for('index') }}" target="_blank">Candidates</a>
       </li>
       <li class="nav-item active">
         <a class="nav-link" href="{{ url_for('literature') }}" target="_blank">Literature</a>
       </li>
+      <!--
       <li class="nav-item active">
         <a class="nav-link" href="https://docs.google.com/document/d/1ykFSQ8Zek9xLDKy3z-usKAxmdl5VbsFBlKak3M7dK-k/edit" target="_blank">Manuscript</a>
+      </li>
+      -->
+      <li class="nav-item active">
+        <a class="nav-link" href="{{ url_for('index') }}" target="_blank">Documentation</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="https://docs.google.com/spreadsheets/d/1BesqNdhHoVyldk372JOyNbhKAl0ncVZwloTpWb6YWZw/edit#gid=424137782" target="_blank">Contribute</a>
       </li>
       <li class="nav-item active">
         <a class="nav-link" href="http://gitlabsbnb.irbbarcelona.org/project-specific-repositories/covid19" target="_blank">Code</a>
       </li>
       <li class="nav-item active">
-        <a class="nav-link" href="https://sbnb.irbbarcelona.org/" target="_blank">About</a>
+        <a class="nav-link" href="{{ url_for('index') }}" target="_blank">About</a>
       </li>
     </ul>
   </div>
