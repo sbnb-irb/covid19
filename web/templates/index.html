@@ -20,68 +20,134 @@
       "dom": "<'row' <'col' <'row'<'col-md-auto my-3 ml-2'<'export-label'>> <'col-md-auto my-2'B>>> <'col my-2'l> <'col'i> <'col my-2'p> > t",//'rilBpt',
       "buttons": [
             {
-                extend:    'copyHtml5',
-                text:      '<i class="fa fa-files-o"></i>',
-                titleAttr: 'Copy',
-                exportOptions: {
-                  modifier : {
-                    order : 'current', // 'current', 'applied','index', 'original'
-                    page : 'all', // 'all', 'current'
-                    search : 'none' // 'none', 'applied', 'removed'
-                  },
-                  //columns: [ 0, 1, 2, 3, 4, 5, 6, 7, 8 ]
-                }
-            },
-            {
-                extend:    'excelHtml5',
-                text:      '<i class="fa fa-file-excel-o"></i>',
-                titleAttr: 'Excel',
-                exportOptions: {
-                  modifier : {
-                    order : 'current', // 'current', 'applied','index', 'original'
-                    page : 'all', // 'all', 'current'
-                    search : 'none' // 'none', 'applied', 'removed'
-                  },
-                  //columns: [ 0, 1, 2, 3, 4, 5, 6, 7, 8 ]
-                }
-            },
-            {
-                extend:    'csvHtml5',
-                text:      '<i class="fa fa-file-text-o"></i>',
-                titleAttr: 'CSV',
-                exportOptions: {
-                  modifier : {
-                    order : 'current', // 'current', 'applied','index', 'original'
-                    page : 'all', // 'all', 'current'
-                    search : 'none' // 'none', 'applied', 'removed'
-                  },
-                  //columns: [ 0, 1, 2, 3, 4, 5, 6, 7, 8 ]
-                }
-            },
-            {
-                extend:    'pdfHtml5',
-                text:      '<i class="fa fa-file-pdf-o"></i>',
-                orientation: 'landscape',
-                pageSize: 'A3',
-                titleAttr: 'PDF',
-                exportOptions: {
-                  modifier : {
-                    order : 'current', // 'current', 'applied','index', 'original'
-                    page : 'all', // 'all', 'current'
-                    search : 'none' // 'none', 'applied', 'removed'
-                  },
-                  //columns: [ 0, 1, 2, 3, 4, 5, 6, 7, 8 ]
-                  /*
-                  format: {
-                    body: function ( data, row, column, node ) {
-                      console.log(column);
-                      return column === 0 ?
-                        data.substr(2):
-                        data;
+              extend:    'copyHtml5',
+              text:      '<i class="fa fa-files-o"></i>',
+              titleAttr: 'Copy',
+              exportOptions: {
+                modifier : {
+                  order : 'current', // 'current', 'applied','index', 'original'
+                  page : 'all', // 'all', 'current'
+                  search : 'none' // 'none', 'applied', 'removed'
+                },
+                //columns: [ 0, 1, 2, 3, 4, 5, 6, 7, 8 ]
+                format: {
+                  body: function ( data, row, column, node ) {
+                    if ((column === 0)||(column === 12)||(column === 13)||(column === 14)) {
+                      var sdata = String(data).split(">");
+                      var svalue = sdata[sdata.length-3];
+                      return svalue.substring(0, svalue.length-3);
+                    } else if (column === 1) {
+                      if (String(data)[0] === "<"){
+                        var sdata = String(data).split("\"");
+                        var svalue = sdata[3];
+                        return svalue;
+                      } else {
+                        return data;
+                      }
+                    } else {
+                      return data;
                     }
                   }
-                  */
                 }
+              }
+            },
+            {
+              extend:    'excelHtml5',
+              text:      '<i class="fa fa-file-excel-o"></i>',
+              titleAttr: 'Excel',
+              exportOptions: {
+                modifier : {
+                  order : 'current', // 'current', 'applied','index', 'original'
+                  page : 'all', // 'all', 'current'
+                  search : 'none' // 'none', 'applied', 'removed'
+                },
+                //columns: [ 0, 1, 2, 3, 4, 5, 6, 7, 8 ]
+                format: {
+                  body: function ( data, row, column, node ) {
+                    if ((column === 0)||(column === 12)||(column === 13)||(column === 14)) {
+                      var sdata = String(data).split(">");
+                      var svalue = sdata[sdata.length-3];
+                      return svalue.substring(0, svalue.length-3);
+                    } else if (column === 1) {
+                      if (String(data)[0] === "<"){
+                        var sdata = String(data).split("\"");
+                        var svalue = sdata[3];
+                        return svalue;
+                      } else {
+                        return data;
+                      }
+                    } else {
+                      return data;
+                    }
+                  }
+                }
+              }
+            },
+            {
+              extend:    'csvHtml5',
+              text:      '<i class="fa fa-file-text-o"></i>',
+              titleAttr: 'CSV',
+              exportOptions: {
+                modifier : {
+                  order : 'current', // 'current', 'applied','index', 'original'
+                  page : 'all', // 'all', 'current'
+                  search : 'none' // 'none', 'applied', 'removed'
+                },
+                //columns: [ 0, 1, 2, 3, 4, 5, 6, 7, 8 ]
+                format: {
+                  body: function ( data, row, column, node ) {
+                    if ((column === 0)||(column === 12)||(column === 13)||(column === 14)) {
+                      var sdata = String(data).split(">");
+                      var svalue = sdata[sdata.length-3];
+                      return svalue.substring(0, svalue.length-3);
+                    } else if (column === 1) {
+                      if (String(data)[0] === "<"){
+                        var sdata = String(data).split("\"");
+                        var svalue = sdata[3];
+                        return svalue;
+                      } else {
+                        return data;
+                      }
+                    } else {
+                      return data;
+                    }
+                  }
+                }
+              }
+            },
+            {
+              extend:    'pdfHtml5',
+              text:      '<i class="fa fa-file-pdf-o"></i>',
+              orientation: 'landscape',
+              pageSize: 'A3',
+              titleAttr: 'PDF',
+              exportOptions: {
+                modifier : {
+                  order : 'current', // 'current', 'applied','index', 'original'
+                  page : 'all', // 'all', 'current'
+                  search : 'none' // 'none', 'applied', 'removed'
+                },
+                //columns: [ 0, 1, 2, 3, 4, 5, 6, 7, 8 ]
+                format: {
+                  body: function ( data, row, column, node ) {
+                    if ((column === 0)||(column === 12)||(column === 13)||(column === 14)) {
+                      var sdata = String(data).split(">");
+                      var svalue = sdata[sdata.length-3];
+                      return svalue.substring(0, svalue.length-3);
+                    } else if (column === 1) {
+                      if (String(data)[0] === "<"){
+                        var sdata = String(data).split("\"");
+                        var svalue = sdata[3];
+                        return svalue;
+                      } else {
+                        return data;
+                      }
+                    } else {
+                      return data;
+                    }
+                  }
+                }
+              }
             }
       ],
       "bProcessing": true,
@@ -246,6 +312,7 @@
     cc_table.on( 'draw', function () {
       $('#chem-tooltip[data-toggle="tooltip"]').tooltip({
         template: '<div class="tooltip tooltip-chem" role="tooltip"><div class="arrow arrow-chem"></div><div class="tooltip-inner tooltip-inner-chem"></div></div>',
+        container: 'body'
       });
       $('i[data-toggle="tooltip"]').tooltip({
         delay: { show: 0 },
