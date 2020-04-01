@@ -94,7 +94,7 @@
             var cc = "https://chemicalchecker.com/explore/" + data;
             var cc_tag = "<a onclick='_paq.push([&quot;trackEvent&quot;, &quot;Literature&quot;, &quot;" + data + "&quot;]);' target='_blank' href='" + cc + "'>" + data + "</a>";
             var mol = "https://chemicalchecker.com/images/molecules/" + data.slice(0,2) + "/" + data.slice(2,4) + "/" + data + "/2d.svg";
-            var mol_img = "title=\'<img style=&quot;width:100%&quot; src=&quot;" + mol + "&quot;>\'";
+            var mol_img = "title=\'<img width=&quot;150%&quot; src=&quot;" + mol + "&quot;>\'";
             var mol_tag = "<div id='chem-tooltip' class='d-inline-flex' data-placement='right' data-toggle='tooltip' data-html='true'" + mol_img + ">" + cc_tag + "</div>";
             return mol_tag;
             },
