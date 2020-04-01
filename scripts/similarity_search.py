@@ -44,13 +44,15 @@ def get_raw_literature():
 evidence_legend = {
     -2: "NA",
     -1: "Failed in clinics",
-    0: "Computational",
-    1: "Preclinical",
-    2: "Clinics",
-    3: "Clinics COVID19"
+    0: "Text mining",
+    1: "Computational",
+    2: "Preclinical",
+    3: "Clinics",
+    4: "Clinics COVID19"
 }
 moa_legend = {
     -2: "NA",
+    -1: "Not given",
     0: "Unknown",
     1: "Host factor",
     2: "Virus entry",
@@ -61,15 +63,18 @@ moa_legend = {
 
 
 def main(simtype):
+
     # Load CC signatures
     cc = ChemicalChecker("/aloy/web_checker/package_cc/paper/")
     if simtype == "cc":
         print("Loading CC signatures")
         neig = cc.signature("ZZ.004", "neig3")
+        sign = cc.signature("ZZ.004", "sign3")
     else:
         print("Loading Morgan fingerprints")
         neig = cc.signature("A1.001", "neig1")
-
+        sign = cc.signature("A1.001", "sign1")
+    print("Getting universe")
     universe = set(neig.row_keys)
     universe_conn = dict([(k.split("-")[0], k) for k in neig.row_keys])
 
@@ -79,6 +84,10 @@ def main(simtype):
     df.to_csv(literature_file, index=False, sep="\t")
     literature_file = os.path.join(output_path, 'literature.csv')
     df.to_csv(literature_file, index=False, sep="\t")
+
+    print('Reading text-mining candidates')
+    df_tm = pd.read_csv(os.path.join(script_path, "../data/textmining_selection.tsv"),
+                        header=None, names=["inchikey"], delimiter="\t")
 
     # Drugbank
     with open(os.path.join(input_path, "db2ikey.tsv"), "r") as f:
@@ -104,7 +113,7 @@ def main(simtype):
             name = l[28:]
             ik_name[ik] = name
 
-    print("Converting inchikeys")
+    print("Converting inchikeys of literature")
     # Convert to inchikeys
     conv = Converter()
     d = collections.defaultdict(list)
@@ -121,6 +130,15 @@ def main(simtype):
         except Exception as ex:
             print(ex)
             continue
+    print("Adding textmining")
+    for i, ik in enumerate(list(df_tm["inchikey"])):
+        if ik not in universe:
+            if ik.split("-")[0] not in universe_conn:
+                continue
+            else:
+                ik = universe_conn[ik.split("-")[0]]
+        d[ik] += [("tm%d" % i, ik, 0, -1, "Text mining", "", "", "")]
+    print("Assembling")
     R = []
     for k, v in d.items():
         c = k.split("-")[0]
@@ -267,7 +285,7 @@ def main(simtype):
     ranks[ranks >= 0] = 0
     ranks = ranks * (-1)
     print(ranks.shape)
-    print("...weighting ranks by evidence (<=0=1, 1=2, 2=3, 3=4)")
+    print("...weighting ranks by evidence (<=0=1, 1=2, 2=3, 3=4, 4=5)")
     evis = np.array(evi_lit, dtype=np.int8)
     evis[evis < 0] = 0
     evis = evis + 1
@@ -330,6 +348,7 @@ def main(simtype):
     ranks = ranks[keep_idx]
     ranks_raw = ranks_raw[keep_idx]
     ranks_w = ranks_w[keep_idx]
+    support = support[keep_idx]
     assert (ranks_w.shape[0] == ranks_raw.shape[0] == ranks.shape[0] == len(
         isdrug_can) == len(evi_can) == len(iks_can) == len(nam_can) == len(moa_can))
     del iks_can_
@@ -340,19 +359,33 @@ def main(simtype):
     del nam_can_
     del isdrug_can_
 
+    print("Calculating inter-literature distances")
+    V_lit = sign.get_vectors(iks_lit)[1]
+    iks_can_trim, V_can_trim = sign.get_vectors(
+        iks_can[np.argsort(-support)][:10000])
+
     print("...saving")
     dest_file = os.path.join(output_path, "dist_%s.h5" % simtype)
     with h5py.File(dest_file, "w") as hf:
         hf.create_dataset("ranks_raw", data=ranks_raw)
         hf.create_dataset("ranks", data=ranks)
         hf.create_dataset("ranks_w", data=ranks_w)
+        hf.create_dataset("support", data=support)
         hf.create_dataset("rows", data=np.array(
             iks_can, DataSignature.string_dtype()))
         hf.create_dataset("cols", data=np.array(
             iks_lit, DataSignature.string_dtype()))
         hf.create_dataset("evi_rows", data=evi_can)
         hf.create_dataset("evi_cols", data=evi_lit)
+        hf.create_dataset("moa_rows", data=moa_can)
+        hf.create_dataset("moa_cols", data=moa_lit)
         hf.create_dataset("isdrug_rows", data=isdrug_can)
+        hf.create_dataset("V_lit", data=V_lit)
+        hf.create_dataset("iks_can_trim", data=np.array(
+            iks_can_trim, DataSignature.string_dtype()))
+        hf.create_dataset("V_can_trim", data=V_can_trim)
+        hf.create_dataset("nam_cols", data=np.array(
+            nam_lit, DataSignature.string_dtype()))
 
     # Get matching scores for the candidate molecules
     def scoring(ranks, min_evidence, moa):
@@ -411,8 +444,8 @@ def main(simtype):
 
     def similarities(simtype, min_evidence, moa):
         if min_evidence is not None:
-            if min_evidence < 0 or min_evidence > 3:
-                raise Exception("min_evidence must be None, 0, 1, 2 or 3")
+            if min_evidence < 0 or min_evidence > 4:
+                raise Exception("min_evidence must be None, 0, 1, 2 or 4")
         M, keep, n_rows, n_cols = scoring(ranks, min_evidence, moa)
         iks_lit_ = list(iks_lit) + [""]
         nam_lit_ = list(nam_lit) + [""]
@@ -454,7 +487,7 @@ def main(simtype):
 
     print("Saving legend")
     legend = list()
-    for min_evidence in [None, 0, 1, 2, 3]:
+    for min_evidence in [None, 0, 1, 2, 3, 4]:
         for moa in [None, 0, 1, 2, 3, 4, 5]:
             print("Sim type %s | Min evidence %s | MoA %s" %
                   (simtype, str(min_evidence), str(moa)))
