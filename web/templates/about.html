@@ -16,18 +16,40 @@
 <body>
 
 {% include 'navbar.html' %}
-<div id="main" class="container-fluid justify-content-center">
-  <!-- Table -->
-  <br>
+<div id="main" class="container justify-content-center">
 
   <div class="card card-default">
     <div class="card-header">
-      <h3 id="table_title" class="text-center">About</h3>
+      <h3 id="table_title" class="text-center">This resource is available thank to the contribution of several entities:</h3>
     </div>
     <div class="card-body">
+
+      <div class="row">
+
+        <!-- CONTRIBUTOR 1-->
+        <div class="col">
+          <div class="card" style="width: 20rem;">
+            <a target="_blank" href="https://sbnb.irbbarcelona.org/">
+              <img class="card-img-top p-4" src="{{ url_for('static', filename='images/SBNB_logo_2017-H-small.png') }}" alt="Logo">
+            </a>
+            <div class="card-body">
+              <p class="card-text">The Structural Bioinformatics and Network Biology group contributed in:</p>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">Literature annotation and curation</li>
+              <li class="list-group-item">Candidate drugs identification</li>
+              <li class="list-group-item">Website host and design</li>
+            </ul>
+            <div class="card-body">
+              <a target="_blank" href="https://sbnb.irbbarcelona.org/" class="card-link">https://sbnb.irbbarcelona.org/</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+  
     </div>
   </div>
-  
 </div>
 {% include 'footer.html' %}
 
