@@ -15,7 +15,10 @@
 </head>
 <body>
 
+{% with active_page = "About" %}
 {% include 'navbar.html' %}
+{% endwith %}
+
 <div id="main" class="container justify-content-center">
 
   <div class="card card-default">

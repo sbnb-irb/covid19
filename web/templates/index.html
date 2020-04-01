@@ -276,7 +276,10 @@
 </head>
 <body>
 
+{% with active_page = "Candidates" %}
 {% include 'navbar.html' %}
+{% endwith %}
+
 {% include 'header.html' %}
 <div id="main" class="container-fluid justify-content-center">
   <!-- Table -->
