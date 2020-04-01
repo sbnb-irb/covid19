@@ -65,6 +65,16 @@ def literature():
     return render_template('literature.html', columns=df_literature.columns)
 
 
+@app.route('/docs')
+def docs():
+    return render_template('docs.html')
+
+
+@app.route('/about')
+def about():
+    return render_template('about.html')
+
+
 @app.route('/_literature_table')
 def get_literature_table():
     df_literature = get_literature_data()
