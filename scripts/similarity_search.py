@@ -13,10 +13,15 @@ from chemicalchecker import ChemicalChecker
 from chemicalchecker.util.parser import Converter
 from chemicalchecker.core.signature_data import DataSignature
 
+from .plots import do_plots
+
 
 script_path = os.path.dirname(os.path.realpath(__file__))
 output_path = os.path.join(script_path, '..', 'web', 'data')
 input_path = os.path.join(script_path, '..', 'data')
+
+if not os.path.exists(output_path):
+    os.mkdir(output_path)
 
 
 MAX_ROWS = 10000
@@ -359,11 +364,14 @@ def main(simtype):
     del nam_can_
     del isdrug_can_
 
-    print("Calculating inter-literature distances")
-    V_lit = sign.get_vectors(iks_lit)[1]
+    print("Getting vectors for plotting")
+    iks_lit_trim, V_lit_trim = sign.get_vectors(iks_lit)
     iks_can_trim, V_can_trim = sign.get_vectors(
         iks_can[np.argsort(-support)][:10000])
-
+    rnd_idxs = np.arange(len(iks_can))
+    np.random.shuffle(rnd_idxs)
+    iks_rnd_trim, V_rnd_trim = sign.get_vectors(
+        iks_can[rnd_idxs][:10000])
     print("...saving")
     dest_file = os.path.join(output_path, "dist_%s.h5" % simtype)
     with h5py.File(dest_file, "w") as hf:
@@ -380,10 +388,15 @@ def main(simtype):
         hf.create_dataset("moa_rows", data=moa_can)
         hf.create_dataset("moa_cols", data=moa_lit)
         hf.create_dataset("isdrug_rows", data=isdrug_can)
-        hf.create_dataset("V_lit", data=V_lit)
+        hf.create_dataset("iks_lit_trim", data=np.array(
+            iks_lit_trim, DataSignature.string_dtype()))        
+        hf.create_dataset("V_lit_trim", data=V_lit_trim)
         hf.create_dataset("iks_can_trim", data=np.array(
             iks_can_trim, DataSignature.string_dtype()))
         hf.create_dataset("V_can_trim", data=V_can_trim)
+        hf.create_dataset("iks_rnd_trim", data=np.array(
+            iks_rnd_trim, DataSignature.string_dtype()))
+        hf.create_dataset("V_rnd_trim", data=V_rnd_trim)
         hf.create_dataset("nam_cols", data=np.array(
             nam_lit, DataSignature.string_dtype()))
 
@@ -498,6 +511,9 @@ def main(simtype):
     legend = pd.DataFrame(legend)
     dest_file = os.path.join(output_path, "legend_%s.csv" % simtype)
     legend.to_csv(dest_file, index=False, sep="\t")
+
+    print("Doing plots")
+    do_plots(simtype)
 
 
 if __name__ == "__main__":
