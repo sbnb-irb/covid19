@@ -29,7 +29,7 @@
     </div>
     <div class="card-body">
       <p>
-        SARS-CoV-2 outbreak has prompted an unprecedented effort by the scientific community to find an effective vaccine or drugs to mitigate the viral infectiveness and symptoms, which is reflected in the over 4,000 publications that appeared in the last weeks. The volume of information is inaccessible by any single research group, and this may limit progress. Through a review of the most relevant scientific literature, in a limited community effort, we have identified over 150 compounds —with different levels of experimental evidence— that are potentially active against COVID-19.
+        The SARS-CoV-2 outbreak has prompted an unprecedented effort by the scientific community to find an effective vaccine or drugs to mitigate the viral infectiveness and symptoms, which is reflected in the over 4,000 publications that appeared in the last weeks. The volume of information is inaccessible by any single research group, and this may limit progress. Through a review of the most relevant scientific literature, in a limited community effort, we have identified over 150 compounds —with different levels of experimental evidence— that are potentially active against COVID-19.
       </p>
       <p>
         We have recently presented the <a href="https://chemicalchecker.com/" target="_blank"><img alt="ChemicalChecker" height="20" src="https://chemicalchecker.com/images/CC_logo_blue.svg"></a> (CC), a resource that provides processed, harmonized and integrated bioactivity data for 1M small molecules. The CC divides data into five levels of increasing complexity, ranging from the chemical properties of compounds to their clinical outcomes. In the CC, bioactivity data are expressed in a vector format, which naturally extends the notion of chemical similarity between compounds to similarities between bioactivity signatures of different kinds.
@@ -37,7 +37,6 @@
       <p>
         We now exploit these to identify compounds that display similar properties to those suggested to be effective to treat COVID-19, thereby expanding the portfolio of molecules of interest. Besides, we incorporate literature support by automatically processing the growing corpus of COVID-19 related articles.
       </p>
-
     </div>
   </div>
 
@@ -47,20 +46,71 @@
     <div class="card-header">
       <h3 id="table_title" class="text-center">Strategy</h3>
     </div>
-    <img class="card-img-top p-4" src="{{ url_for('static', filename='images/covid19-cc-scheme.png') }}" alt="Logo">
+    <img class="card-img-top p-4" src="{{ url_for('static', filename='images/covid19-cc-scheme.png') }}" alt="Strategy scheme">
     <div class="card-body">
       <p>
-        By mining the recent literature, we identified about 150 drug-like compounds that have been suggested by the scientific community to be potentially active against COVID-19. The scientific evidence supporting these compounds is variable: some of them come from computational predictions, some have proven their value in pre-clinical tests, others are approved drugs with a therapeutic annotation unrelated to infectious diseases and, finally, some are drugs currently used to fight related pathogens. As a community effort, <a href="https://docs.google.com/spreadsheets/d/1BesqNdhHoVyldk372JOyNbhKAl0ncVZwloTpWb6YWZw/edit#gid=424137782" target="_blank">we encourage researchers to include the compounds and/or anti-COVID-19 evidence that they are currently collecting</a>. Additionally, we also include compounds that are positive in certain bioassays, identified as important through the automatic mining of the COVID-19 literature, and for which we find further bioactivity support in the CC. The whole pipeline described below will be automatically run every day, so that the resource always provides the most updated results.
+        By mining the recent literature, we identified about 150 drug-like compounds that have been suggested by the scientific community to be potentially active against COVID-19. The scientific evidence supporting these compounds is variable: some of them come from computational predictions, some have proven their value in pre-clinical tests, others are approved drugs with a therapeutic annotation unrelated to infectious diseases and, finally, some are drugs currently used to fight related pathogens. As a community effort, <a href="https://forms.gle/ERpCrkD8GjV2a4TX8" target="_blank">we encourage researchers to include the compounds and/or anti-COVID-19 evidence that they are currently collecting</a> that they are currently collecting. Additionally, we also include compounds that are positive in certain bioassays, identified as important through the automatic mining of the COVID-19 literature, and for which we find further bioactivity support in the CC. The whole pipeline described below will be automatically run every day, so that the resource always provides the most updated results.
       </p>
       <p>
-        Starting from the updated list of compounds, we run bioactivity and chemical similarity searches against the almost 1M compounds in the CC. The results are weighted to favour molecules with similar properties to those with higher levels of experimental evidence and to ensure that the diverse mechanisms of action (see <a href="https://docs.google.com/spreadsheets/d/1BesqNdhHoVyldk372JOyNbhKAl0ncVZwloTpWb6YWZw/edit#gid=424137782" target="_blank">Contribute</a> for details) are represented. Finally, we collect and display the top 10,000 molecules.
+        Starting from the updated list of compounds, we run bioactivity and chemical similarity searches against the almost 1M compounds in the CC. The results are weighted to favour molecules with similar properties to those with higher levels of experimental evidence and to ensure that the diverse mechanisms of action (see <a href="https://forms.gle/ERpCrkD8GjV2a4TX8" target="_blank">Contribute</a> for details) are represented. Finally, we collect and display the top 10,000 molecules, which can be sorted according to different criteria, including whether they are approved drugs, the cumulative level of support, or their similarity to literature drugs.
       </p>
+    </div>
+  </div>
+
+  <br>
+
+  <div class="card card-default">
+    <div class="card-header">
+      <h3 id="table_title" class="text-center">Results</h3>
+    </div>
+    <img class="card-img-top p-4" src="{{ url_for('static', filename='images/docu/literature_cc.png') }}" alt="Results plots">
+    <div class="card-body">
       <p>
-        We now exploit these to identify compounds that display similar properties to those suggested to be effective to treat COVID-19, thereby expanding the portfolio of molecules of interest. Besides, we incorporate literature support by automatically processing the growing corpus of COVID-19 related articles.
+        Figure2 description goes here.
       </p>
+    </div>
+  </div>
+
+  <br>
+
+  <div class="card card-default">
+    <div class="card-header">
+      <h3 id="table_title" class="text-center">Query examples</h3>
+    </div>
+    <div class="card-body">
+      <p>Here we collect some example of queries.</p>
+
+      <div class="card card-default">
+        <div class="card-header">Example query 1</div>
+        <div class="card-body">
+
+        </div>
+      </div>
 
     </div>
   </div>
+
+  <br>
+
+  <div class="card card-default">
+    <div class="card-header">
+      <h3 id="table_title" class="text-center">Contributions</h3>
+    </div>
+    <div class="card-body">
+      <p>
+        This website is provided by the <a href="http://sbnb.irbbarcelona.org" target="_blank">Structural Bioinformatics and Network Biology Group</a> at the <a href="http://www.irbbarcelona.org" target="_blank">Institute for Research in Biomedicine</a>.
+      </p>
+      <p>
+        The Text Mining category was enabled by the collaboration with Hugo Zaragoza, Roi Blanco and Víctor Martínez from Amazon Research Science.
+      </p>
+      <p>
+        We deeply thanks all the medical staff working to save our lives.
+      </p>
+    </div>
+  </div>
+
+  <br>
+
 </div>
 {% include 'footer.html' %}
 
