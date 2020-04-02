@@ -110,3 +110,4 @@ ENV/
 #large data files
 web/data/*
 cc_image/*
+data/literature.csv
