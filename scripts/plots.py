@@ -268,14 +268,119 @@ def projections_figure(simtype):
     fig = plt.figure(constrained_layout=True, figsize=(6,6))
     gs = fig.add_gridspec(2,2)
     ax = fig.add_subplot(gs[0,0])
-    projection_moa(ax, Prnd, title="MoA | 10k random", legend=True)
+    projection_moa(ax, Prnd, title="MoA | 10k CC random", legend=True)
     ax = fig.add_subplot(gs[0,1])
-    projection_evi(ax, Prnd, title="Evidence | 10k random", legend=True)
+    projection_evi(ax, Prnd, title="Evidence | 10k CC random", legend=True)
     ax = fig.add_subplot(gs[1,0])
     projection_moa(ax, Pcan, title="MoA | 10k cand. (by support)", legend=False)
     ax = fig.add_subplot(gs[1,1])
     projection_evi(ax, Pcan, title="Evidence | 10k cand. (by support)", legend=False)
     plt.savefig(os.path.join(OUTPATH, "projections_%s.png" % SIMTYPE), dpi=300)
+
+
+def atc_figure(simtype):
+
+    def atc_test(ax, simtype=simtype, atc_level="B", top=100, exclude_self=True, yaxis=True):
+        with h5py.File(os.path.join(script_path, "../web/data/dist_%s.h5" % simtype), "r") as hf:
+            iks_lit = hf["cols"][:]
+            iks_can = hf["rows"][:]
+            support = hf["support"][:]
+        idxs = np.argsort(-support)
+        support = support[idxs]
+        iks_can = iks_can[idxs]
+        pos_iks = iks_can[:top]
+        neg_iks = iks_can[top:]
+        def get_atcs(level="B"):
+            atcs = collections.defaultdict(set)
+            with open(os.path.join(script_path, "../data/atcs.tsv"), "r") as f:
+                for l in f:
+                    l = l.rstrip("\n").split("\t")
+                    atcs[l[0].split("-")[0]].update([x.split(":")[1] for x in l[1].split(",") if "%s:" % atc_level in x])
+            return atcs
+        atcs = get_atcs()    
+        atc_descr = {
+            "A": "Alim. tract & Met.",
+            "B": "Blood etc.",
+            "C": "Cardiovascular",
+            "D": "Dermatol.",
+            "G": "Genitourinary etc.",
+            "H": "Syst. horm",
+            "J": "Antiinfectives",
+            "L": "Antineoplastic",
+            "M": "Musculoskeletal",
+            "N": "Nervous",
+            "P": "Antiparasitic",
+            "R": "Respiratory",
+            "S": "Sensory organs",
+            "V": "Various"
+        }
+        descr_sort = sorted([x for x in atc_descr.keys()])
+        universe = set(atcs.keys())
+        if exclude_self:
+            universe.difference(set([x.split("-")[0] for x in iks_lit]))
+        Pos = set()
+        Neg = set()
+        for ik in pos_iks:
+            ik = ik.split("-")[0]
+            if ik not in universe:
+                continue
+            Pos.update([ik])
+        for ik in neg_iks:
+            ik = ik.split("-")[0]
+            if ik not in universe:
+                continue
+            Neg.update([ik])
+        Neg = Neg.difference(Pos)
+        universe = universe.intersection(Pos.union(Neg))
+        atc_sets = collections.defaultdict(set)
+        for k,v in atcs.items():
+            if k not in universe:
+                continue
+            for x in v:
+                atc_sets[x].update([k])
+        atc_cats = sorted(atc_sets.keys())
+        x = []
+        y = []
+        enriched = []
+        for atc in atc_cats:
+            v = atc_sets[atc]
+            A = len(v.intersection(Pos))
+            B = len(Pos) - A
+            C = len(v.intersection(Neg))
+            D = len(universe) - (A+B+C)
+            odds, pval = fisher_exact([[A,B],[C,D]], alternative="greater")
+            x += [odds]
+            y += [-np.log10(pval)]
+        x = np.array(x)
+        y = np.array(y)
+        labs = np.array(atc_cats)
+        x_ = [i for i in range(0, len(y))]
+        if top == 100:
+            color = coord_color("A")
+        if top == 1000:
+            color = coord_color("E")
+        if top == 10000:
+            color = coord_color("D")
+        ax.scatter(y, x_, s=np.sqrt(x*1000)+1, color=color)
+        for i in range(0, len(y)):
+            ax.plot([0, y[i]], [x_[i], x_[i]], color=color)
+        ax.set_yticks(x_)
+        if yaxis:
+            ax.set_yticklabels([atc_descr[l] for l in labs])
+        else:
+            ax.set_yticklabels(labs)
+        ax.set_xlabel("-log10 P-value")
+        ax.set_title("ATC in top %d" % top)
+        ylim = ax.get_ylim()
+        ax.set_ylim(ylim[1], ylim[0])
+        
+    fig, axs = plt.subplots(1,3, figsize=(6, 3.5))
+    axs = axs.flatten()
+    atc_test(axs[0], simtype=simtype, atc_level="A", top=100, yaxis=True)
+    atc_test(axs[1], simtype=simtype, atc_level="A", top=1000, yaxis=False)
+    atc_test(axs[2], simtype=simtype, atc_level="A", top=10000, yaxis=False)
+    plt.tight_layout()
+    plt.savefig(os.path.join(script_path, "../web/static/images/docu/atc_%s.png" % simtype), dpi=300)
 
 
 def significance_figure(simtype):
@@ -304,10 +409,11 @@ def candidates(simtype):
 def do_plots(simtype):
     literature_figure(simtype)
     projections_figure(simtype)
+    atc_figure(simtype)
     significance_figure(simtype)
     candidates(simtype)
 
 if __name__ == "__main__":
-    main("cc")
-    main("fp")
+    do_plots("cc")
+    do_plots("fp")
 
