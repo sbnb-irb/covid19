@@ -20,6 +20,7 @@
       var query_signature = $(this).data('signature');
       var query_table = $('#query_table_'+query_id+'_'+query_signature).DataTable( {
         "scrollX": true,
+        "fixedColumns": true,
         "dom": 't',
         "bProcessing": true,
         "bServerSide": true,
