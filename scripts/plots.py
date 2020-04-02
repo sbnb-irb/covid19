@@ -380,14 +380,93 @@ def atc_figure(simtype):
     atc_test(axs[1], simtype=simtype, atc_level="A", top=1000, yaxis=False)
     atc_test(axs[2], simtype=simtype, atc_level="A", top=10000, yaxis=False)
     plt.tight_layout()
-    plt.savefig(os.path.join(script_path, "../web/static/images/docu/atc_%s.png" % simtype), dpi=300)
+    plt.savefig(os.path.join(OUTPATH, "atc_%s.png" % simtype), dpi=300)
 
 
 def significance_figure(simtype):
-    pass
+
+    def loo_support_evi(evi_level, ranks_w, rows, cols, evi_cols):
+        cols_idxs = dict((k,i) for i,k in enumerate(cols))
+        support = []
+        mask = evi_cols >= evi_level
+        for i in tqdm(range(0, len(rows))):
+            r = ranks_w[i]
+            if rows[i] in cols_idxs:
+                r[cols_idxs[rows[i]]] = 0
+            support += [np.sum(r[mask])]
+        return np.array(support)
+            
+    def evidence_binarizer(evi_level, evi_rows):
+        evi = np.array(evi_rows)
+        evi[evi >= evi_level] = 10
+        evi[evi < evi_level] = 0
+        evi[evi == 10] = 1
+        return evi
+        
+    def get_supp_evi(evi_level_row, evi_level_col, ranks_w, rows, cols, evi_rows, evi_cols):
+        true = evidence_binarizer(evi_level_row, evi_rows)
+        pred = loo_support_evi(evi_level_col, ranks_w, rows, cols, evi_cols)
+        return true, pred
+
+    def randomize_sum(true, pred):
+        v = np.sum(pred[true==1])
+        rands = []
+        true_ = np.array(true)
+        for _ in tqdm(range(0, 1000)):
+            np.random.shuffle(true_)
+            rands += [np.sum(pred[true_==1])]
+        return v, rands
+
+    def empirical_plot(ax, val, rands, evid_level_row, evid_level_col):
+        norm = mpl.colors.Normalize(vmin=-4,vmax=4)
+        cmap = cm.get_cmap("coolwarm")
+        color = cmap(norm(evid_level_row-evid_level_col))    
+        rand_counts = collections.defaultdict(int)
+        for r in rands:
+            rand_counts[r] += 1
+        x = []
+        y = []
+        for k,v in rand_counts.items():
+            x += [k]
+            y += [v]
+        ax.scatter(x,y,color=color,s=4)
+        ax.axvline(val, color=color)
+        ax.set_xlim(0, np.max([np.max(x), val])*1.1)
+        ax.set_ylim(0, np.max(y)*1.1)
+        ax.set_xlabel("Sum of supports")
+        ax.set_ylabel("Density")
+        title = "Cand: %d CoV: %d" % (evid_level_row, evid_level_col)
+        ax.set_title(title)
+        ax.axes.get_yaxis().set_visible(False)
+
+    def empirical_support(ax, evid_level_row, evid_level_col, ranks_w, rows, cols, evi_rows, evi_cols):
+        true, pred = get_supp_evi(evid_level_row, evid_level_col, ranks_w, rows, cols, evi_rows, evi_cols)
+        v, rands = randomize_sum(true, pred)
+        empirical_plot(ax, v, rands, evid_level_row, evid_level_col)
 
 
-def candidates(simtype):
+    with h5py.File(os.path.join(script_path, "../web/data/dist_%s.h5" % simtype), "r") as hf:
+        ranks_w = hf["ranks_w"][:]
+        cols = hf["cols"][:]
+        rows = hf["rows"][:]
+        evi_cols = hf["evi_cols"][:]
+        evi_rows = hf["evi_rows"][:]
+        isdrug_rows = hf["isdrug_rows"][:]
+
+    fig, axs = plt.subplots(5,5, figsize=(8,10))
+    axs = axs.flatten()
+    i = 0
+    mask = np.logical_or(isdrug_rows == 1, evi_rows != -2)
+    for e1 in [0,1,2,3,4]:
+        for e2 in [0,1,2,3,4]:
+            print(e1, e2)
+            empirical_support(axs[i], e1, e2, ranks_w[mask], rows[mask], cols, evi_rows[mask], evi_cols)
+            i += 1
+    plt.tight_layout()
+    plt.savefig(os.path.join(OUTPATH, "empiricals_%s_drug.png" % simtype), dpi=300)
+
+
+def query_candidates(simtype):
 
     def load_df(simtype, evidence, moa):
         if evidence is None or evidence < 0:
@@ -398,12 +477,50 @@ def candidates(simtype):
             moa_suf = "moaall"
         else:
             moa_suf = "moa%d" % moa
-        fn = "../web/data/df_cand_%s_%s_%s.csv" % (simtype, evi_suf, moa_suf)
+        fn = os.path.join(script_path, "../web/data/df_cand_%s_%s_%s.csv" % (simtype, evi_suf, moa_suf))
         df = pd.read_csv(fn, sep="\t")
         return df
 
-    def candidate_view(df):
-        return df[["inchikey", "name", "is_drug", "support", "lpv_5", "lpv_4", "lpv_3", "top1_name", "top2_name", "top3_name"]][df["evidence"]==-2]
+    def query1():
+        df  = load_df(simtype, 2, None)
+        df  = df[df["evidence"] == -2]
+        df1 = df[df["is_drug"] == 1][:3]
+        df2 = df[df["is_drug"] == 0][:3]
+        df  = df1.append(df2)
+        print(df.shape)
+        return df
+
+    def query2():
+        df  = load_df(simtype, None, None)
+        df1 = load_df(simtype, None, 1)
+        df2 = load_df(simtype, None, 2)
+        df = df[df["inchikey"].isin(set(df1["inchikey"]).intersection(df2["inchikey"]))]
+        df = df[df["evidence"] == -2]
+        df1 = df[df["is_drug"] == 1][:3]
+        df2 = df[df["is_drug"] == 0][:3]
+        df  = df1.append(df2)
+        return df
+
+    def query3():
+        df  = load_df(simtype, None, None)
+        df3 = load_df(simtype, None, 3)
+        df4 = load_df(simtype, None, 4)
+        df5 = load_df(simtype, None, 5)
+        iks = set(df3["inchikey"]).intersection(df4["inchikey"]).intersection(df5["inchikey"])
+        df = df[df["inchikey"].isin(iks)]
+        df = df[df["evidence"] == -2]
+        df1 = df[df["is_drug"] == 1][:3]
+        df2 = df[df["is_drug"] == 0][:3]
+        df  = df1.append(df2)
+        return df
+
+    print("Doing queries")
+    df = query1()
+    df.to_csv(os.path.join(OUTPATH, "query_1_%s.csv" % simtype), sep="\t", index=False)
+    df = query2()
+    df.to_csv(os.path.join(OUTPATH, "query_2_%s.csv" % simtype), sep="\t", index=False)
+    df = query3()
+    df.to_csv(os.path.join(OUTPATH, "query_3_%s.csv" % simtype), sep="\t", index=False)
 
     
 def do_plots(simtype):
@@ -411,7 +528,7 @@ def do_plots(simtype):
     projections_figure(simtype)
     atc_figure(simtype)
     significance_figure(simtype)
-    candidates(simtype)
+    query_candidates(simtype)
 
 if __name__ == "__main__":
     do_plots("cc")
