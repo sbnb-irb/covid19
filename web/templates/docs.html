@@ -294,19 +294,27 @@
       <p>
         The heatmap on the right displays a chunk of the similarity matrix, corresponding to the top 2,500 candidates ranked by support (no evidence or MoA filters). Coloured dots indicate significant similarities, and colours correspond to the levels of evidence.
       </p>
-      <img class="card-img p-4" src="{{ url_for('static', filename='images/docu/literature_cc.png') }}" alt="Statistics">
+      <div class="text-center">
+      <img width='80%' class="p-4" src="{{ url_for('static', filename='images/docu/literature_cc.png') }}" alt="Statistics">
+      </div>
       <p>
         CC signatures can be projected on a 2D plane to obtain a global view of the chemical space explored by our resource. Upper panels project the COVID-19 literature drugs on the global space encompassed by the CC. As can be seen, COVID-19 compounds, while significantly diverse, cluster in certain regions of the chemical space. Bottom panels display the top 10k candidates (ranked by support) together with the current COVID-19 drugs. When these are labelled by MoA (bottom left), MoA-specific regions are revealed (e.g. host factor; HF), and candidates are retrieved in those regions. Overall, most of the COVID-19 drugs are ‘surrounded’ by new candidate molecules.
       </p>
-      <img class="card-img p-4" src="{{ url_for('static', filename='images/docu/projections_cc.png') }}" alt="Statistics">
+      <div class="text-center">
+      <img width='50%' class="p-4" src="{{ url_for('static', filename='images/docu/projections_cc.png') }}" alt="Statistics">
+      </div>
       <p>
         Reassuringly, when we analyze the therapeutic categories of the top-ranked candidates, as expected, we retrieve a significant number of antiinfectives and antiparasitic drugs. Of note, other therapeutic categories such as those related to hormonal treatments are enriched at after the highest-ranking compounds (right-most plot). Please note that, for this enrichment analysis, only drugs could be considered since ATC annotation are not available for most of the candidates.
       </p>
-      <img class="card-img p-4" src="{{ url_for('static', filename='images/docu/atc_cc.png') }}" alt="Statistics">
+      <div class="text-center">
+      <img width='50%' class="p-4" src="{{ url_for('static', filename='images/docu/atc_cc.png') }}" alt="Statistics">
+      </div>
       <p>
         To further validate our candidates, we checked, in a leave-one-out cross-validation, whether compounds at different levels of evidence (rows) could be retrieved by our similarity search using the COVID-19 literature drugs (columns). Indeed, the figure below shows that known COVID-19 drugs were significantly up-ranked (sum of supports) when using and evaluating all levels of evidence.
       </p>
-      <img class="card-img p-4" src="{{ url_for('static', filename='images/docu/empiricals_cc_drug.png') }}" alt="Statistics">
+      <div class="text-center">
+      <img width='70%' class="p-4" src="{{ url_for('static', filename='images/docu/empiricals_cc_drug.png') }}" alt="Statistics">
+      </div>
       <p>
         The statistical analysis presented herein suggests that our list of compounds significantly explores regions of the chemical space that could be relevant to COVID-19 treatment. We hope that our shortlisting of drugs and bioactive molecules will help expedite the discovery of a COVID-19 therapy. 
       </p>
