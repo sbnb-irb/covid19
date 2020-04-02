@@ -42,7 +42,7 @@ def get_candidate_data(signature='cc', evidence='', moa=''):
 
 
 def get_query_data(query_id, signature):
-    file_path = os.path.join(app_path, 'data',
+    file_path = os.path.join(app_path, 'static', 'images', 'docu',
                              'query_%s_%s.csv' % (query_id, signature))
     data = pd.read_csv(file_path, sep="\t")
     data.fillna('!N/A', inplace=True)
