@@ -110,6 +110,7 @@ ENV/
 # data files generate running the similartiy_search.py script
 web/data/*
 data/literature.csv
+web/static/images/docu/*
 
 # directory to store the singularity image
 cc_image/*
