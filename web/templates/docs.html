@@ -18,8 +18,8 @@
     $.each($('.query'), function () {
       var query_id = $(this).data('query');
       var query_signature = $(this).data('signature');
-      var query_table = $('#query_table_'+query_id).DataTable( {
-        //"scrollX": true,
+      var query_table = $('#query_table_'+query_id+'_'+query_signature).DataTable( {
+        "scrollX": true,
         "dom": 't',
         "bProcessing": true,
         "bServerSide": true,
@@ -46,8 +46,8 @@
               if (data == '!N/A') {
                 return data.substr(1);
               }
-              if (data.length >= 17) {
-                data = data.slice(0, 17) + '&hellip;';
+              if (data.length >= 7) {
+                data = data.slice(0, 7) + '&hellip;';
               }
               ink = row['top1_inchikey']
               var cc_tag = "<a onclick='_paq.push([&quot;trackEvent&quot;, &quot;Literature&quot;, &quot;" + ink + "&quot;]);' target='_blank' href=\"" + cc + "\">" + data + "</a>";
@@ -64,8 +64,8 @@
               if (data == '!N/A') {
                 return data.substr(1);
               }
-              if (data.length >= 17) {
-                data = data.slice(0, 17) + '&hellip;';
+              if (data.length >= 7) {
+                data = data.slice(0, 7) + '&hellip;';
               }
               ink = row['top2_inchikey']
               var cc_tag = "<a onclick='_paq.push([&quot;trackEvent&quot;, &quot;Literature&quot;, &quot;" + ink + "&quot;]);' target='_blank' href=\"" + cc + "\">" + data + "</a>";
@@ -82,8 +82,8 @@
               if (data == '!N/A') {
                 return data.substr(1);
               }
-              if (data.length >= 17) {
-                data = data.slice(0, 17) + '&hellip;';
+              if (data.length >= 7) {
+                data = data.slice(0, 7) + '&hellip;';
               }
               ink = row['top3_inchikey']
               var cc_tag = "<a onclick='_paq.push([&quot;trackEvent&quot;, &quot;Literature&quot;, &quot;" + ink + "&quot;]);' target='_blank' href=\"" + cc + "\">" + data + "</a>";
@@ -109,7 +109,7 @@
           },
           // Ellipsis on too long text
           {
-            render: $.fn.dataTable.render.ellipsis( 17, true ),
+            render: $.fn.dataTable.render.ellipsis( 7, true ),
             targets: [1, 12, 13, 14],
           },
           // Column descriptions
@@ -130,21 +130,21 @@
       });
 
       // Rename columns 
-      $( query_table.column( 0 ).header() ).html( '<i id="header-info" data-toggle="tooltip" title="Candidate molecule identifier" class="fa fa-info-circle fa-lg"></i>&nbsp;&nbsp; InChIKey' );
-      $( query_table.column( 1 ).header() ).html( '<i id="header-info" data-toggle="tooltip" title="Candidate molecule name" class="fa fa-info-circle fa-lg"></i>&nbsp;&nbsp; Name' );
-      $( query_table.column( 2 ).header() ).html( '<i id="header-info" data-toggle="tooltip" title="Is the candidate an approved or experimental drug?" class="fa fa-info-circle fa-lg"></i>&nbsp;&nbsp; Is Drug' );
+      $( query_table.column( 0 ).header() ).html( 'InChIKey' );
+      $( query_table.column( 1 ).header() ).html( 'Name' );
+      $( query_table.column( 2 ).header() ).html( 'Is Drug' );
       $( query_table.column( 3 ).header() ).html( 'Evidence' );
       $( query_table.column( 4 ).header() ).html( 'MoA' );
-      $( query_table.column( 5 ).header() ).html( '<i id="header-info" data-toggle="tooltip" title="Composite score calculated as the weighted sum of -logP-values of similarity and level of evidence" class="fa fa-info-circle fa-lg"></i>&nbsp;&nbsp; Support' );
-      $( query_table.column( 6 ).header() ).html( '<i id="header-info" data-toggle="tooltip" title="Number of CoV literature compounds with a similarity P-value < 1e-5" class="fa fa-info-circle fa-lg"></i>&nbsp;&nbsp; # P5' );
-      $( query_table.column( 7 ).header() ).html( '<i id="header-info" data-toggle="tooltip" title="Number of CoV literature compounds with a similarity P-value < 1e-4" class="fa fa-info-circle fa-lg"></i>&nbsp;&nbsp; # P4' );
-      $( query_table.column( 8 ).header() ).html( '<i id="header-info" data-toggle="tooltip" title="Number of CoV literature compounds with a similarity P-value < 1e-3" class="fa fa-info-circle fa-lg"></i>&nbsp;&nbsp; # P3' );
+      $( query_table.column( 5 ).header() ).html( 'Support' );
+      $( query_table.column( 6 ).header() ).html( '# P5' );
+      $( query_table.column( 7 ).header() ).html( '# P4' );
+      $( query_table.column( 8 ).header() ).html( '# P3' );
       $( query_table.column( 9 ).header() ).html( '1st Lit. match InChIKey' );
       $( query_table.column( 10 ).header() ).html( '2nd Lit match InChIKey' );
       $( query_table.column( 11 ).header() ).html( '3rd Lit match InChIKey' );
-      $( query_table.column( 12 ).header() ).html( '<i id="header-info" data-toggle="tooltip" title="Most similar CoV literature compound" class="fa fa-info-circle fa-lg"></i>&nbsp;&nbsp; Sim CoV (1)' );
-      $( query_table.column( 13 ).header() ).html( '<i id="header-info" data-toggle="tooltip" title="Second-most similar CoV literature compound" class="fa fa-info-circle fa-lg"></i>&nbsp;&nbsp; Sim CoV (2)' );
-      $( query_table.column( 14 ).header() ).html( '<i id="header-info" data-toggle="tooltip" title="Third-most similar CoV literature compound" class="fa fa-info-circle fa-lg"></i>&nbsp;&nbsp; Sim CoV (3)' );
+      $( query_table.column( 12 ).header() ).html( 'Sim CoV (1)' );
+      $( query_table.column( 13 ).header() ).html( 'Sim CoV (2)' );
+      $( query_table.column( 14 ).header() ).html( 'Sim CoV (3)' );
 
       query_table.on( 'draw', function () {
         $('#chem-tooltip[data-toggle="tooltip"]').tooltip({
@@ -209,13 +209,75 @@
 
   <div class="card card-default">
     <div class="card-header">
-      <h3 id="table_title" class="text-center">Results</h3>
+      <h3 id="table_title" class="text-center">Query examples</h3>
     </div>
-    <img class="card-img-top p-4" src="{{ url_for('static', filename='images/docu/literature_cc.png') }}" alt="Results plots">
     <div class="card-body">
+
       <p>
-        Figure2 description goes here.
+        The pre-computed similarity matrix can be queried to extract candidates that fulfill properties of interest. This can be achieved by selecting amongst the levels of evidence for the COVID-19 literature compounds as well as their mechanisms of action.
       </p>
+      <p>
+        Below we show three exemplary queries highlighting 3 drug molecule candidates and 3 bioactive compounds from the larger chemical space of the CC.
+      </p>
+
+      <div class="card card-default">
+        <div class="card-header">Query 1:</div>
+        <div class="card-body">
+          <p>
+            Evidence level: CoV19; MoA: All; Similarity: Chemical Checker; Is Drug? = yes
+          </p>
+          <table id='query_table_1_cc' data-query="1" data-signature="cc" class='query table table-striped table-hover table-bordered wrap dataTable' style="width:100%">
+            <thead>
+              <tr>
+                {% for col in columns %}
+                <th style="font-size: 12px;">{{ col }}</th>
+                {% endfor %}
+              </tr>
+            </thead>
+          </table>
+        </div>
+      </div>
+      <br>
+
+      <div class="card card-default">
+        <div class="card-header">Query 2:</div>
+        <div class="card-body">
+          <p>
+            Evidence level: Preclinical; MoA: PI; Similarity: Chemical Checker
+          </p>
+          <table id='query_table_2_cc' data-query="2" data-signature="cc" class='query table table-striped table-hover table-bordered wrap dataTable' style="width:100%">
+            <thead>
+              <tr>
+                {% for col in columns %}
+                <th style="font-size: 12px;">{{ col }}</th>
+                {% endfor %}
+              </tr>
+            </thead>
+          </table>
+        </div>
+      </div>
+      <br>
+
+      <div class="card card-default">
+        <div class="card-header">Query 3:</div>
+        <div class="card-body">
+          <p>
+            Evidence level: Comp; MoA: All; Similarity: Only Chemistry; Is Drug? = yes
+          </p>
+          <table id='query_table_3_cc' data-query="3" data-signature="cc" class='query table table-striped table-hover table-bordered wrap dataTable' style="width:100%">
+            <thead>
+              <tr>
+                {% for col in columns %}
+                <th style="font-size: 12px;">{{ col }}</th>
+                {% endfor %}
+              </tr>
+            </thead>
+          </table>
+        </div>
+      </div>
+      <br>
+
+
     </div>
   </div>
 
@@ -223,26 +285,31 @@
 
   <div class="card card-default">
     <div class="card-header">
-      <h3 id="table_title" class="text-center">Query examples</h3>
+      <h3 id="table_title" class="text-center">Statistics</h3>
     </div>
     <div class="card-body">
-      <p>Here we collect some example of queries enabled by this resource.</p>
-
-      <div class="card card-default">
-        <div class="card-header">Example query 1</div>
-        <div class="card-body">
-          <table id='query_table_1' data-query="1" data-signature="cc" class='query table table-striped table-hover table-bordered wrap dataTable' style="width:100%">
-            <thead>
-              <tr>
-                {% for col in columns %}
-                <th>{{ col }}</th>
-                {% endfor %}
-              </tr>
-            </thead>
-          </table>
-        </div>
-      </div>
-
+      <p>
+        The figure below quantifies the number of COVID-19 literature compounds available at each level of evidence (upper left) and MoA (bottom centre), together with their intersections (bottom left). The upper centre panel plots the distance of CC signatures between COVID-19 compounds (k nearest-neighbours; k=1-5). This plot shows that annotated COVID-19 compounds are considerably diverse.
+      </p>
+      <p>
+        The heatmap on the right displays a chunk of the similarity matrix, corresponding to the top 2,500 candidates ranked by support (no evidence or MoA filters). Coloured dots indicate significant similarities, and colours correspond to the levels of evidence.
+      </p>
+      <img class="card-img p-4" src="{{ url_for('static', filename='images/docu/literature_cc.png') }}" alt="Statistics">
+      <p>
+        CC signatures can be projected on a 2D plane to obtain a global view of the chemical space explored by our resource. Upper panels project the COVID-19 literature drugs on the global space encompassed by the CC. As can be seen, COVID-19 compounds, while significantly diverse, cluster in certain regions of the chemical space. Bottom panels display the top 10k candidates (ranked by support) together with the current COVID-19 drugs. When these are labelled by MoA (bottom left), MoA-specific regions are revealed (e.g. host factor; HF), and candidates are retrieved in those regions. Overall, most of the COVID-19 drugs are ‘surrounded’ by new candidate molecules.
+      </p>
+      <img class="card-img p-4" src="{{ url_for('static', filename='images/docu/projections_cc.png') }}" alt="Statistics">
+      <p>
+        Reassuringly, when we analyze the therapeutic categories of the top-ranked candidates, as expected, we retrieve a significant number of antiinfectives and antiparasitic drugs. Of note, other therapeutic categories such as those related to hormonal treatments are enriched at after the highest-ranking compounds (right-most plot). Please note that, for this enrichment analysis, only drugs could be considered since ATC annotation are not available for most of the candidates.
+      </p>
+      <img class="card-img p-4" src="{{ url_for('static', filename='images/docu/atc_cc.png') }}" alt="Statistics">
+      <p>
+        To further validate our candidates, we checked, in a leave-one-out cross-validation, whether compounds at different levels of evidence (rows) could be retrieved by our similarity search using the COVID-19 literature drugs (columns). Indeed, the figure below shows that known COVID-19 drugs were significantly up-ranked (sum of supports) when using and evaluating all levels of evidence.
+      </p>
+      <img class="card-img p-4" src="{{ url_for('static', filename='images/docu/empiricals_cc_drug.png') }}" alt="Statistics">
+      <p>
+        The statistical analysis presented herein suggests that our list of compounds significantly explores regions of the chemical space that could be relevant to COVID-19 treatment. We hope that our shortlisting of drugs and bioactive molecules will help expedite the discovery of a COVID-19 therapy. 
+      </p>
     </div>
   </div>
 
@@ -256,14 +323,12 @@
       <p>
         This resource has been developed by the <a href="http://sbnb.irbbarcelona.org" target="_blank">Structural Bioinformatics and Network Biology Group</a> at the <a href="http://www.irbbarcelona.org" target="_blank">Institute for Research in Biomedicine</a> in collaboration with the Amazon Search Science and AI group on the NLP tasks..
       </p>
-      <small>
-        <p>
-          <strong>IRB Barcelona Team:</strong> Miquel Duran-Frigola, Martino Bertoni, Eduardo Pauls, Víctor Alcalde, Oriol Guitart, Adrià Fernández-Torras, Lídia Mateo, Isabelle Brun-Heath, Núria Villegas, Carles Pons, Pau Badia-i-Mompel, Patrick Aloy.
-        </p>
-        <p>
-          <strong>Amazon Search</strong> Team: Roi Blanco, Víctor Martínez, Hugo Zaragoza.
-        </p>
-      </small>
+      <p><small>
+        <strong>IRB Barcelona Team:</strong> Miquel Duran-Frigola, Martino Bertoni, Eduardo Pauls, Víctor Alcalde, Oriol Guitart, Adrià Fernández-Torras, Lídia Mateo, Isabelle Brun-Heath, Núria Villegas, Carles Pons, Pau Badia-i-Mompel, Patrick Aloy.
+      </small></p>
+      <p><small>
+        <strong>Amazon Search Team:</strong> Roi Blanco, Víctor Martínez, Hugo Zaragoza.
+      </small></p>
       <p>
         We deeply thanks all the medical staff working to save our lives.
       </p>
