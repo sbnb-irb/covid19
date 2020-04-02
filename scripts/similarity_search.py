@@ -13,7 +13,7 @@ from chemicalchecker import ChemicalChecker
 from chemicalchecker.util.parser import Converter
 from chemicalchecker.core.signature_data import DataSignature
 
-from .plots import do_plots
+from plots import do_plots
 
 
 script_path = os.path.dirname(os.path.realpath(__file__))
@@ -91,7 +91,7 @@ def main(simtype):
     df.to_csv(literature_file, index=False, sep="\t")
 
     print('Reading text-mining candidates')
-    df_tm = pd.read_csv(os.path.join(script_path, "../data/textmining_selection.tsv"),
+    df_tm = pd.read_csv(os.path.join(input_path, "textmining_selection.tsv"),
                         header=None, names=["inchikey"], delimiter="\t")
 
     # Drugbank
@@ -333,29 +333,30 @@ def main(simtype):
             else:
                 iks_can_ += [iks_can[idx]]
             # highest evidence
-            evi_can_ += [np.max([evi_can[idx] for idx in idxs])]
+            evi_can_ += [np.max([evi_can[i] for i in idxs])]
             # highest moa (arbitrary)
-            moa_can_ += [np.max([moa_can[idx] for idx in idxs])]
+            moa_can_ += [np.max([moa_can[i] for i in idxs])]
             # name
             if conn in favconn_names:
                 nam_can_ += [favconn_names[conn]]
             else:
                 nam_can_ += [nam_can[idx]]
             # conservative is drug
-            isdrug_can_ += [np.max([isdrug_can[idx] for idx in idxs])]
+            isdrug_can_ += [np.max([isdrug_can[i] for i in idxs])]
     sort_idxs = np.argsort(iks_can_)
     iks_can = np.array(iks_can_)[sort_idxs]
     keep_idx = np.array(keep_idx_, dtype=np.int32)[sort_idxs]
     evi_can = np.array(evi_can_, dtype=np.int8)[sort_idxs]
     moa_can = np.array(moa_can_, dtype=np.int8)[sort_idxs]
-    nam_can = [nam_can_[idx] for idx in sort_idxs]
+    nam_can = [nam_can_[i] for i in sort_idxs]
     isdrug_can = np.array(isdrug_can_, dtype=np.int8)[sort_idxs]
     ranks = ranks[keep_idx]
     ranks_raw = ranks_raw[keep_idx]
     ranks_w = ranks_w[keep_idx]
     support = support[keep_idx]
-    assert (ranks_w.shape[0] == ranks_raw.shape[0] == ranks.shape[0] == len(
-        isdrug_can) == len(evi_can) == len(iks_can) == len(nam_can) == len(moa_can))
+    assert (ranks_w.shape[0] == ranks_raw.shape[0] == ranks.shape[0] ==
+            len(isdrug_can) == len(evi_can) == len(iks_can) == len(nam_can) ==
+            len(moa_can))
     del iks_can_
     del keep_idx
     del keep_idx_
@@ -389,7 +390,7 @@ def main(simtype):
         hf.create_dataset("moa_cols", data=moa_lit)
         hf.create_dataset("isdrug_rows", data=isdrug_can)
         hf.create_dataset("iks_lit_trim", data=np.array(
-            iks_lit_trim, DataSignature.string_dtype()))        
+            iks_lit_trim, DataSignature.string_dtype()))
         hf.create_dataset("V_lit_trim", data=V_lit_trim)
         hf.create_dataset("iks_can_trim", data=np.array(
             iks_can_trim, DataSignature.string_dtype()))
@@ -506,8 +507,11 @@ def main(simtype):
                   (simtype, str(min_evidence), str(moa)))
             fn, caption = similarities(
                 simtype=simtype, min_evidence=min_evidence, moa=moa)
-            legend.append(
-                {'evidence': min_evidence, 'moa': moa, 'filename': fn, 'caption': caption})
+            legend.append({
+                'evidence': min_evidence,
+                'moa': moa,
+                'filename': fn,
+                'caption': caption})
     legend = pd.DataFrame(legend)
     dest_file = os.path.join(output_path, "legend_%s.csv" % simtype)
     legend.to_csv(dest_file, index=False, sep="\t")
