@@ -197,7 +197,7 @@
     <img class="card-img-top p-4" src="{{ url_for('static', filename='images/covid19-cc-scheme.png') }}" alt="Strategy scheme">
     <div class="card-body">
       <p>
-        By mining the recent literature, we identified about 150 drug-like compounds that have been suggested by the scientific community to be potentially active against COVID-19. The scientific evidence supporting these compounds is variable: some of them come from computational predictions, some have proven their value in pre-clinical tests, others are approved drugs with a therapeutic annotation unrelated to infectious diseases and, finally, some are drugs currently used to fight related pathogens. As a community effort, <a href="https://forms.gle/ERpCrkD8GjV2a4TX8" target="_blank">we encourage researchers to include the compounds and/or anti-COVID-19 evidence that they are currently collecting</a> that they are currently collecting. Additionally, we also include compounds that are positive in certain bioassays, identified as important through the automatic mining of the COVID-19 literature, and for which we find further bioactivity support in the CC. The whole pipeline described below will be automatically run every day, so that the resource always provides the most updated results.
+        By mining the recent literature, we identified about 150 drug-like compounds that have been suggested by the scientific community to be potentially active against COVID-19. The scientific evidence supporting these compounds is variable: some of them come from computational predictions, some have proven their value in pre-clinical tests, others are approved drugs with a therapeutic annotation unrelated to infectious diseases and, finally, some are drugs currently used to fight related pathogens. As a community effort, <a href="https://forms.gle/ERpCrkD8GjV2a4TX8" target="_blank">we encourage researchers to include the compounds and/or anti-COVID-19 evidence that they are currently collecting</a>. Additionally, we also include compounds that are positive in certain bioassays, identified as important through the automatic mining of the COVID-19 literature, and for which we find further bioactivity support in the CC. The whole pipeline described below will be automatically run every day, so that the resource always provides the most updated results.
       </p>
       <p>
         Starting from the <a href="{{ url_for('literature') }}">updated list of compounds</a>, we run bioactivity and chemical similarity searches against the almost 1M compounds in the CC. The results are weighted to favour molecules with similar properties to those with higher levels of experimental evidence and to ensure that the diverse mechanisms of action (see <a href="https://forms.gle/ERpCrkD8GjV2a4TX8" target="_blank">Contribute</a> for details) are represented. Finally, we collect and display the top 10,000 molecules, which can be sorted according to different criteria, including whether they are approved drugs, the cumulative level of support, or their similarity to literature drugs.
@@ -221,10 +221,10 @@
       </p>
 
       <div class="card card-default">
-        <div class="card-header">Query 1:</div>
+        <div class="card-header">Query 1</div>
         <div class="card-body">
           <p>
-            Evidence level: CoV19; MoA: All; Similarity: Chemical Checker; Is Drug? = yes
+            Candidates similar to COVID-19 drugs with, at least, preclinical evidence.
           </p>
           <table id='query_table_1_cc' data-query="1" data-signature="cc" class='query table table-striped table-hover table-bordered wrap dataTable' style="width:100%">
             <thead>
@@ -240,10 +240,10 @@
       <br>
 
       <div class="card card-default">
-        <div class="card-header">Query 2:</div>
+        <div class="card-header">Query 2</div>
         <div class="card-body">
           <p>
-            Evidence level: Preclinical; MoA: PI; Similarity: Chemical Checker
+            Candidates with similarities to host factor and virus entry mechanisms of action, including computational evidence.
           </p>
           <table id='query_table_2_cc' data-query="2" data-signature="cc" class='query table table-striped table-hover table-bordered wrap dataTable' style="width:100%">
             <thead>
@@ -259,10 +259,10 @@
       <br>
 
       <div class="card card-default">
-        <div class="card-header">Query 3:</div>
+        <div class="card-header">Query 3</div>
         <div class="card-body">
           <p>
-            Evidence level: Comp; MoA: All; Similarity: Chemical Checker; Is Drug? = yes
+            Candidates with similarities to immunomodulators, protease inhibitors and RNA transcription/replication modulators.
           </p>
           <table id='query_table_3_cc' data-query="3" data-signature="cc" class='query table table-striped table-hover table-bordered wrap dataTable' style="width:100%">
             <thead>
