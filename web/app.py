@@ -41,6 +41,17 @@ def get_candidate_data(signature='cc', evidence='', moa=''):
     return data
 
 
+def get_query_data(query_id):
+    file_path = os.path.join(app_path, 'data', 'query_%s.csv' % query_id)
+    data = pd.read_csv(file_path, sep="\t")
+    data.fillna('!N/A', inplace=True)
+    print('LOADED %s' % file_path)
+    print('LENGTH %s' % len(data))
+    print('COLUMNS %s' % str(data.columns))
+    print('EXAMPLE\n%s' % str(data.iloc[0]))
+    return data
+
+
 df_candidates = get_candidate_data()
 df_candidates_collection = df_candidates.to_dict(orient='records')
 
@@ -67,7 +78,11 @@ def literature():
 
 @app.route('/docs')
 def docs():
-    return render_template('docs.html')
+    query_id = '1'
+    filen_name = 'query_%s.csv' % query_id
+    file_path = os.path.join(app_path, 'data', filen_name)
+    df = pd.read_csv(file_path, sep="\t")
+    return render_template('docs.html', columns=df.columns)
 
 
 @app.route('/about')
@@ -82,6 +97,7 @@ def get_literature_table():
     columns = df_literature.columns
     collection = df_literature_collection
     results = BaseDataTables(request, columns, collection).output_result()
+    print("RESULTS", str(results))
     return jsonify(results)
 
 
@@ -105,11 +121,12 @@ def get_candidate_table():
         columns.append(col_dict)
     collection = df_candidates_collection
     results = ServerSideTable(request, columns, collection).output_result()
+    print("RESULTS", str(results))
     return jsonify(results)
 
 
 @app.route('/_table_title')
-def get_table_title(signature='cc', evidence='', moa=''):
+def get_table_title():
     print('get_table_title', request.args)
     signature = request.args.get('signature')
     evidence = request.args.get('evidence')
@@ -131,6 +148,27 @@ def get_table_title(signature='cc', evidence='', moa=''):
     assert(len(df) == 1)
     return jsonify(df.iloc[0]['caption'])
 
+
+@app.route('/_table_query')
+def get_query_table():
+    print('get_query_table', request.args)
+    query_id = request.args.get('query')
+    df_query = get_query_data(query_id)
+    df_query_collection = df_query.to_dict(orient='records')
+    columns = list()
+    for order, col in enumerate(df_query.columns, 1):
+        col_dict = {
+            "data_name": col,
+            "column_name": col,
+            "default": "",
+            "order": order,
+            "searchable": True
+        }
+        columns.append(col_dict)
+    collection = df_query_collection
+    results = ServerSideTable(request, columns, collection).output_result()
+    print("RESULTS", str(results))
+    return jsonify(results)
 
 if __name__ == '__main__':
     app.run()
