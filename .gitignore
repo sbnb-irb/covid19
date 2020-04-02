@@ -107,7 +107,9 @@ ENV/
 # mypy
 .mypy_cache/
 
-#large data files
+# data files generate running the similartiy_search.py script
 web/data/*
-cc_image/*
 data/literature.csv
+
+# directory to store the singularity image
+cc_image/*
