@@ -41,8 +41,9 @@ def get_candidate_data(signature='cc', evidence='', moa=''):
     return data
 
 
-def get_query_data(query_id):
-    file_path = os.path.join(app_path, 'data', 'query_%s.csv' % query_id)
+def get_query_data(query_id, signature):
+    file_path = os.path.join(app_path, 'data',
+                             'query_%s_%s.csv' % (query_id, signature))
     data = pd.read_csv(file_path, sep="\t")
     data.fillna('!N/A', inplace=True)
     print('LOADED %s' % file_path)
@@ -78,10 +79,7 @@ def literature():
 
 @app.route('/docs')
 def docs():
-    query_id = '1'
-    filen_name = 'query_%s.csv' % query_id
-    file_path = os.path.join(app_path, 'data', filen_name)
-    df = pd.read_csv(file_path, sep="\t")
+    df = get_query_data('1', 'cc')
     return render_template('docs.html', columns=df.columns)
 
 
@@ -153,7 +151,8 @@ def get_table_title():
 def get_query_table():
     print('get_query_table', request.args)
     query_id = request.args.get('query')
-    df_query = get_query_data(query_id)
+    signature = request.args.get('signature')
+    df_query = get_query_data(query_id, signature)
     df_query_collection = df_query.to_dict(orient='records')
     columns = list()
     for order, col in enumerate(df_query.columns, 1):
