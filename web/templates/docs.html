@@ -12,6 +12,153 @@
 
 {% include 'head.html' %}
 
+  <script>
+  $(document).ready(function() {
+
+    $.each($('.query'), function () {
+      var query_id = $(this).data('query');
+      var query_table = $('#query_table_'+query_id).DataTable( {
+        "scrollX": true,
+        "dom": 't',
+        "bProcessing": true,
+        "bServerSide": true,
+        "bjQueryUI": true,
+        "sAjaxSource": "{{ url_for('get_query_table') }}" + "?query=" + query_id,
+        "columnDefs": 
+        [
+          // Add link to CC and image on tooltip
+          {
+            render: function ( data, type, row ) {
+              var cc = "https://chemicalchecker.com/explore/" + data;
+              var cc_tag = "<a onclick='_paq.push([&quot;trackEvent&quot;, &quot;Candidates&quot;, &quot;" + data + "&quot;]);' target='_blank' href='" + cc + "'>" + data + "</a>";
+              var mol = "https://chemicalchecker.com/images/molecules/" + data.slice(0,2) + "/" + data.slice(2,4) + "/" + data + "/2d.svg";
+              var mol_img = "title=\'<img width=&quot;150%&quot; src=&quot;" + mol + "&quot;>\'";
+              var mol_tag = "<div id='chem-tooltip' class='d-inline-flex' data-placement='right' data-toggle='tooltip' data-html='true'" + mol_img + ">" + cc_tag + "</div>";
+              return mol_tag;
+              },
+            targets: [0]
+          },
+          // Add link to CC for best literature match DISABLE
+          {
+            render: function ( data, type, row, meta ) {
+              var cc = "https://chemicalchecker.com/explore/" + row['top1_inchikey'];
+              if (data == '!N/A') {
+                return data.substr(1);
+              }
+              if (data.length >= 17) {
+                data = data.slice(0, 17) + '&hellip;';
+              }
+              ink = row['top1_inchikey']
+              var cc_tag = "<a onclick='_paq.push([&quot;trackEvent&quot;, &quot;Literature&quot;, &quot;" + ink + "&quot;]);' target='_blank' href=\"" + cc + "\">" + data + "</a>";
+              var mol = "https://chemicalchecker.com/images/molecules/" + ink.slice(0,2) + "/" + ink.slice(2,4) + "/" + ink + "/2d.svg";
+              var mol_img = "title=\'<img width=&quot;150%&quot; src=&quot;" + mol + "&quot;>\'";
+              var mol_tag = "<div id='chem-tooltip' class='d-inline-flex' data-placement='top' data-toggle='tooltip' data-html='true'" + mol_img + ">" + cc_tag + "</div>";
+              return mol_tag;
+              },
+            targets: 12
+          },
+          {
+            render: function ( data, type, row, meta ) {
+              var cc = "https://chemicalchecker.com/explore/" + row['top2_inchikey'];
+              if (data == '!N/A') {
+                return data.substr(1);
+              }
+              if (data.length >= 17) {
+                data = data.slice(0, 17) + '&hellip;';
+              }
+              ink = row['top2_inchikey']
+              var cc_tag = "<a onclick='_paq.push([&quot;trackEvent&quot;, &quot;Literature&quot;, &quot;" + ink + "&quot;]);' target='_blank' href=\"" + cc + "\">" + data + "</a>";
+              var mol = "https://chemicalchecker.com/images/molecules/" + ink.slice(0,2) + "/" + ink.slice(2,4) + "/" + ink + "/2d.svg";
+              var mol_img = "title=\'<img width=&quot;150%&quot; src=&quot;" + mol + "&quot;>\'";
+              var mol_tag = "<div id='chem-tooltip' class='d-inline-flex' data-placement='top' data-toggle='tooltip' data-html='true'" + mol_img + ">" + cc_tag + "</div>";
+              return mol_tag;
+              },
+            targets: 13
+          },
+          {
+            render: function ( data, type, row, meta ) {
+              var cc = "https://chemicalchecker.com/explore/" + row['top3_inchikey'];
+              if (data == '!N/A') {
+                return data.substr(1);
+              }
+              if (data.length >= 17) {
+                data = data.slice(0, 17) + '&hellip;';
+              }
+              ink = row['top3_inchikey']
+              var cc_tag = "<a onclick='_paq.push([&quot;trackEvent&quot;, &quot;Literature&quot;, &quot;" + ink + "&quot;]);' target='_blank' href=\"" + cc + "\">" + data + "</a>";
+              var mol = "https://chemicalchecker.com/images/molecules/" + ink.slice(0,2) + "/" + ink.slice(2,4) + "/" + ink + "/2d.svg";
+              var mol_img = "title=\'<img width=&quot;150%&quot; src=&quot;" + mol + "&quot;>\'";
+              var mol_tag = "<div id='chem-tooltip' class='d-inline-flex' data-placement='top' data-toggle='tooltip' data-html='true'" + mol_img + ">" + cc_tag + "</div>";
+              return mol_tag;
+              },
+            targets: 14,
+          },
+          // Convert 1/0 to Yes/No
+          {
+            render: function ( data, type, row ) {
+              if (data == '0'){return 'No';}
+              if (data == '1'){return 'Yes';}
+              },
+            targets: 2,
+          },
+          // Hide some columns
+          {
+            visible: false,
+            targets: [3, 4, 9, 10, 11 ],
+          },
+          // Ellipsis on too long text
+          {
+            render: $.fn.dataTable.render.ellipsis( 17, true ),
+            targets: [1, 12, 13, 14],
+          },
+          // Column descriptions
+          {
+            data: '0',
+            title: '<i class="fa fa-info-circle fa-lg"></i>',
+            targets: 0,
+          },
+        ],
+        // columns need to be defined here as well
+        "columns": [
+          {% for col in columns %}
+          {"data": "{{ col }}"},
+          {% endfor %}
+        ],
+        // default ordering by Support score
+        "order": [[ 5, "desc" ]],
+      });
+
+      // Rename columns 
+      $( query_table.column( 0 ).header() ).html( '<i id="header-info" data-toggle="tooltip" title="Candidate molecule identifier" class="fa fa-info-circle fa-lg"></i>&nbsp;&nbsp; InChIKey' );
+      $( query_table.column( 1 ).header() ).html( '<i id="header-info" data-toggle="tooltip" title="Candidate molecule name" class="fa fa-info-circle fa-lg"></i>&nbsp;&nbsp; Name' );
+      $( query_table.column( 2 ).header() ).html( '<i id="header-info" data-toggle="tooltip" title="Is the candidate an approved or experimental drug?" class="fa fa-info-circle fa-lg"></i>&nbsp;&nbsp; Is Drug' );
+      $( query_table.column( 3 ).header() ).html( 'Evidence' );
+      $( query_table.column( 4 ).header() ).html( 'MoA' );
+      $( query_table.column( 5 ).header() ).html( '<i id="header-info" data-toggle="tooltip" title="Composite score calculated as the weighted sum of -logP-values of similarity and level of evidence" class="fa fa-info-circle fa-lg"></i>&nbsp;&nbsp; Support' );
+      $( query_table.column( 6 ).header() ).html( '<i id="header-info" data-toggle="tooltip" title="Number of CoV literature compounds with a similarity P-value < 1e-5" class="fa fa-info-circle fa-lg"></i>&nbsp;&nbsp; # P5' );
+      $( query_table.column( 7 ).header() ).html( '<i id="header-info" data-toggle="tooltip" title="Number of CoV literature compounds with a similarity P-value < 1e-4" class="fa fa-info-circle fa-lg"></i>&nbsp;&nbsp; # P4' );
+      $( query_table.column( 8 ).header() ).html( '<i id="header-info" data-toggle="tooltip" title="Number of CoV literature compounds with a similarity P-value < 1e-3" class="fa fa-info-circle fa-lg"></i>&nbsp;&nbsp; # P3' );
+      $( query_table.column( 9 ).header() ).html( '1st Lit. match InChIKey' );
+      $( query_table.column( 10 ).header() ).html( '2nd Lit match InChIKey' );
+      $( query_table.column( 11 ).header() ).html( '3rd Lit match InChIKey' );
+      $( query_table.column( 12 ).header() ).html( '<i id="header-info" data-toggle="tooltip" title="Most similar CoV literature compound" class="fa fa-info-circle fa-lg"></i>&nbsp;&nbsp; Sim CoV (1)' );
+      $( query_table.column( 13 ).header() ).html( '<i id="header-info" data-toggle="tooltip" title="Second-most similar CoV literature compound" class="fa fa-info-circle fa-lg"></i>&nbsp;&nbsp; Sim CoV (2)' );
+      $( query_table.column( 14 ).header() ).html( '<i id="header-info" data-toggle="tooltip" title="Third-most similar CoV literature compound" class="fa fa-info-circle fa-lg"></i>&nbsp;&nbsp; Sim CoV (3)' );
+
+      query_table.on( 'draw', function () {
+        $('#chem-tooltip[data-toggle="tooltip"]').tooltip({
+          template: '<div class="tooltip tooltip-chem" role="tooltip"><div class="arrow arrow-chem"></div><div class="tooltip-inner tooltip-inner-chem"></div></div>',
+          container: 'body'
+        });
+        $('i[data-toggle="tooltip"]').tooltip({
+          delay: { show: 0 },
+          placement: 'top'
+        });
+      });
+    }); // $.each($('.query'), function () {
+  }); // $(document).ready(function() {
+
+  </script>
 </head>
 <body>
 
@@ -78,12 +225,20 @@
       <h3 id="table_title" class="text-center">Query examples</h3>
     </div>
     <div class="card-body">
-      <p>Here we collect some example of queries.</p>
+      <p>Here we collect some example of queries enabled by this resource.</p>
 
       <div class="card card-default">
         <div class="card-header">Example query 1</div>
         <div class="card-body">
-
+          <table id='query_table_1' data-query="1" class='query table table-striped table-hover table-bordered wrap dataTable' style="width:100%">
+            <thead>
+              <tr>
+                {% for col in columns %}
+                <th>{{ col }}</th>
+                {% endfor %}
+              </tr>
+            </thead>
+          </table>
         </div>
       </div>
 
@@ -101,7 +256,7 @@
         This website is provided by the <a href="http://sbnb.irbbarcelona.org" target="_blank">Structural Bioinformatics and Network Biology Group</a> at the <a href="http://www.irbbarcelona.org" target="_blank">Institute for Research in Biomedicine</a>.
       </p>
       <p>
-        The Text Mining category was enabled by the collaboration with Hugo Zaragoza, Roi Blanco and Víctor Martínez from Amazon Research Science.
+        The Text Mining category was enabled by the collaboration with Hugo Zaragoza, Roi Blanco and Víctor Martínez from Amazon Search Science and AI group.
       </p>
       <p>
         We deeply thanks all the medical staff working to save our lives.
