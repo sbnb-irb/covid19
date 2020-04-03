@@ -1,6 +1,6 @@
 import os
 import pandas as pd
-from flask import Flask, request, render_template, jsonify
+from flask import Flask, request, render_template, jsonify, send_file
 
 from .tables import BaseDataTables, ServerSideTable
 
@@ -168,6 +168,26 @@ def get_query_table():
     results = ServerSideTable(request, columns, collection).output_result()
     print("RESULTS", str(results))
     return jsonify(results)
+
+
+@app.route('/download')
+def download_file():
+    print('download_file', request.args)
+    signature = request.args.get('signature')
+    evidence = request.args.get('evidence')
+    moa = request.args.get('moa')
+    if evidence == '':
+        evidence = 'all'
+    else:
+        evidence = int(evidence)
+    if moa == '':
+        moa = 'all'
+    else:
+        moa = int(moa)
+    filen_name = 'df_cand_%s_evi%s_moa%s.csv' % (signature, evidence, moa)
+    file_path = os.path.join(app_path, 'data', filen_name)
+    return send_file(file_path, as_attachment=True)
+
 
 if __name__ == '__main__':
     app.run()
