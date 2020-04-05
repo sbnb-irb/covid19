@@ -10,7 +10,7 @@
 #$ -wd /aloy/scratch/sbnb-www/job_covid/
 #$ -q ws.q
 #$ -pe make 4
-#$ -l mem_free=40G,h_vmem=2.2G
+#$ -l mem_free=20G,h_vmem=20.2G
 # End of qsub options
 
 # Loads default environment configuration
