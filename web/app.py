@@ -80,7 +80,8 @@ def literature():
 @app.route('/docs')
 def docs():
     df = get_query_data('1', 'cc')
-    return render_template('docs.html', columns=df.columns)
+    return render_template('docs.html', columns=df.columns,
+                           last_update=get_candidate_update())
 
 
 @app.route('/about')
