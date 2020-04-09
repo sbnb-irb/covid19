@@ -1,11 +1,13 @@
 # Imports
 import os
 import h5py
+import shutil
 import gspread
 import datetime
 import collections
 import numpy as np
 import pandas as pd
+from glob import glob
 from tqdm import tqdm
 from oauth2client.service_account import ServiceAccountCredentials
 
@@ -15,14 +17,17 @@ from chemicalchecker.core.signature_data import DataSignature
 
 from plots import do_plots
 
-
+# TODO make this an argparse
 script_path = os.path.dirname(os.path.realpath(__file__))
-output_path = os.path.join(script_path, '..', 'web', 'data')
-input_path = os.path.join(script_path, '..', 'data')
+data_path = os.path.join(script_path, '..', 'data')
+similarity_path = os.path.join(script_path, '..', 'tmp', 'webdata')
+plot_path = os.path.join(script_path, '..', 'tmp', 'docu')
+final_similarity_path = os.path.join(script_path, '..', 'web', 'data')
+final_plot_path = os.path.join(
+    script_path, '..', 'web', 'static', 'images', 'docu')
 
-if not os.path.exists(output_path):
-    os.mkdir(output_path)
-
+os.makedirs(similarity_path, exist_ok=True)
+os.makedirs(plot_path, exist_ok=True)
 
 MAX_ROWS = 10000
 
@@ -31,7 +36,7 @@ def get_raw_literature():
     scope = ['https://spreadsheets.google.com/feeds',
              'https://www.googleapis.com/auth/drive']
     creds = ServiceAccountCredentials.from_json_keyfile_name(
-        os.path.join(script_path, 'covid19_repo.json'), scope)
+        os.path.join(data_path, 'covid19_repo.json'), scope)
     client = gspread.authorize(creds)
     sheet = client.open('Drugs against SARS-CoV-2').get_worksheet(1)
     records = sheet.get_all_records()
@@ -39,10 +44,11 @@ def get_raw_literature():
     '''
     updated = sheet.updated
     print('LITERATURE UPDATED:', updated)
-    dest_file = os.path.join(output_path, "literature_update.txt")
+    dest_file = os.path.join(similarity_path, "literature_update.txt")
     with open(dest_file, 'wb') as fh:
         fh.write(updated)
     '''
+    print(df)
     return df
 
 
@@ -85,17 +91,15 @@ def main(simtype):
 
     print('Fetching literature annotation.')
     df = get_raw_literature()
-    literature_file = os.path.join(input_path, 'literature.csv')
-    df.to_csv(literature_file, index=False, sep="\t")
-    literature_file = os.path.join(output_path, 'literature.csv')
+    literature_file = os.path.join(similarity_path, 'literature.csv')
     df.to_csv(literature_file, index=False, sep="\t")
 
     print('Reading text-mining candidates')
-    df_tm = pd.read_csv(os.path.join(input_path, "textmining_selection.tsv"),
+    df_tm = pd.read_csv(os.path.join(data_path, "textmining_selection.tsv"),
                         header=None, names=["inchikey"], delimiter="\t")
 
     # Drugbank
-    with open(os.path.join(input_path, "db2ikey.tsv"), "r") as f:
+    with open(os.path.join(data_path, "db2ikey.tsv"), "r") as f:
         druglist = []
         druglist_conn = []
         favconn_names = {}
@@ -111,7 +115,7 @@ def main(simtype):
 
     # Names
     ik_name = {}
-    with open(os.path.join(input_path, "inchikeys_names.csv"), "r") as f:
+    with open(os.path.join(data_path, "inchikeys_names.csv"), "r") as f:
         for l in f:
             l = l.rstrip("\n")
             ik = l[:27]
@@ -191,7 +195,7 @@ def main(simtype):
         R_, columns=["InChIKey", "Name", "Level", "Evidence", "MoA"])
     df_lit = df_lit.sort_values(["Level", "InChIKey"], ascending=[False, True])
     print("...saving literature for web")
-    dest_file = os.path.join(output_path, "df_lit_%s.csv" % simtype)
+    dest_file = os.path.join(similarity_path, "df_lit_%s.csv" % simtype)
     df_lit.to_csv(dest_file, index=False, sep="\t")
     print("...keeping tractable version of literature")
     df_lit = pd.DataFrame(
@@ -374,7 +378,7 @@ def main(simtype):
     iks_rnd_trim, V_rnd_trim = sign.get_vectors(
         iks_can[rnd_idxs][:10000])
     print("...saving")
-    dest_file = os.path.join(output_path, "dist_%s.h5" % simtype)
+    dest_file = os.path.join(similarity_path, "dist_%s.h5" % simtype)
     with h5py.File(dest_file, "w") as hf:
         hf.create_dataset("ranks_raw", data=ranks_raw)
         hf.create_dataset("ranks", data=ranks)
@@ -496,7 +500,7 @@ def main(simtype):
             moa_suf = "moa%d" % moa
         caption += " against %d drugs from the COVID19 literature" % n_cols
         fn = "df_cand_%s_%s_%s.csv" % (simtype, evi_suf, moa_suf)
-        df.to_csv(os.path.join(output_path, fn), index=False, sep="\t")
+        df.to_csv(os.path.join(similarity_path, fn), index=False, sep="\t")
         return fn, caption
 
     print("Saving legend")
@@ -513,24 +517,34 @@ def main(simtype):
                 'filename': fn,
                 'caption': caption})
     legend = pd.DataFrame(legend)
-    dest_file = os.path.join(output_path, "legend_%s.csv" % simtype)
+    dest_file = os.path.join(similarity_path, "legend_%s.csv" % simtype)
     legend.to_csv(dest_file, index=False, sep="\t")
 
     print("Doing plots")
     try:
-        do_plots(simtype)
-    except:
+        do_plots(simtype, data_path, similarity_path, plot_path)
+    except Exception:
         print("Plotting failed!")
 
 
 if __name__ == "__main__":
-    main(simtype="cc")
-    main(simtype="fp")
+    #main(simtype="cc")
+    #main(simtype="fp")
+    print("Copying SIMILARITY files to final destination.")
+    for src in glob(os.path.join(similarity_path, '*.csv')):
+        print('%s to %s' % (src, final_similarity_path))
+        shutil.copy(src, final_similarity_path)
+    print("Copying PLOT files to final destination.")
+    for src in glob(os.path.join(plot_path, '*.png')):
+        print('%s to %s' % (src, final_plot_path))
+        shutil.copy(src, final_plot_path)
+    for src in glob(os.path.join(plot_path, '*.csv')):
+        print('%s to %s' % (src, final_plot_path))
+        shutil.copy(src, final_plot_path)
+
     now = datetime.datetime.now()
     updated = str(now.strftime("%c"))
-    print('SIMILARITY UPDATED:', updated)
-    dest_file = os.path.join(output_path, "similarity_update.txt")
+    print('UPDATE DONE:', updated)
+    dest_file = os.path.join(final_similarity_path, "similarity_update.txt")
     with open(dest_file, 'w') as fh:
         fh.write(updated)
-
-print("Done!")
