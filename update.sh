@@ -8,6 +8,8 @@
 #$ -j yes
 #$ -N cc_covid
 #$ -wd /aloy/scratch/sbnb-www/job_covid/
+#$ -m ae
+#$ -M martino.bertoni@irbbarcelona.org
 #$ -q ws.q
 #$ -pe make 4
 #$ -l mem_free=20G,h_vmem=20.2G
