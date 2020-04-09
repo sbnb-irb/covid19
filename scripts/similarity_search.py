@@ -517,7 +517,10 @@ def main(simtype):
     legend.to_csv(dest_file, index=False, sep="\t")
 
     print("Doing plots")
-    do_plots(simtype)
+    try:
+        do_plots(simtype)
+    except:
+        print("Plotting failed!")
 
 
 if __name__ == "__main__":

@@ -82,7 +82,10 @@ def literature_figure(simtype):
             for j, m in enumerate(moas):
                 a  = len(df[(df["Evidence"] == e) & (df["MoA"] == m)])
                 b  = len(df[(df["Evidence"] == e) | (df["MoA"] == m)])
-                z += [a/b]
+                if b == 0:
+                    z += [0] 
+                else:
+                    z += [a/b]
                 c += [a]
                 x += [i]
                 y += [j]
