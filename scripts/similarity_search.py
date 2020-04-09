@@ -528,8 +528,8 @@ def main(simtype):
 
 
 if __name__ == "__main__":
-    #main(simtype="cc")
-    #main(simtype="fp")
+    main(simtype="cc")
+    main(simtype="fp")
     print("Copying SIMILARITY files to final destination.")
     for src in glob(os.path.join(similarity_path, '*.csv')):
         print('%s to %s' % (src, final_similarity_path))
