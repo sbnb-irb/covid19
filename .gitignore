@@ -114,3 +114,6 @@ web/static/images/docu/*
 
 # directory to store the singularity image
 cc_image/*
+
+# directory for temporary results
+tmp/*
