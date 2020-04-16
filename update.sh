@@ -8,7 +8,7 @@
 #$ -j yes
 #$ -N cc_covid
 #$ -wd /aloy/scratch/sbnb-www/job_covid/
-#$ -m ae
+#$ -m a
 #$ -M martino.bertoni@irbbarcelona.org
 #$ -q ws.q
 #$ -pe make 4
