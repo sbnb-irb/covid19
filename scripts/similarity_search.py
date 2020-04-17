@@ -38,9 +38,21 @@ def get_raw_literature():
     creds = ServiceAccountCredentials.from_json_keyfile_name(
         os.path.join(data_path, 'covid19_repo.json'), scope)
     client = gspread.authorize(creds)
-    sheet = client.open('Drugs against SARS-CoV-2').get_worksheet(1)
+    # get all worksheets
+    sheets = client.open('Drugs against SARS-CoV-2').worksheets()
+    # check if candidates sheet is available
+    for sheet in sheets:
+        if sheet.title == 'Candidates':
+            break
+    if sheet.title != 'Candidates':
+        titles = [s.title for s in sheets]
+        raise Exception('"Candidates" sheet not found! Available: %s' % titles)
+    # get row as pandas dataframe
     records = sheet.get_all_records()
     df = pd.DataFrame(records)
+    # check if expected column names are there
+    if not all(df.columns[:3] == ['Fazy', 'Drug Name', 'SMILES']):
+        raise Exception('Wrong headers! Found: %s' % str(list(df.columns)))
     '''
     updated = sheet.updated
     print('LITERATURE UPDATED:', updated)
