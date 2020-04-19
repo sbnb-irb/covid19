@@ -7,6 +7,7 @@ import datetime
 import collections
 import numpy as np
 import pandas as pd
+import csv
 from glob import glob
 from tqdm import tqdm
 from oauth2client.service_account import ServiceAccountCredentials
@@ -134,6 +135,13 @@ def main(simtype):
             name = l[28:]
             ik_name[ik] = name
 
+    # Smiles
+    ik_smiles = {}
+    with open(os.path.join(data_path, "inchikeys_smiles.tsv"), "r") as f:
+        reader = csv.reader(f, delimiter="\t")
+        for r in reader:
+            ik_smiles[r[0]] = r[1]
+
     print("Converting inchikeys of literature")
     # Convert to inchikeys
     conv = Converter()
@@ -142,12 +150,14 @@ def main(simtype):
         try:
             mol = conv.smiles_to_inchi(r[2])
             inchikey, inchi = mol
+            smi = conv.inchi_to_smiles(inchi)
             if inchikey not in universe:
                 if inchikey.split("-")[0] not in universe_conn:
                     continue
                 else:
                     inchikey = universe_conn[inchikey.split("-")[0]]
             d[inchikey] += [(r[0], r[1], r[3], r[5], r[4], r[8], r[9], r[10])]
+            ik_smiles[inchikey] = smi
         except Exception as ex:
             print(ex)
             continue
@@ -497,6 +507,14 @@ def main(simtype):
             "top3_name": [nam_lit_[int(idx)] for idx in M[:, 6]]
         }
         df = pd.DataFrame(results)
+        print("...adding smiles")
+        smiles = []
+        for ik in list(df["inchikey"]):
+            if ik in ik_smiles:
+                smiles += [ik_smiles[ik]]
+            else:
+                smiles += [np.nan]
+        # df["smiles"] = smiles ## TO-DO MARTINO: UNCOMMENT THIS IN ORDER TO ADD THE SMILES COLUMN TO THE TABLE
         print("...filtering")
         if simtype == "cc":
             caption = "CC similarities"
@@ -544,6 +562,9 @@ if __name__ == "__main__":
     main(simtype="fp")
     print("Copying SIMILARITY files to final destination.")
     for src in glob(os.path.join(similarity_path, '*.csv')):
+        print('%s to %s' % (src, final_similarity_path))
+        shutil.copy(src, final_similarity_path)
+    for src in glob(os.path.join(similarity_path, "dist_*.h5")):
         print('%s to %s' % (src, final_similarity_path))
         shutil.copy(src, final_similarity_path)
     print("Copying PLOT files to final destination.")
