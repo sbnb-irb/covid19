@@ -514,7 +514,7 @@ def main(simtype):
                 smiles += [ik_smiles[ik]]
             else:
                 smiles += [np.nan]
-        # df["smiles"] = smiles ## TO-DO MARTINO: UNCOMMENT THIS IN ORDER TO ADD THE SMILES COLUMN TO THE TABLE
+        df["smiles"] = smiles
         print("...filtering")
         if simtype == "cc":
             caption = "CC similarities"
