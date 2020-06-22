@@ -14,6 +14,16 @@ def get_literature_data():
     file_path = os.path.join(app_path, 'data', 'df_lit_cc.csv')
     data = pd.read_csv(file_path, sep="\t")
     data.fillna('!N/A', inplace=True)
+
+    def urls_to_html(links):
+        links = links.split(',')
+        html = ''
+        for idx, link in enumerate(links, 1):
+            html += '<a target="_blank" href=%s>[%i] </a>' % (link[1:-1], idx)
+        return html
+
+    # link is the column with hyperlinks
+    data['References'] = data['References'].apply(urls_to_html)
     print('LOADED %s' % file_path)
     print('LENGTH %s' % len(data))
     print('COLUMNS %s' % str(data.columns))
