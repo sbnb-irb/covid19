@@ -105,6 +105,12 @@ def main(simtype):
     print('Fetching literature annotation.')
     df = get_raw_literature()
     literature_file = os.path.join(similarity_path, 'literature.csv')
+    # merge references to single column
+    df['References'] = df[[
+        'Reference', 'Reference (2)',
+        'Reference (3)', 'Reference (4)']].agg('","'.join, axis=1)
+    df['References'] = '"' + df['References'] + '"'
+    df['References'] = df['References'].str.replace(',""', '')
     df.to_csv(literature_file, index=False, sep="\t")
 
     print('Reading text-mining candidates')
@@ -156,7 +162,7 @@ def main(simtype):
                     continue
                 else:
                     inchikey = universe_conn[inchikey.split("-")[0]]
-            d[inchikey] += [(r[0], r[1], r[3], r[5], r[4], r[8], r[9], r[10])]
+            d[inchikey] += [(r[0], r[1], r[3], r[5], r[4], r[12])]
             ik_smiles[inchikey] = smi
         except Exception as ex:
             print(ex)
@@ -190,7 +196,8 @@ def main(simtype):
             moa = int(np.max(moa))
         else:
             moa = -2
-        R += [(k, name, evi, moa)]
+        urls = v[0][5]
+        R += [(k, name, evi, moa, urls)]
     print("Aggregate literature candidates")
     d_lit = collections.defaultdict(list)
     for r in R:
@@ -205,25 +212,27 @@ def main(simtype):
             n = v[idx][1]
             e = v[idx][2]
             m = v[idx][3]
+            u = v[idx][4]
             if k in favconn_iks:
                 ik = favconn_iks[k]
             else:
                 ik = v[idx][0]
-            R += [(ik, n, e, m)]
+            R += [(ik, n, e, m, u)]
     R_ = []
     for r in R:
-        R_ += [(r[0], r[1], r[2], evidence_legend[r[2]], moa_legend[r[3]])]
+        R_ += [(r[0], r[1], r[2], evidence_legend[r[2]], moa_legend[r[3]], r[4])]
     df_lit = pd.DataFrame(
-        R_, columns=["InChIKey", "Name", "Level", "Evidence", "MoA"])
+        R_, columns=["InChIKey", "Name", "Level", "Evidence", "MoA", "References"])
     df_lit = df_lit.sort_values(["Level", "InChIKey"], ascending=[False, True])
     print("...saving literature for web")
     dest_file = os.path.join(similarity_path, "df_lit_%s.csv" % simtype)
     df_lit.to_csv(dest_file, index=False, sep="\t")
     print("...keeping tractable version of literature")
     df_lit = pd.DataFrame(
-        R, columns=["inchikey", "name", "evidence", "moa"])
+        R, columns=["inchikey", "name", "evidence", "moa", "references"])
     print(df_lit.shape)
     print("Getting precomputed similarities")
+    quit()
     # Get precomputed similarities
     iks_can = neig.row_keys
     iks_can_set = set(iks_can)
