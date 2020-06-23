@@ -232,7 +232,7 @@ def main(simtype):
         R, columns=["inchikey", "name", "evidence", "moa", "references"])
     print(df_lit.shape)
     print("Getting precomputed similarities")
-    quit()
+
     # Get precomputed similarities
     iks_can = neig.row_keys
     iks_can_set = set(iks_can)
@@ -281,7 +281,7 @@ def main(simtype):
     isdrug_can = np.array(isdrug_can)
 
     print("Metadata: names")
-    #  Names
+    # Names
     nam_can = []
     for k in iks_can:
         if k.split("-")[0] in favconn_names:
