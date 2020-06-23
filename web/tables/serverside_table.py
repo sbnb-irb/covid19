@@ -78,18 +78,40 @@ class ServerSideTable(object):
         Returns:
             Filtered data.
         '''
-        def check_row(row):
+        def check_row(row, filters):
             ''' Checks whether a row should be displayed or not. '''
-            for i in range(len(self.columns)):
-                if self.columns[i]['searchable']:
+            frow = dict()
+            for fname, ftype, fcols, fval in filters:
+                frow[fname] = False
+                for i in fcols:
                     value = row[self.columns[i]['column_name']]
-                    regex = '(?i)' + self.request_values['sSearch']
-                    if re.compile(regex).search(str(value)):
-                        return True
-            return False
+                    if ftype == 'str':
+                        regex = '(?i)' + fval
+                        if re.compile(regex).search(str(value)):
+                            frow[fname] = True
+                            break
+                    elif ftype == 'min':
+                        if value >= int(fval):
+                            frow[fname] = True
+                            break
+            return all(frow.values())
 
-        if self.request_values.get('sSearch', ""):
-            return [row for row in data if check_row(row)]
+        filters = list()
+        for k, v in self.request_values.items():
+            if k.startswith('csSearch'):
+                print('FILTER', k, v)
+                if v.strip() == '':
+                    continue
+                filter_name = k.split('_')[1]
+                filter_type = k.split('_')[2]
+                filter_columns = [int(c) for c in k.split('_')[3:]]
+                for fcol in filter_columns:
+                    print(self.columns[fcol]['column_name'])
+                filters.append((filter_name, filter_type, filter_columns, v))
+        print(filters)
+
+        if len(filters) > 0:
+            return [row for row in data if check_row(row, filters)]
         else:
             return data
 
