@@ -18,7 +18,7 @@
     var cc_table = $('#cc_table').DataTable( {
       "scrollX": true,
       "fixedColumns": true,
-      "dom": "<'row' <'col' <'row'<'col-md-auto my-3 ml-2'<'export-label'>> <'col-md-auto my-2'B>>> <'col my-2'l> <'col'i> <'col my-2'p> > t <'row my-3' <'col' <'row'<'col-md-auto my-3 ml-2'<'export-label'>> <'col-md-auto my-2'B>>> <'col my-2'l> <'col'i> <'col my-2'p> >",//'rilBpt',
+      "dom": "<'form-row row' <'form-group mx-1'<'input-group' <'export-label input-group-text'><'my-1' B> >> <'form-group mx-2 col'<'input-group'<'my-2'l>>> <'form-group mx-1 col'<'input-group' i>> <'form-group mx-1 col'<'input-group'<'my-2'p> >> > t <'form-row row my-2' <'form-group mx-1'<'input-group' <'export-label input-group-text'><'my-1' B> >> <'form-group mx-2 col'<'input-group'<'my-2'l>>> <'form-group mx-1 col'<'input-group' i>> <'form-group mx-1 col'<'input-group'<'my-2'p> >> >",//'rilBpt',
       "buttons": [
             {
               extend:    'copyHtml5',
@@ -425,11 +425,17 @@
       <h3 id="table_title" class="text-center">Select a table</h3>
     </div>
     <div class="card-body">
-
       <form id='form_filter'>
         <div class="form-row">
 
-          <div class="form-group col-3">
+          <div class="form-group mx-1" >
+            <div class="input-group" style='height: 100%'>
+              <button id='reset_filter' type="button" class="btn btn-secondary fa fa-refresh fa-lg" data-toggle="tooltip" title="Clear filters">
+              </button>
+            </div>
+          </div>
+
+          <div class="form-group mx-1" style='width: 300px'>
             <div class="input-group">
               <div class="input-group-prepend">
                 <span class="input-group-text" id="basic-addon1">Candidate:</span>
@@ -438,7 +444,7 @@
             </div>
           </div>
 
-          <div class="form-group col-2">
+          <div class="form-group mx-1" >
             <div class="input-group">
               <div class="input-group-prepend">
                 <span class="input-group-text" id="basic-addon1">Is Drug?:</span>
@@ -451,7 +457,7 @@
             </div>
           </div>
 
-          <div class="form-group col-3">
+          <div class="form-group mx-1" style='width: 400px'>
             <div class="input-group">
               <div class="input-group-prepend">
                 <span class="input-group-text" id="basic-addon1">Minimal:</span>
@@ -463,7 +469,7 @@
             </div>
           </div>
 
-          <div class="form-group col-3">
+          <div class="form-group mx-1" style='width: 300px'>
             <div class="input-group">
               <div class="input-group-prepend">
                 <span class="input-group-text" id="basic-addon1">Literature:</span>
@@ -472,19 +478,10 @@
             </div>
           </div>
 
-          <div class="form-group col-1">
-            <div class="input-group">
-              <button id='reset_filter' type="button" class="btn btn-secondary" data-toggle="tooltip" title="Clear filters">
-                <span class="fa fa-refresh fa-lg"></span>
-              </button>
-            </div>
-          </div>
 
         </div>
-      </form>
+    </form>
 
-
-    </div>
     <table id='cc_table' class='table table-striped table-hover table-bordered wrap dataTable' style="width:100%">
     </table>
   </div>
