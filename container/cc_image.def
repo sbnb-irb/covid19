@@ -7,10 +7,6 @@ From: centos:8
     . /opt/miniconda3/etc/profile.d/conda.sh
     conda activate py37
 
-%files
-    #add node2vec pre-compiled binaries
-    container/singularity/binaries/node2vec /opt
-
 %post
     # bind paths
     mkdir -p /aloy
@@ -18,7 +14,6 @@ From: centos:8
     mkdir -p /aloy/data
     mkdir -p /aloy/scratch
     mkdir -p /aloy/web_checker
-    mkdir -p /slgpfs
     
     # update yum
     yum update -y
@@ -94,36 +89,18 @@ faiss.Kmeans(10, 20).train(numpy.random.rand(1000, 10).astype(numpy.float32))"'
     pip install wget                              # download library
     pip install tqdm                              # handy progress-bar
     pip install munch                             # dictionary that supports attribute-style access
-
+    pip install h5py
+    
     # raw data packages
     pip install lxml                              # xml parser
     pip install xlrd                              # Extract data from Excel spreadsheets
-    pip install cmapPy                            # interacting with .gctx and .gct files, and other Connectivity Map resources
     pip install csvsort                           # Sort csv
-
-    # chemistry packages
-    pip install e3fp                              # 3D molecular fingreprints
-    pip install pubchempy                         # Pubchem rest api
-    pip install standardiser                      # standardising molecules (used only in TargetMate)
-    pip install chembl_webresource_client         # Chembl API
-
-    # ML packages
-    pip install scikit-learn                      # entry level ML in python
-    pip install gensim==4.0.1                     # topic modelling word2vec
-    if ! test_faiss; then printf -- "\033[31m ERROR: faiss is failing! \033[0m\n"; else printf -- '\033[32m SUCCESS: faiss is working correctly. \033[0m\n'; fi
-    pip install tensorflow==2.5                   # neural network library
-    if ! test_faiss; then printf -- "\033[31m ERROR: faiss is failing! \033[0m\n"; else printf -- '\033[32m SUCCESS: faiss is working correctly. \033[0m\n'; fi
-    pip install tensorflow-hub                    # repository of trained machine learning models
-    pip install adanet                            # automl for NN
-    #pip install keras                             # NN API
 
     # numerical packages
     pip install numpy                             # best numerical library ever
     pip install pandas                            # handles table-like datastracture
     pip install openpyxl                          # open xlsx
     pip install scipy                             # scientific python
-    pip install theano                            # Optimize evaluate math expressions
-    pip install protobuf                          # Google serialization library
     pip install statsmodels                       # many different statistical models and tests
 
     # graph packages
@@ -133,8 +110,6 @@ faiss.Kmeans(10, 20).train(numpy.random.rand(1000, 10).astype(numpy.float32))"'
     # visualization packages
     pip install matplotlib                        # chart library :)
     pip install seaborn                           # prettier graph built on top of matplotlib
-    pip install datashader                        # plot huge 2D datasets (projetions)
-    pip install statannot                         # annotate boxplot with significance ***
     pip install matplotlib_venn                   # Venn diagrams
     pip install pydot                             # python graphviz interface
 
@@ -142,16 +117,6 @@ faiss.Kmeans(10, 20).train(numpy.random.rand(1000, 10).astype(numpy.float32))"'
     pip install MulticoreTSNE                     # tSNE algo
     pip install umap-learn                        # UMAP algo
 
-    # additional TargetMate packages
-    pip install tpot                              # Auto ML tool with Genetic Programming
-    pip install mlflow                            # Platform for the ML lifecycle
-    pip install xgboost                           # Gradient Boosting framework
-    pip install hyperopt                          # Hyperparameters optimization
-    pip install shap                              # SHapley Additive exPlanations for ML models
-
-    # integration of D1
-    pip install git+git://github.com/Maayanlab/geode.git   # Python implementation of the R package GeoDE
-    
     # in case some package changed numpy version, we really want this one
     pip install numpy==1.19.2
     conda install -y mkl-service
