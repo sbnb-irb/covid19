@@ -103,15 +103,21 @@ def main(simtype):
     universe_conn = dict([(k.split("-")[0], k) for k in neig.row_keys])
 
     print('Fetching literature annotation.')
-    df = get_raw_literature()
-    literature_file = os.path.join(similarity_path, 'literature.csv')
-    # merge references to single column
-    df['References'] = df[[
-        'Reference', 'Reference (2)',
-        'Reference (3)', 'Reference (4)']].agg('","'.join, axis=1)
-    df['References'] = '"' + df['References'] + '"'
-    df['References'] = df['References'].str.replace(',""', '')
-    df.to_csv(literature_file, index=False, sep="\t")
+    literature_file = os.path.join(similarity_path, 'literature.csv') 
+    try:
+        df = get_raw_literature()
+        # merge references to single column
+        df['References'] = df[[
+            'Reference', 'Reference (2)',
+            'Reference (3)', 'Reference (4)']].agg('","'.join, axis=1)
+        df['References'] = '"' + df['References'] + '"'
+        df['References'] = df['References'].str.replace(',""', '')
+        df.to_csv(literature_file, index=False, sep="\t")
+    except Exception as ex:
+        print('Exception while fetching data:')
+        print(str(ex))
+        print('Using cached version')
+        df = pd.read_csv(literature_file, sep="\t")
 
     print('Reading text-mining candidates')
     df_tm = pd.read_csv(os.path.join(data_path, "textmining_selection.tsv"),
