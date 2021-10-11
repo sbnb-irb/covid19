@@ -16,9 +16,6 @@
 # End of qsub options
 
 # Loads default environment configuration
-if [[ -f $HOME/.bashrc ]]
-then
-  source $HOME/.bashrc
-fi
+source /apps/manual/Singularity/3.6.4/etc/profile
 
-OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=4 MKL_NUM_THREADS=4 VECLIB_MAXIMUM_THREADS=4 NUMEXPR_NUM_THREADS=4 SINGULARITYENV_PYTHONPATH=/aloy/home/mbertoni/code/chemical_checker/package SINGULARITYENV_CC_CONFIG=/aloy/home/mbertoni/cc_config.json singularity exec /aloy/data/web/sbnb_web/sbnb_web-7.59/covid19/cc_image/cc_covid19_py37.simg python /aloy/data/web/sbnb_web/sbnb_web-7.59/covid19/scripts/similarity_search.py
+OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=4 MKL_NUM_THREADS=4 VECLIB_MAXIMUM_THREADS=4 NUMEXPR_NUM_THREADS=4 SINGULARITYENV_PYTHONPATH=/aloy/home/mbertoni/code/chemical_checker/package SINGULARITYENV_CC_CONFIG=/aloy/home/mbertoni/cc_config.json singularity exec /aloy/data/web/sbnb_web/sbnb_web-7.59/covid19/container/cc_image.simg python /aloy/data/web/sbnb_web/sbnb_web-7.59/covid19/scripts/similarity_search.py
